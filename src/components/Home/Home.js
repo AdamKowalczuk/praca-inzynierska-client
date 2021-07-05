@@ -13,7 +13,7 @@ import decode from "jwt-decode";
 import * as actionType from "../../constants/actionTypes";
 
 const Home = () => {
-  const [currentId] = useState(0);
+  // const [currentId] = useState(0);
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const Home = () => {
       <Navbar />
       <div className="home-container">
         <div className="title center">WebFront</div>
-        <img src={TravelingImage} alt="Traveling Image" />
+        <img src={TravelingImage} alt="Traveling" />
         <Dots />
       </div>
     </>
