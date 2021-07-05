@@ -1,0 +1,50 @@
+// $primary: #11998e;
+// $secondary: #38ef7d;
+// $white: #fff;
+$gray: #9b9b9b;
+
+$dark: #0c0c0d;
+$white: #f1f1f2;
+
+.input-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "first-name last-name";
+}
+
+.MuiFormControl-root {
+  width: 80% !important;
+  margin: 10px 10% !important;
+}
+.first-name {
+  grid-area: first-name;
+  margin-left: 20% !important;
+  margin-right: 5% !important;
+  width: 75% !important;
+}
+.last-name {
+  grid-area: last-name;
+  margin-right: 20% !important;
+  margin-left: 5% !important;
+  width: 75% !important;
+  // margin-right: 0% !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  //border
+  // color: $white;
+  border-color: $white !important;
+  // width: 80%;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: $white !important;
+}
+
+.MuiFormLabel-root {
+  color: #f1f1f2 !important;
+}
+.MuiInputBase-input {
+  color: $white !important;
+}

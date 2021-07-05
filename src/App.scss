@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Krona+One&family=Roboto:ital,wght@0,300;0,400;0,500;1,400;1,500;1,700&display=swap");
+$dark: #0c0c0d;
+// #222222
+$white: #f1f1f2;
+* {
+  font-family: "Roboto", sans-serif;
+}
+body {
+  box-sizing: border-box;
+  font-size: 18px;
+  background-color: $dark;
+  margin: 0 auto;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

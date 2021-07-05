@@ -1,0 +1,61 @@
+$dark: #0c0c0d;
+$white: #f1f1f2;
+
+.btn {
+  // padding: 0px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 2px solid #0c0c0d;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn_white {
+  background-color: #f1f1f2;
+  color: #0c0c0d;
+  border: 2px solid #0c0c0d;
+  width: 80%;
+  margin: 10px 10%;
+  font-weight: 500;
+  line-height: 1.75;
+}
+.btn_dark {
+  background-color: #0c0c0d;
+  color: #f1f1f2;
+  border: 2px solid #f1f1f2;
+  width: 80%;
+  margin: 10px 10%;
+}
+.btn_right {
+  position: absolute;
+  bottom: 5%;
+  right: -10px;
+  width: 45%;
+  justify-content: space-between;
+  font-size: 18px;
+  .arrow-icon {
+    margin-right: 10px;
+  }
+}
+
+.MuiButton-contained {
+  background-color: $dark !important;
+
+  width: 80% !important;
+  margin: 10px 10% !important;
+  color: $white !important;
+  border: 1px solid $white !important;
+  // padding: 0px 14px;
+  span {
+    padding: 8px 0px;
+    font-size: 16px;
+  }
+}
+.MuiIconButton-root {
+  color: $white !important;
+}

@@ -1,0 +1,29 @@
+$dark: #0c0c0d;
+$white: #f1f1f2;
+
+.home-container {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  .title {
+    font-family: "Krona One", sans-serif;
+    height: 25%;
+    color: $white;
+    font-size: 50px;
+    font-weight: 700 !important;
+  }
+  img {
+    width: 90%;
+    margin: 0 5%;
+    margin-bottom: 20px;
+  }
+  .button-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .dot {
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+  }
+}

@@ -1,0 +1,24 @@
+$dark: #0c0c0d;
+$white: #f1f1f2;
+
+.form-container {
+  height: 60vh;
+}
+.auth-container {
+  margin: 10% 0;
+  img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 142px;
+    margin: 0px auto !important;
+    margin-bottom: 10px !important;
+    // width: 60%;
+    // margin: 0% 20%;
+    // margin-bottom: 20px;
+  }
+  color: $white;
+  form {
+    color: $white;
+  }
+}
