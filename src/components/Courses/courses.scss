@@ -2,12 +2,12 @@ $dark: #0c0c0d;
 $white: #f1f1f2;
 $gray: #9b9b9b;
 
-.course-container {
+.courses-container {
   background-color: #f1f1f2;
   margin: 0 auto;
   height: 100vh;
   width: 100vw;
-  .course-big-image {
+  .courses-big-image {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@ $gray: #9b9b9b;
     margin: 0px auto !important;
     margin-bottom: 10px !important;
   }
-  .course-box {
+  .courses-box {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,12 +24,12 @@ $gray: #9b9b9b;
     width: 80%;
     margin: 5% 10%;
     border-radius: 10px;
-    .course-icon {
+    .courses-icon {
       width: 25%;
       display: flex;
       justify-content: center;
       align-items: center;
-      .course-small-image {
+      .courses-small-image {
         width: 40px;
         background-color: $white;
         padding: 5px;

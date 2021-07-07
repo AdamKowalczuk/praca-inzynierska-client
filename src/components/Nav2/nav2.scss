@@ -1,0 +1,29 @@
+$gray: #9b9b9b;
+
+$dark: #0c0c0d;
+$white: #f1f1f2;
+
+.nav2-container {
+  img {
+    width: 30px;
+    padding: 10px;
+    // background-color: $white;
+    color: $dark;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  height: 10%;
+  background-color: $white;
+
+  h2 {
+    color: $dark;
+    margin: 0 auto;
+
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
