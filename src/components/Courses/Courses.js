@@ -3,6 +3,7 @@ import "./courses.scss";
 import BookLover from "../../images/book_lover.svg";
 import Learn from "../../images/learn.svg";
 import Nav from "../Nav/Nav";
+import MenuBar from "../../images/menu-bars-white.svg";
 
 const SingleCourse = (props) => {
   return (
@@ -21,7 +22,7 @@ const Course = () => {
   return (
     <>
       <div className="courses-container">
-        <Nav />
+        <Nav color="rgba(12, 12, 13, 1)" image={MenuBar} />
         <img src={BookLover} className="courses-big-image" alt="Book Lover" />
         <SingleCourse name="HTML" percent="15%" />
         <SingleCourse name="CSS" percent="7%" />

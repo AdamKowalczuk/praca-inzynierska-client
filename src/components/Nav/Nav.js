@@ -1,14 +1,14 @@
 import React from "react";
 import "./Nav.scss";
-import MenuBar from "../../images/menu-bars.svg";
+
 import Wave from "./wave";
 
-const Nav = () => {
+const Nav = (props) => {
   return (
     <>
-      <Wave />
+      <Wave color={props.color} />
       <div className="nav-container">
-        <img src={MenuBar} alt="menu bar" />
+        <img src={props.image} alt="menu bar" />
       </div>
     </>
   );
