@@ -122,7 +122,7 @@ const SignUp = () => {
             clientId="1059000716878-tdrbkt42bqtungoq080mht743uu0vf04.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button
-                class={classes.googleButton}
+                className={classes.googleButton}
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
                 variant="contained"

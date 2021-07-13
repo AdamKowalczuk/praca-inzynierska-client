@@ -2,8 +2,9 @@ import React from "react";
 import "./lesson.scss";
 import Nav2 from "../Nav2/Nav2";
 import WorkTime from "../../images/work-time.svg";
+import { useSelector } from "react-redux";
 
-const Lesson = () => {
+const Lesson = (lesson) => {
   return (
     <>
       <Nav2 />

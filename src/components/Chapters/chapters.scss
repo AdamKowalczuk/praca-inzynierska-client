@@ -1,0 +1,67 @@
+$dark: #0c0c0d;
+$white: #f1f1f2;
+$gray: #9b9b9b;
+
+.chapters-container {
+  height: 100vh;
+  background-color: $white;
+  overflow: scroll;
+  .MuiAccordionSummary-content {
+    display: flex;
+    // flex-direction: column !important;
+    .accordion-img-background {
+      width: 30px;
+      height: 30px;
+      padding: 10px;
+      background-color: $gray;
+      display: inline-block;
+      border-radius: 10px;
+      border: 3px solid $white;
+      img {
+        width: 30px;
+      }
+    }
+    .accordion-chapter-header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      h3,
+      h4 {
+        margin: 0;
+        padding: 0 20px;
+      }
+      h4 {
+        color: $gray;
+      }
+    }
+  }
+  .MuiAccordionDetails-root {
+    margin-left: 30%;
+    display: flex;
+    flex-direction: column;
+    .accordion-lesson-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .accordion-arrow-forward {
+        height: 18px;
+      }
+    }
+
+    h5 {
+      margin: 0;
+      padding: 5px;
+      margin-right: 20px;
+    }
+  }
+}
+
+.MuiPaper-root {
+  background-color: transparent;
+}
+.MuiSvgIcon-root {
+  fill: $dark !important;
+}
+.chapters-container::-webkit-scrollbar {
+  display: none;
+}

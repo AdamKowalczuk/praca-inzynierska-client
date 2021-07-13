@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "eslint-plugin-react-hooks": "^4.2.1-alpha-bfa50f827-20210712",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -19,6 +20,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "sass": "^1.35.1"
   },
@@ -29,11 +31,27 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "plugins": ["react-hooks"],
+      "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
+      },
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+
+
   },
+
+    "plugins": [
+      "react-hooks"
+    ],
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
+    },
+
   "browserslist": {
     "production": [
       ">0.2%",
