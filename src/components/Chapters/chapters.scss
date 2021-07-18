@@ -3,6 +3,9 @@ $white: #f1f1f2;
 $gray: #9b9b9b;
 
 .chapters-container {
+  .MuiSvgIcon-root {
+    fill: $dark !important;
+  }
   height: 100vh;
   background-color: $white;
   overflow: scroll;
@@ -59,9 +62,7 @@ $gray: #9b9b9b;
 .MuiPaper-root {
   background-color: transparent;
 }
-.MuiSvgIcon-root {
-  fill: $dark !important;
-}
+
 .chapters-container::-webkit-scrollbar {
   display: none;
 }

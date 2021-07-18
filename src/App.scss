@@ -1,9 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Krona+One&family=Roboto:ital,wght@0,300;0,400;0,500;1,400;1,500;1,700&display=swap");
 $dark: #0c0c0d;
+
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap");
 // #222222
+@font-face {
+  font-family: Futura;
+  src: url("./futura/futur.ttf");
+}
+@font-face {
+  font-family: Helvetica2;
+  src: url("./helvetica/Helvetica.ttf");
+}
 $white: #f1f1f2;
 * {
-  font-family: "Roboto", sans-serif;
+  // font-family: "Roboto", sans-serif;
+  // font-family: "EB Garamond", serif !important;
+  // font-family: Futura !important;
+  // font-family: Helvetica2 !important;
+  // font-family: Arial, Helvetica, sans-serif;
+  // font-weight: 700;
+  // font-size: 20px;
+  // font-family: "Bodoni Moda", serif !important;
 }
 body {
   box-sizing: border-box;

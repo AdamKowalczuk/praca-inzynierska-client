@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button2 from "../Button/Button";
 import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
@@ -19,14 +19,18 @@ const initialState = {
   email: "",
   password: "",
   confirmPassword: "",
+  courses: "",
 };
 
 const SignUp = () => {
+  const courses = useSelector((state) => state.courses);
+
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
+  // function
 
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
@@ -39,7 +43,7 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    form.courses = courses;
     if (isSignup) {
       dispatch(signup(form, history));
     } else {

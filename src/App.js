@@ -10,6 +10,7 @@ import Chapters from "./components/Chapters/Chapters";
 import Quiz from "./components/Quiz/Quiz";
 import Lesson from "./components/Lesson/Lesson";
 import { getCourses } from "./actions/courses";
+
 import "./App.scss";
 
 const App = () => {
@@ -18,16 +19,17 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getCourses());
+    // dispatch(getUsers());
   }, [currentId, dispatch]);
   return (
     <BrowserRouter>
       <Switch>
-        {/* <Route path="/" exact component={Home} />
+        <Route path="/" exact component={Home} />
         <Route path="/auth" exact component={Auth} />
 
         <Route path="/kursy" exact component={Courses} />
-        <Route path="/kursy/kurs" exact component={Course} /> */}
-        <Route path="/" exact component={Chapters} />
+        <Route path="/kursy/kurs" exact component={Course} />
+        {/* <Route path="/" exact component={Chapters} /> */}
         {/* <Route path="/kursy/kurs/" exact component={Lesson} /> */}
         {/* <Route path="/" exact component={Quiz} /> */}
       </Switch>

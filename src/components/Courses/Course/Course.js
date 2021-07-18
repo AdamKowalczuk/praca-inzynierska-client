@@ -20,7 +20,7 @@ const CourseInfo = (props) => {
     </>
   );
 };
-const Course = ({ setCurrentId }) => {
+const Course = (props, { setCurrentId }) => {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
   const actualCourse = useSelector((state) => state.actualCourse);
