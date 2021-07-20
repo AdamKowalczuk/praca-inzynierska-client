@@ -32,7 +32,7 @@ const SingleCourse = (props) => {
   return (
     <>
       <Link
-        onClick={() => dispatch(setActualCourse(props.course))}
+        onClick={() => dispatch(setActualCourse(props.number))}
         to="/kursy/kurs"
       >
         <div className="courses-box">
@@ -66,9 +66,9 @@ const Courses = ({ setCurrentId }) => {
       <div className="courses-container">
         <Nav color="rgba(12, 12, 13, 1)" image={MenuBar} />
         <img src={BookLover} className="courses-big-image" alt="Book Lover" />
-        <SingleCourse course={course[0]} />
-        <SingleCourse course={course[1]} />
-        <SingleCourse course={course[2]} />
+        <SingleCourse course={course[0]} number={0} />
+        <SingleCourse course={course[1]} number={1} />
+        <SingleCourse course={course[2]} number={2} />
 
         {/* {courses.map((course) => (
           <Grid key={course._id} item xs={12} sm={6} md={6}>

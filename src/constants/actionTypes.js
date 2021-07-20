@@ -7,6 +7,8 @@ export const SET_USER = "SET_USER";
 export const FETCH_ALL_COURSES = "FETCH_ALL_COURSES";
 export const FETCH_ALL_USERS = "FETCH_ALL_USERS";
 export const SET_ACTUAL_COURSE = "SET_ACTUAL_COURSE";
+export const SET_ACTUAL_CHAPTER = "SET_ACTUAL_CHAPTER";
+export const SET_ACTUAL_LESSON = "SET_ACTUAL_LESSON";
 
 export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";

@@ -18,3 +18,15 @@ export const setActualCourse = (course) => {
     payload: course,
   };
 };
+export const setActualChapter = (chapter) => {
+  return {
+    type: "SET_ACTUAL_CHAPTER",
+    payload: chapter,
+  };
+};
+export const setActualLesson = (lesson) => {
+  return {
+    type: "SET_ACTUAL_LESSON",
+    payload: lesson,
+  };
+};

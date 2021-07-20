@@ -12,8 +12,20 @@ import Wall from "../../images/programming-icons/003-wall.svg";
 import Code from "../../images/programming-icons/004-code.svg";
 import Security from "../../images/programming-icons/005-security.svg";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { setActualChapter, setActualLesson } from "../../actions/courses";
 
 const Chapter = (props) => {
+  function sumCompletedLessons() {
+    let sum = 0;
+    props.chapter.lessons.forEach((lesson) => {
+      if (lesson.isFinished === true) {
+        sum += 1;
+      }
+    });
+    return sum;
+  }
   return (
     <div>
       <Accordion>
@@ -26,49 +38,67 @@ const Chapter = (props) => {
             <img src={props.icon} alt="password" />
           </div>
           <div className="accordion-chapter-header">
-            <h3>HTML Introduction</h3>
-            <h4>2/3 Completed</h4>
+            <h3>{props.chapter.name}</h3>
+            <h4>
+              {sumCompletedLessons()}/{props.chapter.lessons.length} Completed
+            </h4>
           </div>
-
-          {/* <Typography className="accordion-heading">
-            HTML Introduction
-          </Typography>
-          <Typography className="accordion-heading">2/3 Completed</Typography> */}
         </AccordionSummary>
         <AccordionDetails>
-          <div className="accordion-lesson-container">
-            <h5>HTML Introduction</h5>
-            <ArrowForwardIosIcon className="accordion-arrow-forward" />
-          </div>
-
-          <div className="accordion-lesson-container">
-            <h5>HTML Introduction</h5>
-            <ArrowForwardIosIcon className="accordion-arrow-forward" />
-          </div>
-          <div className="accordion-lesson-container">
-            <h5>HTML Introduction</h5>
-            <ArrowForwardIosIcon className="accordion-arrow-forward" />
-          </div>
-          <div className="accordion-lesson-container">
-            <h5>HTML Introduction</h5>
-            <ArrowForwardIosIcon className="accordion-arrow-forward" />
-          </div>
+          {props.chapter.lessons.map((item, id) => {
+            return (
+              <>
+                <Lesson
+                  name={item.name}
+                  number={id}
+                  chapterNumber={props.number}
+                />
+              </>
+            );
+          })}
         </AccordionDetails>
       </Accordion>
     </div>
   );
 };
+const Lesson = (props) => {
+  const dispatch = useDispatch();
+  return (
+    <Link
+      to="/kursy/rozdziały/lekcje"
+      onClick={() => {
+        dispatch(setActualLesson(props.number));
+        dispatch(setActualChapter(props.chapterNumber));
+      }}
+    >
+      <div className="accordion-lesson-container">
+        <h5>{props.name}</h5>
+        <ArrowForwardIosIcon className="accordion-arrow-forward" />
+      </div>
+    </Link>
+  );
+};
 
 const Chapters = () => {
+  const dispatch = useDispatch();
+  const courseNumber = useSelector((state) => state.actualCourse);
+  const course = useSelector((state) => state.user.courses[courseNumber]);
   return (
     <>
       <Nav />
       <div className="chapters-container">
-        <Chapter icon={Password} />
+        {course.chapters.map((item, id) => {
+          return (
+            <>
+              <Chapter icon={Server} number={id} chapter={item} />
+            </>
+          );
+        })}
+        {/* <Chapter icon={Password} />
         <Chapter icon={Server} />
         <Chapter icon={Wall} />
         <Chapter icon={Code} />
-        <Chapter icon={Security} />
+        <Chapter icon={Security} /> */}
       </div>
     </>
   );

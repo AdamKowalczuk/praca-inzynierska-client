@@ -29,8 +29,8 @@ const App = () => {
 
         <Route path="/kursy" exact component={Courses} />
         <Route path="/kursy/kurs" exact component={Course} />
-        {/* <Route path="/" exact component={Chapters} /> */}
-        {/* <Route path="/kursy/kurs/" exact component={Lesson} /> */}
+        <Route path="/kursy/rozdziały" exact component={Chapters} />
+        <Route path="/kursy/rozdziały/lekcje" exact component={Lesson} />
         {/* <Route path="/" exact component={Quiz} /> */}
       </Switch>
     </BrowserRouter>
