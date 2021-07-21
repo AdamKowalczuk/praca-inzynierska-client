@@ -70,6 +70,7 @@ const Lesson = (props) => {
         dispatch(setActualLesson(props.number));
         dispatch(setActualChapter(props.chapterNumber));
       }}
+      className="link"
     >
       <div className="accordion-lesson-container">
         <h5>{props.name}</h5>

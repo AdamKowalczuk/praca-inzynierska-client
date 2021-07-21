@@ -14,7 +14,7 @@ import ButtonBack from "../../Button/ButtonBack";
 const CourseInfo = (props) => {
   return (
     <>
-      <div className="course-icon-box">
+      <div className="course-icon-box ">
         <img src={props.image} className="course-icon" alt="Open Book" />
         <h4 className="first-h4">{props.number}</h4>
         <h4 className="second-h4">{props.text}</h4>

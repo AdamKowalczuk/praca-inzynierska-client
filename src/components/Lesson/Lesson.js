@@ -3,6 +3,7 @@ import "./lesson.scss";
 import Nav2 from "../Nav2/Nav2";
 import WorkTime from "../../images/work-time.svg";
 import { useDispatch, useSelector } from "react-redux";
+import ButtonBack from "../Button/ButtonBack";
 
 const Lesson = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Lesson = () => {
   return (
     <>
       <Nav2 />
-
+      <ButtonBack link="/kursy/rozdziały" />
       <div className="lesson-container">
         <h2>{lesson.name}</h2>
         <img className="lesson-image" src={WorkTime} alt="Work Time" />

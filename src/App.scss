@@ -14,22 +14,29 @@ $dark: #0c0c0d;
 $white: #f1f1f2;
 * {
   // font-family: "Roboto", sans-serif;
-  // font-family: "EB Garamond", serif !important;
+
   // font-family: Futura !important;
   // font-family: Helvetica2 !important;
   // font-family: Arial, Helvetica, sans-serif;
   // font-weight: 700;
   // font-size: 20px;
-  // font-family: "Bodoni Moda", serif !important;
+  // font-family: "Bodoni Moda", serif !important; dobry dla pokazania ilości lekcji
 }
+// .bodoni {
+//   font-family: "Bodoni Moda", serif !important;
+// }
 body {
   box-sizing: border-box;
   font-size: 18px;
   background-color: $dark;
   margin: 0 auto;
+  font-family: "EB Garamond", serif;
 }
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.link {
+  text-decoration: none;
 }

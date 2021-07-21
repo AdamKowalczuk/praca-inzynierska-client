@@ -46,6 +46,7 @@ $gray: #9b9b9b;
       display: flex;
       flex-direction: row;
       align-items: center;
+      justify-content: space-between;
       .accordion-arrow-forward {
         height: 18px;
       }
@@ -55,6 +56,7 @@ $gray: #9b9b9b;
       margin: 0;
       padding: 5px;
       margin-right: 20px;
+      color: $dark;
     }
   }
 }
