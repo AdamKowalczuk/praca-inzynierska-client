@@ -4,17 +4,17 @@ import Nav from "../Nav2/Nav2";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Password from "../../images/programming-icons/001-password.svg";
+// import Password from "../../images/programming-icons/001-password.svg";
 import Server from "../../images/programming-icons/002-server.svg";
-import Wall from "../../images/programming-icons/003-wall.svg";
-import Code from "../../images/programming-icons/004-code.svg";
-import Security from "../../images/programming-icons/005-security.svg";
+// import Wall from "../../images/programming-icons/003-wall.svg";
+// import Code from "../../images/programming-icons/004-code.svg";
+// import Security from "../../images/programming-icons/005-security.svg";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setActualChapter, setActualLesson } from "../../actions/courses";
+import ButtonBack from "../Button/ButtonBack";
 
 const Chapter = (props) => {
   function sumCompletedLessons() {
@@ -80,12 +80,12 @@ const Lesson = (props) => {
 };
 
 const Chapters = () => {
-  const dispatch = useDispatch();
   const courseNumber = useSelector((state) => state.actualCourse);
   const course = useSelector((state) => state.user.courses[courseNumber]);
   return (
     <>
       <Nav />
+      <ButtonBack link="/kursy" />
       <div className="chapters-container">
         {course.chapters.map((item, id) => {
           return (

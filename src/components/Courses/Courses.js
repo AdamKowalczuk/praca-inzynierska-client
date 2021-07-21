@@ -5,16 +5,11 @@ import Learn from "../../images/learn.svg";
 import Nav from "../Nav/Nav";
 import MenuBar from "../../images/menu-bars-white.svg";
 import { useSelector, useDispatch } from "react-redux";
-import Course from "./Course/Course";
 import { Link } from "react-router-dom";
-import { Grid, CircularProgress } from "@material-ui/core";
 import { setActualCourse } from "../../actions/courses";
 import { getUsers, setUser } from "../../actions/users";
 
 const SingleCourse = (props) => {
-  // const actualCourse = useSelector((state) => state.actualCourse);
-  // const users use
-  // dispatch(setActualCourse(props.course))
   const dispatch = useDispatch();
   function sumCompleted() {
     let sum = 0;
@@ -49,16 +44,10 @@ const SingleCourse = (props) => {
 const Courses = ({ setCurrentId }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(getCourses());
     dispatch(getUsers());
   }, [dispatch]);
-  // const users = useSelector((state) => state.users);
-  // console.log(users);
-  // const userID =useSelector((state) => state.auth.authData.result.);
-  // console.log("USER ID:", userID);
 
   const user = useSelector((state) => state.auth.authData.result);
-  console.log("USEEER", user);
   dispatch(setUser(user));
   const course = user.courses;
   return (
@@ -69,12 +58,6 @@ const Courses = ({ setCurrentId }) => {
         <SingleCourse course={course[0]} number={0} />
         <SingleCourse course={course[1]} number={1} />
         <SingleCourse course={course[2]} number={2} />
-
-        {/* {courses.map((course) => (
-          <Grid key={course._id} item xs={12} sm={6} md={6}>
-            <Course course={course} setCurrentId={setCurrentId} />
-          </Grid>
-        ))} */}
       </div>
     </>
   );

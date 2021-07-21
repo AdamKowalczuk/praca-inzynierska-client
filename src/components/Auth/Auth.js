@@ -8,7 +8,7 @@ import { signin, signup } from "../../actions/auth";
 import { AUTH } from "../../constants/actionTypes";
 import useStyles from "./styles";
 import Input from "./Input";
-import GoogleIcon from "./icon";
+import GoogleIcon from "../../images/google.svg";
 import SecureLogin from "../../images/secure_login.svg";
 import "./auth.scss";
 import "./input.scss";
@@ -24,13 +24,13 @@ const initialState = {
 
 const SignUp = () => {
   const courses = useSelector((state) => state.courses);
+  console.log(courses, "COURSES!");
 
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
-  // function
 
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
@@ -44,6 +44,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     form.courses = courses;
+    console.log(form);
     if (isSignup) {
       dispatch(signup(form, history));
     } else {
@@ -81,7 +82,7 @@ const SignUp = () => {
                 <div className="input-container">
                   <Input
                     name="firstName"
-                    label="First Name"
+                    label="Imię"
                     handleChange={handleChange}
                     autoFocus
                     color="#f1f1f2"
@@ -90,7 +91,7 @@ const SignUp = () => {
                   />
                   <Input
                     name="lastName"
-                    label="Last Name"
+                    label="Nazwisko"
                     handleChange={handleChange}
                     type="input"
                     className="last-name"
@@ -100,13 +101,13 @@ const SignUp = () => {
             )}
             <Input
               name="email"
-              label="Email Address"
+              label="Email"
               handleChange={handleChange}
               type="email"
             />
             <Input
               name="password"
-              label="Password"
+              label="Hasło"
               handleChange={handleChange}
               type={showPassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
@@ -115,13 +116,26 @@ const SignUp = () => {
             {isSignup && (
               <Input
                 name="confirmPassword"
-                label="Repeat Password"
+                label="Powtórz hasło"
                 handleChange={handleChange}
                 type="password"
               />
             )}
           </div>
-          <Button2 type="submit" text="SIGN IN" class="btn btn_white"></Button2>
+          {isSignup === true ? (
+            <Button2
+              type="submit"
+              text="ZAREJESTRUJ SIĘ"
+              class="btn btn_white"
+            ></Button2>
+          ) : (
+            <Button2
+              type="submit"
+              text="ZALOGUJ SIĘ"
+              class="btn btn_white"
+            ></Button2>
+          )}
+
           <GoogleLogin
             clientId="1059000716878-tdrbkt42bqtungoq080mht743uu0vf04.apps.googleusercontent.com"
             render={(renderProps) => (
@@ -130,9 +144,17 @@ const SignUp = () => {
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
                 variant="contained"
-                startIcon={<GoogleIcon />}
+                startIcon={
+                  <>
+                    <img
+                      src={GoogleIcon}
+                      className="google-icon"
+                      alt="Google Icon"
+                    />
+                  </>
+                }
               >
-                Google Sign In
+                Użyj konta Google
               </Button>
             )}
             onSuccess={googleSuccess}
@@ -143,8 +165,8 @@ const SignUp = () => {
             <Grid item>
               <Button onClick={switchMode} style={{ color: "#f1f1f2" }}>
                 {isSignup
-                  ? "Already have an account? Sign in"
-                  : "Don't have an account? Sign Up"}
+                  ? "Masz już konto? Zaloguj się"
+                  : "Nie masz jeszcze konta? Zarejestruj się"}
               </Button>
             </Grid>
           </Grid>

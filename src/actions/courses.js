@@ -5,7 +5,6 @@ import * as api from "../api/index.js";
 export const getCourses = () => async (dispatch) => {
   try {
     const { data } = await api.fetchCourses();
-    console.log("Get Courses", data);
     dispatch({ type: FETCH_ALL_COURSES, payload: data });
   } catch (error) {
     console.log(error.message);

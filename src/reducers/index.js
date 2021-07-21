@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-// import courses from "./courses";
+import courses from "./courses";
 import user from "./user";
 // import users from "./users";
 import auth from "./auth";
@@ -15,5 +15,5 @@ export const reducers = combineReducers({
   actualCourse,
   actualChapter,
   actualLesson,
-  //   courses,
+  courses,
 });
