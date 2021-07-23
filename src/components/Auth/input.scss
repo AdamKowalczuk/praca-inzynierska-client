@@ -3,7 +3,7 @@
 // $white: #fff;
 $gray: #9b9b9b;
 
-$dark: #0c0c0d;
+$dark: #030303;
 $white: #f1f1f2;
 
 .input-container {
@@ -17,6 +17,7 @@ $white: #f1f1f2;
 .MuiFormControl-root {
   width: 80% !important;
   margin: 10px 10% !important;
+  // background-color: $dark;
 }
 .first-name {
   grid-area: first-name;
@@ -39,7 +40,7 @@ $white: #f1f1f2;
 }
 
 .MuiFormLabel-root {
-  color: #f1f1f2 !important;
+  color: $white !important;
 }
 .MuiInputBase-input {
   color: $white !important;

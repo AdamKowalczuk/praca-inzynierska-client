@@ -24,7 +24,6 @@ const initialState = {
 
 const SignUp = () => {
   const courses = useSelector((state) => state.courses);
-  console.log(courses, "COURSES!");
 
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
@@ -85,7 +84,6 @@ const SignUp = () => {
                     label="Imię"
                     handleChange={handleChange}
                     autoFocus
-                    color="#f1f1f2"
                     type="input"
                     className="first-name"
                   />
@@ -163,7 +161,10 @@ const SignUp = () => {
           />
           <Grid container justify="flex-end">
             <Grid item>
-              <Button onClick={switchMode} style={{ color: "#f1f1f2" }}>
+              <Button
+                onClick={switchMode}
+                style={{ color: "#f1f1f2", textTransform: "none" }}
+              >
                 {isSignup
                   ? "Masz już konto? Zaloguj się"
                   : "Nie masz jeszcze konta? Zarejestruj się"}

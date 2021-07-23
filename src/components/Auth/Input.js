@@ -15,7 +15,6 @@ const Input = (props) => {
       label={props.label}
       autoFocus={props.autoFocus}
       type={props.type}
-      color="red"
       InputProps={
         props.name === "password"
           ? {
