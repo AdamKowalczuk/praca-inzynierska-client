@@ -36,8 +36,6 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    // <AppBar className={classes.appBar} position="static" color="inherit">
-    //   <Toolbar className={classes.toolbar}>
     <>
       {user?.result ? (
         <div className={classes.profile}>
@@ -54,15 +52,6 @@ const Navbar = () => {
         <Link to="/auth">
           <ButtonRight text="Next" class="btn btn_right" />
         </Link>
-        // <Button
-        //   style={{ position: "absolute", top: 0, right: 0 }}
-        //   component={Link}
-        //   to="/auth"
-        //   variant="contained"
-        //   color="primary"
-        // >
-        //   Sign In
-        // </Button>
       )}
     </>
   );

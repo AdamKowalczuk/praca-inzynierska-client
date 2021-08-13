@@ -29,3 +29,10 @@ export const setActualLesson = (lesson) => {
     payload: lesson,
   };
 };
+
+export const setNextLesson = (actualLesson) => {
+  return {
+    type: "SET_NEXT_LESSON",
+    payload: actualLesson + 1,
+  };
+};

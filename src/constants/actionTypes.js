@@ -9,6 +9,9 @@ export const FETCH_ALL_USERS = "FETCH_ALL_USERS";
 export const SET_ACTUAL_COURSE = "SET_ACTUAL_COURSE";
 export const SET_ACTUAL_CHAPTER = "SET_ACTUAL_CHAPTER";
 export const SET_ACTUAL_LESSON = "SET_ACTUAL_LESSON";
+export const SET_NEXT_LESSON = "SET_NEXT_LESSON";
+export const SET_ACTUAL_QUIZ = "SET_ACTUAL_QUIZ";
+export const SET_NEXT_QUIZ = "SET_NEXT_QUIZ";
 
 export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";

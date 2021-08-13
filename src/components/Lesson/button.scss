@@ -1,0 +1,25 @@
+$dark: #030303;
+$white: #f1f1f2;
+
+.btn-lesson {
+  // padding: 0px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 3px solid $dark;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  bottom: 20px;
+
+  background-color: $dark;
+  color: $white;
+  border: 3px solid $white;
+  width: 80%;
+  margin: 10px 10%;
+}
