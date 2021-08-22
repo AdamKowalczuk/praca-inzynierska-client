@@ -1,6 +1,6 @@
 import { SET_ACTUAL_LESSON, SET_NEXT_LESSON } from "../constants/actionTypes";
 
-export default (actualLesson = "", action) => {
+const actualLesson = (actualLesson = "", action) => {
   switch (action.type) {
     case SET_ACTUAL_LESSON:
       return action.payload;
@@ -10,3 +10,5 @@ export default (actualLesson = "", action) => {
       return actualLesson;
   }
 };
+
+export default actualLesson;

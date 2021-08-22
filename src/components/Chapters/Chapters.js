@@ -5,18 +5,16 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-// import Password from "../../images/programming-icons/001-password.svg";
-import Server from "../../images/programming-icons/002-server.svg";
-// import Wall from "../../images/programming-icons/003-wall.svg";
-// import Code from "../../images/programming-icons/004-code.svg";
-// import Security from "../../images/programming-icons/005-security.svg";
+import icons from "./icons";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setActualChapter, setActualLesson } from "../../actions/courses";
+import { setActualQuiz } from "../../actions/quiz";
 import ButtonBack from "../Button/ButtonBack";
 
 const Chapter = (props) => {
+  const dispatch = useDispatch();
   function sumCompletedLessons() {
     let sum = 0;
     props.chapter.lessons.forEach((lesson) => {
@@ -25,6 +23,15 @@ const Chapter = (props) => {
       }
     });
     return sum;
+  }
+  function isQuizCompleted() {
+    let isCompleted = true;
+    props.chapter.quiz.forEach((quiz) => {
+      if (quiz.isFinished === false) {
+        isCompleted = false;
+      }
+    });
+    return isCompleted;
   }
   return (
     <div>
@@ -48,14 +55,44 @@ const Chapter = (props) => {
           {props.chapter.lessons.map((item, id) => {
             return (
               <>
-                <Lesson
-                  name={item.name}
-                  number={id}
-                  chapterNumber={props.number}
-                />
+                <div
+                  className={
+                    item.isFinished === true
+                      ? "chapters-lesson lesson-finished"
+                      : "chapters-lesson"
+                  }
+                  key={item._id}
+                >
+                  <Lesson
+                    name={item.name}
+                    number={id}
+                    chapterNumber={props.number}
+                  />
+                </div>
               </>
             );
           })}
+          <div
+            className={
+              isQuizCompleted() === true
+                ? "chapter-quiz chapter-quiz-finished"
+                : "chapter-quiz"
+            }
+          >
+            <Link
+              to="/kursy/rozdziały/quiz"
+              onClick={() => {
+                dispatch(setActualChapter(props.number));
+                dispatch(setActualQuiz(0));
+              }}
+              className="link"
+            >
+              <div className="accordion-lesson-container">
+                <h5>Quiz</h5>
+                <ArrowForwardIosIcon className="accordion-arrow-forward" />
+              </div>
+            </Link>
+          </div>
         </AccordionDetails>
       </Accordion>
     </div>
@@ -81,8 +118,9 @@ const Lesson = (props) => {
 };
 
 const Chapters = () => {
-  const courseNumber = useSelector((state) => state.actualCourse);
-  const course = useSelector((state) => state.user.courses[courseNumber]);
+  const actualCourse = useSelector((state) => state.actualCourse);
+
+  const course = useSelector((state) => state.user.courses[actualCourse]);
   return (
     <>
       <Nav />
@@ -91,15 +129,15 @@ const Chapters = () => {
         {course.chapters.map((item, id) => {
           return (
             <>
-              <Chapter icon={Server} number={id} chapter={item} />
+              <Chapter
+                icon={item.icon}
+                key={item._id}
+                number={id}
+                chapter={item}
+              />
             </>
           );
         })}
-        {/* <Chapter icon={Password} />
-        <Chapter icon={Server} />
-        <Chapter icon={Wall} />
-        <Chapter icon={Code} />
-        <Chapter icon={Security} /> */}
       </div>
     </>
   );

@@ -12,6 +12,10 @@ export const SET_ACTUAL_LESSON = "SET_ACTUAL_LESSON";
 export const SET_NEXT_LESSON = "SET_NEXT_LESSON";
 export const SET_ACTUAL_QUIZ = "SET_ACTUAL_QUIZ";
 export const SET_NEXT_QUIZ = "SET_NEXT_QUIZ";
+export const UPDATE_LESSON = "UPDATE_LESSON";
+export const ADD_USER_COURSES = "ADD_USER_COURSES";
+export const FETCH_ALL_USER_COURSES = "FETCH_ALL_USER_COURSES";
+export const UPDATE_QUIZ = "UPDATE_QUIZ";
 
 export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";

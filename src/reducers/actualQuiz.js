@@ -1,6 +1,6 @@
 import { SET_ACTUAL_QUIZ, SET_NEXT_QUIZ } from "../constants/actionTypes";
 
-export default (actualQuiz = "", action) => {
+const actualQuiz = (actualQuiz = "", action) => {
   switch (action.type) {
     case SET_ACTUAL_QUIZ:
       return action.payload;
@@ -10,3 +10,5 @@ export default (actualQuiz = "", action) => {
       return actualQuiz;
   }
 };
+
+export default actualQuiz;

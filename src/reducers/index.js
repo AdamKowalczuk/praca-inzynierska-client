@@ -8,6 +8,7 @@ import actualCourse from "./actualCourse";
 import actualChapter from "./actualChapter";
 import actualLesson from "./actualLesson";
 import actualQuiz from "./actualQuiz";
+import userCourses from "./userCourses";
 
 export const reducers = combineReducers({
   auth,
@@ -18,4 +19,5 @@ export const reducers = combineReducers({
   actualLesson,
   actualQuiz,
   courses,
+  userCourses,
 });

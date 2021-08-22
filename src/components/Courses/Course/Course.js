@@ -23,8 +23,8 @@ const CourseInfo = (props) => {
   );
 };
 const Course = (props, { setCurrentId }) => {
-  const courseNumber = useSelector((state) => state.actualCourse);
-  const course = useSelector((state) => state.user.courses[courseNumber]);
+  const actualCourse = useSelector((state) => state.actualCourse);
+  const course = useSelector((state) => state.user.courses[actualCourse]);
   function sumLessons() {
     let sum = 0;
     course.chapters.forEach((chapter) => {

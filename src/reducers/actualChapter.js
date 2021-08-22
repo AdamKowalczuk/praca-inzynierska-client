@@ -1,6 +1,6 @@
 import { SET_ACTUAL_CHAPTER } from "../constants/actionTypes";
 
-export default (actualChapter = "", action) => {
+const actualChapter = (actualChapter = "", action) => {
   switch (action.type) {
     case SET_ACTUAL_CHAPTER:
       return action.payload;
@@ -8,3 +8,5 @@ export default (actualChapter = "", action) => {
       return actualChapter;
   }
 };
+
+export default actualChapter;

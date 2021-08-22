@@ -68,3 +68,16 @@ $gray: #9b9b9b;
 .chapters-container::-webkit-scrollbar {
   display: none;
 }
+
+.chapters-lesson {
+  background-color: red;
+}
+.lesson-finished {
+  background-color: green;
+}
+.chapter-quiz {
+  background-color: red;
+}
+.chapter-quiz-finished {
+  background-color: green;
+}
