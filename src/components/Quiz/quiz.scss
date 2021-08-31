@@ -5,14 +5,21 @@ $white: #f1f1f2;
 
 .quiz-container {
   background-color: $dark;
-  height: 100vh;
+  height: calc(100vh - 55px);
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   h2,
   h3 {
     color: $white;
     text-align: center;
   }
-  .answer-button {
-    margin-top: 25px;
+  h3 {
+    padding: 20px 0;
+    cursor: pointer;
+  }
+  .quiz-result {
+    margin-top: 0;
   }
 }

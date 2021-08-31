@@ -50,7 +50,7 @@ $white: #f1f1f2;
   font-size: 18px;
   height: 50%;
   display: flex;
-  flex .arrow-icon {
+  .arrow-icon {
     margin-right: 10px;
   }
   background-color: $dark;
@@ -86,9 +86,6 @@ $white: #f1f1f2;
     font-size: 16px;
   }
 }
-// .MuiButton-label {
-//   text-transform: none;
-// }
 .MuiIconButton-root {
   color: $white !important;
 

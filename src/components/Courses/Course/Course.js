@@ -1,15 +1,12 @@
 import React from "react";
 import "./course.scss";
-import Teaching from "../../../images/teaching.svg";
-import Nav2 from "../../Nav2/Nav2";
-import Hourglass from "../../../images/hourglass.svg";
-
-import OpenBook from "../../../images/open-book.svg";
+// import Teaching from "../../../images/teaching.svg";
+import Menu from "../../Menu/Menu";
 import Knowledge from "../../../images/knowledge.svg";
 import ButtonRight from "../../Button/ButtonRight";
 import { useSelector } from "react-redux";
+import Teacher from "./undraw_teacher.svg";
 import { Link } from "react-router-dom";
-import ButtonBack from "../../Button/ButtonBack";
 
 const CourseInfo = (props) => {
   return (
@@ -35,10 +32,13 @@ const Course = (props, { setCurrentId }) => {
 
   return (
     <>
-      <div className="course-container">
-        <ButtonBack link="/kursy" />
-        <Nav2 text={course.name} />
-        <img src={Teaching} className="course-big-image" alt="Teaching" />
+      <div
+        className="course-container"
+        // style={{ color: course.primaryColor }}
+        style={{ color: "#fff" }}
+      >
+        <Menu text={course.name} link="/kursy" />
+        <img src={Teacher} className="course-big-image" alt="Teacher" />
 
         <p>{course.description}</p>
         <div className="course-icon-container">
@@ -47,10 +47,19 @@ const Course = (props, { setCurrentId }) => {
             number={course.chapters.length}
             text="Chapters"
           />
-          <CourseInfo image={OpenBook} number={sumLessons()} text="Lessons" />
+          <CourseInfo
+            image={course.icon}
+            number={sumLessons()}
+            text="Lessons"
+          />
 
-          <Link to="/kursy/rozdziały">
-            <ButtonRight text="Next" class="btn btn_right2" />
+          <Link to="/kursy/rozdziały" className="link">
+            <ButtonRight
+              text="Dalej"
+              backgroundColor="#fff"
+              color="#0c0c0d"
+              class="btn btn_right2"
+            />
           </Link>
         </div>
       </div>

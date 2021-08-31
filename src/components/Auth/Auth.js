@@ -4,7 +4,7 @@ import Button2 from "../Button/Button";
 import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { Button, Grid } from "@material-ui/core";
-import { signin, signup, addCoursesToUser } from "../../actions/auth";
+import { signin, signup } from "../../actions/auth";
 import { AUTH } from "../../constants/actionTypes";
 import useStyles from "./styles";
 import Input from "./Input";
@@ -43,10 +43,8 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     form.courses = courses;
-    console.log(form);
     if (isSignup) {
       dispatch(signup(form, history));
-      // dispatch(addCoursesToUser(courses));
     } else {
       dispatch(signin(form, history));
     }
@@ -55,11 +53,20 @@ const SignUp = () => {
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
-
+    // console.log(result);
+    // console.log(token);
+    // form.email = result.email;
+    // form.name = result.name;
+    // form._id = result.id;
+    // console.log(form);
+    // if (isSignup) {
+    //   dispatch(signup(form, history));
+    // } else {
+    //   dispatch(signin(form, history));
+    // }
     try {
       dispatch({ type: AUTH, data: { result, token } });
-      console.log("Success");
-      history.push("/");
+      history.push("/kursy");
     } catch (error) {
       console.log(error);
     }

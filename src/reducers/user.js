@@ -11,6 +11,7 @@ const user = (user = [], action) => {
           course.chapters[action.actualChapter].lessons[action.actualLesson] =
             action.lesson;
         }
+        return course;
       });
       return updatedUser;
     case UPDATE_QUIZ:
@@ -20,6 +21,7 @@ const user = (user = [], action) => {
           course.chapters[action.actualChapter].isQuizCompleted =
             action.isQuizCompleted;
         }
+        return course;
       });
       return updatedQuiz;
     default:

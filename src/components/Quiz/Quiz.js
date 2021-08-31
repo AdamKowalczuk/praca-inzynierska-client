@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./quiz.scss";
-import Nav from "../Nav/Nav.js";
-import MenuBar from "../../images/menu-bars-black.svg";
+// import Nav from "../Nav/Nav.js";
+// import MenuBar from "../../images/menu-bars-black.svg";
 import "../Button/Button";
 import { setNextQuiz, updateQuiz } from "../../actions/quiz";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
-import ButtonBack from "../Button/ButtonBack";
+// import ButtonBack from "../Button/ButtonBack";
+import { setActualChapter, setActualLesson } from "../../actions/courses";
+import Menu from "../Menu/Menu";
 
 const Quiz = () => {
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ const Quiz = () => {
   let question = chapter.quiz[actualQuiz].question;
   let correctAnswer = chapter.quiz[actualQuiz].correctAnswer;
   let answers = chapter.quiz[actualQuiz].answers;
-  let score = 0;
+  // let score = 0;
   let initialState = {
     name: chapter.name,
     description: chapter.description,
@@ -64,27 +66,54 @@ const Quiz = () => {
 
   return (
     <>
+      <Menu
+        link="/kursy/rozdziały"
+        text="Quiz"
+        isColored={true}
+        primaryColor={course.primaryColor}
+        secondaryColor={course.secondaryColor}
+      />
       <div className="quiz-container">
-        <Nav color="#f1f1f2" image={MenuBar} />
-        <ButtonBack link="/kursy/rozdziały" />
-        <h3>{form.isQuizCompleted === true ? "TRUE" : "FALSE"} </h3>
         {quizForm.isCompleted === true ? (
           <>
-            <h2>{Math.floor((quizForm.score * 100) / chapter.quiz.length)}%</h2>
-            <h2>
+            <h2 className="quiz-result">
               {Math.floor((quizForm.score * 100) / chapter.quiz.length) >= 80
                 ? "Rozdział ukończony"
                 : "Rozdział nieukończony"}
             </h2>
-            <Button text="Rozpocznij lekcję od nowa" class="btn btn_white" />
+            <h2>{Math.floor((quizForm.score * 100) / chapter.quiz.length)}%</h2>
+
+            <Link
+              to="/kursy/rozdziały/lekcje"
+              onClick={() => {
+                dispatch(setActualLesson(0));
+                dispatch(setActualChapter(actualChapter));
+              }}
+              className="link"
+            >
+              <Button
+                text="Rozpocznij lekcję od nowa"
+                class="btn btn_white"
+                primaryColor={course.primaryColor}
+                secondaryColor={course.secondaryColor}
+                borderColor={course.primaryColor}
+              />
+            </Link>
+
             <Link to="/kursy/rozdziały" className="link">
-              <Button text="Powrót" class="btn btn_white" />
+              <Button
+                text="Powrót"
+                class="btn btn_white"
+                primaryColor="#0c0c0d"
+                secondaryColor={course.primaryColor}
+                borderColor={course.secondaryColor}
+              />
             </Link>
           </>
         ) : (
           <>
             <h2>{question}</h2>
-            {answers.map((answer) => {
+            {answers.map((answer, id) => {
               return (
                 <AnswerButton
                   answer={answer}
@@ -94,10 +123,13 @@ const Quiz = () => {
                   endQuiz={endQuiz.bind(this)}
                   addScore={addScore.bind(this)}
                   quiz={form.quiz}
+                  id={id}
                   isQuizCompleted={form.isQuizCompleted}
                   userId={user._id}
                   courseId={course._id}
                   chapterId={chapter._id}
+                  primaryColor={course.primaryColor}
+                  secondaryColor={course.secondaryColor}
                 />
               );
             })}
@@ -110,47 +142,44 @@ const Quiz = () => {
 
 const AnswerButton = (props) => {
   const dispatch = useDispatch();
+  function changeColor(e) {
+    e.target.style.backgroundColor = props.secondaryColor;
+    e.target.style.borderColor = props.primaryColor;
+    e.target.style.color = props.primaryColor;
+  }
+
+  function changeColorClose(e) {
+    e.target.style.backgroundColor = "#0c0c0d";
+    e.target.style.borderColor = "#fff";
+    e.target.style.color = "#fff";
+  }
   return (
     <>
       {props.actualQuiz === props.quizLength - 1 ? (
-        <button
+        <h3
           className="btn btn_dark answer-button"
+          key={props.id}
+          onMouseOver={(e) => changeColor(e)}
+          onMouseOut={(e) => changeColorClose(e)}
           onClick={
             props.answer === props.correctAnswer
               ? () => {
                   props.addScore();
                   props.endQuiz();
-
-                  // dispatch(
-                  //   updateQuiz(
-                  //     props.quiz,
-                  //     props.userId,
-                  //     props.courseId,
-                  //     props.chapterId,
-                  //     props.isQuizCompleted
-                  //   )
-                  // );
                 }
               : () => {
                   props.endQuiz();
-                  // dispatch(
-                  //   updateQuiz(
-                  //     props.quiz,
-                  //     props.userId,
-                  //     props.courseId,
-                  //     props.chapterId,
-                  //     props.isQuizCompleted
-                  //   )
-                  // );
                 }
           }
         >
-          <h3>{props.answer}</h3>
-          <h3>{props.isQuizCompleted === true ? "TRUE" : "FALSE"} </h3>
-        </button>
+          {props.answer}
+        </h3>
       ) : (
-        <button
+        <h3
           className="btn btn_dark answer-button"
+          key={props.id}
+          onMouseOver={(e) => changeColor(e)}
+          onMouseOut={(e) => changeColorClose(e)}
           onClick={
             props.answer === props.correctAnswer
               ? () => {
@@ -160,8 +189,8 @@ const AnswerButton = (props) => {
               : () => dispatch(setNextQuiz(props.actualQuiz))
           }
         >
-          <h3>{props.answer}</h3>
-        </button>
+          {props.answer}
+        </h3>
       )}
     </>
   );

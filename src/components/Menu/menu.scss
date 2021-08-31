@@ -1,0 +1,32 @@
+$gray: #9b9b9b;
+
+$dark: #0c0c0d;
+$white: #f1f1f2;
+
+.menu-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  svg {
+    width: 22px;
+    height: 22px;
+    padding: 10px;
+    color: $white;
+    background-color: hsl(240, 4%, 95%, 20%);
+    border-radius: 10px;
+    margin: 4px;
+  }
+  background-color: $dark;
+  // margin-bottom: 20px;
+  h3 {
+    color: $white;
+    margin: 0 auto;
+    padding: 0px 10px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}

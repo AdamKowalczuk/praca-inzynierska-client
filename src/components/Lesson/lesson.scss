@@ -4,10 +4,14 @@ $dark: #0c0c0d;
 $white: #f1f1f2;
 
 .lesson-container {
-  background-color: #f1f1f2;
+  background-color: $dark;
   margin: 0 auto;
-  height: 100vh;
+  height: calc(100vh - 130px);
   width: 100vw;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   h2 {
     margin: -1px;
     text-align: center;
@@ -23,5 +27,10 @@ $white: #f1f1f2;
   p {
     padding: 10px;
     text-align: center;
+    color: $white;
   }
+}
+
+.lesson-container::-webkit-scrollbar {
+  display: none;
 }

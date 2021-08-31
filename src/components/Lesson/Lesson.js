@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./lesson.scss";
-import Nav2 from "../Nav2/Nav2";
-import WorkTime from "../../images/work-time.svg";
+import Menu from "../Menu/Menu";
+// import WorkTime from "../../images/work-time.svg";
 import { useDispatch, useSelector } from "react-redux";
-import ButtonBack from "../Button/ButtonBack";
+// import ButtonBack from "../Button/ButtonBack";
 import "./button.scss";
 import { updateLesson, setNextLesson } from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
 import { Link } from "react-router-dom";
+// import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+// import images from "./images";
 
 const Lesson = () => {
   const dispatch = useDispatch();
@@ -46,20 +48,28 @@ const Lesson = () => {
     };
   };
 
-  const [form, setForm] = useState(initialState);
+  const [form] = useState(initialState);
 
   return (
     <>
-      <Nav2 />
-      <ButtonBack link="/kursy/rozdziały" />
+      <Menu
+        link="/kursy/rozdziały"
+        text={lesson.name}
+        isColored={true}
+        primaryColor={course.primaryColor}
+        secondaryColor={course.secondaryColor}
+      />
       <div className="lesson-container">
-        <h2>{lesson.name}</h2>
-        <img className="lesson-image" src={WorkTime} alt="Work Time" />
+        <img className="lesson-image" src={lesson.image} alt="Work Time" />
         <p>{lesson.description}</p>
         {actualLesson === chapter.length - 1 ? (
           <Link to="/kursy/rozdziały/quiz">
             <button
               className="btn-lesson"
+              style={{
+                backgroundColor: course.secondaryColor,
+                color: course.primaryColor,
+              }}
               onClick={() => {
                 dispatch(
                   updateLesson(
@@ -79,6 +89,10 @@ const Lesson = () => {
         ) : (
           <button
             className="btn-lesson"
+            style={{
+              backgroundColor: course.secondaryColor,
+              color: course.primaryColor,
+            }}
             onClick={() => {
               dispatch(
                 updateLesson(

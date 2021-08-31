@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import "./courses.scss";
-import BookLover from "../../images/book_lover.svg";
-import Learn from "../../images/learn.svg";
-import Nav from "../Nav/Nav";
-import MenuBar from "../../images/menu-bars-white.svg";
+// import CityLife from "../../images/undraw_city_life.svg";
+import RoadSign from "../../images/undraw_road_sign.svg";
+// import Nav from "../Nav/Nav";
+// import MenuBar from "../../images/menu-bars-white.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { setActualCourse } from "../../actions/courses";
 import { getUsers, setUser } from "../../actions/user";
+// import icons from "./icons";
+import HomeMenu from "../Menu/HomeMenu";
 
 const SingleCourse = (props) => {
   const dispatch = useDispatch();
@@ -29,10 +31,26 @@ const SingleCourse = (props) => {
       <Link
         onClick={() => dispatch(setActualCourse(props.number))}
         to={sumCompleted() > 0 ? "/kursy/rozdziały" : "/kursy/kurs"}
+        className="link"
       >
-        <div className="courses-box">
+        <div
+          className="courses-box"
+          style={{
+            border: "2px solid",
+            borderColor: props.primaryColor,
+            color: props.primaryColor,
+          }}
+        >
           <div className="courses-icon">
-            <img className="courses-small-image" src={Learn} alt="Learn" />
+            <img
+              className="courses-small-image"
+              style={{
+                backgroundColor: props.secondaryColor,
+                color: props.primaryColor,
+              }}
+              src={props.icon}
+              alt={props.icon}
+            />
           </div>
           <h4>{props.userCourse.name}</h4>
           <h5>{sumCompleted()}%</h5>
@@ -51,15 +69,18 @@ const Courses = ({ setCurrentId }) => {
   dispatch(setUser(user));
   return (
     <>
+      <HomeMenu text="Kursy" link="/kursy" />
       <div className="courses-container">
-        <Nav color="rgba(12, 12, 13, 1)" image={MenuBar} />
-        <img src={BookLover} className="courses-big-image" alt="Book Lover" />
+        <img src={RoadSign} className="courses-big-image" alt="Book Lover" />
         {user.courses.map((singleCourse, id) => {
           return (
             <SingleCourse
               userCourse={singleCourse}
               key={singleCourse._id}
               number={id}
+              primaryColor={singleCourse.primaryColor}
+              secondaryColor={singleCourse.secondaryColor}
+              icon={singleCourse.icon}
             />
           );
         })}

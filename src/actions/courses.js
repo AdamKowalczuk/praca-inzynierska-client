@@ -56,13 +56,14 @@ export const updateLesson =
       if (lesson.isFinished === false) {
         lesson.isFinished = true;
       }
-      const { data } = await api.updateLesson(
-        lesson,
-        userId,
-        courseId,
-        chapterId,
-        lessonId
-      );
+      // const { data } = await api.updateLesson(
+      //   lesson,
+      //   userId,
+      //   courseId,
+      //   chapterId,
+      //   lessonId
+      // );
+      await api.updateLesson(lesson, userId, courseId, chapterId, lessonId);
       dispatch({
         type: UPDATE_LESSON,
         lesson: lesson,

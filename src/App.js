@@ -14,12 +14,11 @@ import { getCourses } from "./actions/courses";
 import "./App.scss";
 
 const App = () => {
-  const [currentId, , setCurrentId] = useState(0);
+  const [currentId] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCourses());
-    // dispatch(getUsers());
   }, [currentId, dispatch]);
   return (
     <BrowserRouter>

@@ -3,10 +3,13 @@ $white: #f1f1f2;
 $gray: #9b9b9b;
 
 .courses-container {
-  background-color: #f1f1f2;
+  background-color: $dark;
   margin: 0 auto;
-  height: 100vh;
+  height: calc(100vh - 55px);
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   .courses-big-image {
     display: flex;
     justify-content: center;
@@ -20,19 +23,19 @@ $gray: #9b9b9b;
     justify-content: center;
     align-items: center;
     background-color: $dark;
-    color: $white;
     width: 80%;
-    margin: 5% 10%;
+    margin: 3% 10%;
     border-radius: 10px;
+
     .courses-icon {
       width: 25%;
       display: flex;
       justify-content: center;
       align-items: center;
       .courses-small-image {
-        width: 40px;
+        width: 30px;
         background-color: $white;
-        padding: 5px;
+        padding: 10px;
         border-radius: 10px;
       }
     }
@@ -43,7 +46,7 @@ $gray: #9b9b9b;
     }
     h5 {
       width: 15%;
-      color: $gray;
+      // color: $gray;
       font-size: 0.9em;
       font-family: "Bodoni Moda", serif !important;
     }

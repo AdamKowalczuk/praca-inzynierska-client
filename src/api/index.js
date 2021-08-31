@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url_course = "http://localhost:5000/courses";
+// const url_course = "http://localhost:5000/courses";
 const url_user = "http://localhost:5000/users";
 const API = axios.create({ baseURL: "http://localhost:5000" });
 
