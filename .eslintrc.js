@@ -31,12 +31,7 @@ module.exports = {
         maxEOF: 1,
       },
     ],
-    "no-underscore-dangle": [
-      "error",
-      {
-        allow: ["_d", "_dh", "_h", "_id", "_m", "_n", "_t", "_text"],
-      },
-    ],
+
     "object-curly-newline": 0,
     "react/jsx-filename-extension": 0,
     "react/jsx-one-expression-per-line": 0,

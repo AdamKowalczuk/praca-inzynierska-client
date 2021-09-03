@@ -37,13 +37,13 @@ const LessonMenu = (props) => {
         <Link to="/kursy/rozdziały/lekcje" className="link link-menu">
           <div
             style={{ backgroundColor: props.firstIconBackground }}
-            class="tooltip"
+            className="tooltip"
           >
             <Book
               primaryColor={props.firstIconColor}
               secondaryColor={course.secondaryColor}
             />
-            <span class="tooltiptext">Lekcje</span>
+            <span className="tooltiptext">Lekcje</span>
           </div>
         </Link>
 
@@ -57,27 +57,27 @@ const LessonMenu = (props) => {
           >
             <div
               style={{ backgroundColor: props.secondIconBackground }}
-              class="tooltip"
+              className="tooltip"
             >
               <Communication
                 primaryColor={props.secondIconColor}
                 secondaryColor={course.secondaryColor}
               />
 
-              <span class="tooltiptext">Quiz</span>
+              <span className="tooltiptext">Quiz</span>
             </div>
           </Link>
         ) : (
           <Link className="link link-menu">
             <div
               style={{ backgroundColor: props.secondIconBackground }}
-              class="tooltip"
+              className="tooltip"
             >
               <Communication
                 primaryColor={props.secondIconColor}
                 secondaryColor={course.secondaryColor}
               />
-              <span class="tooltiptext">
+              <span className="tooltiptext">
                 Ukończ wszystkie lekcje, aby odblokować
               </span>
             </div>
@@ -87,13 +87,13 @@ const LessonMenu = (props) => {
         <Link to="/kursy/rozdziały/zadania" className="link link-menu">
           <div
             style={{ backgroundColor: props.thirdIconBackground }}
-            class="tooltip"
+            className="tooltip"
           >
             <Writing
               primaryColor={props.thirdIconColor}
               secondaryColor={course.secondaryColor}
             />
-            <span class="tooltiptext">Zadania</span>
+            <span className="tooltiptext">Zadania</span>
           </div>
         </Link>
       </div>
