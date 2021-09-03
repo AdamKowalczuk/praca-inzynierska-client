@@ -117,6 +117,7 @@ const Quiz = () => {
             {answers.map((answer, id) => {
               return (
                 <AnswerButton
+                  key={id}
                   answer={answer}
                   correctAnswer={correctAnswer}
                   actualQuiz={actualQuiz}
