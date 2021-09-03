@@ -8,8 +8,10 @@ import "./button.scss";
 import { updateLesson, setNextLesson } from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
 import { Link } from "react-router-dom";
+import LessonMenu from "../Menu/LessonMenu";
 // import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-// import images from "./images";
+import images from "./images";
+console.log(images);
 
 const Lesson = () => {
   const dispatch = useDispatch();
@@ -62,6 +64,14 @@ const Lesson = () => {
       <div className="lesson-container">
         <img className="lesson-image" src={lesson.image} alt="Work Time" />
         <p>{lesson.description}</p>
+        <LessonMenu
+          firstIconBackground={course.secondaryColor}
+          secondIconBackground="transparent"
+          thirdIconBackground="transparent"
+          firstIconColor={course.primaryColor}
+          secondIconColor={course.secondaryColor}
+          thirdIconColor={course.secondaryColor}
+        />
         {actualLesson === chapter.length - 1 ? (
           <Link to="/kursy/rozdziały/quiz">
             <button

@@ -9,6 +9,7 @@ import Course from "./components/Courses/Course/Course";
 import Chapters from "./components/Chapters/Chapters";
 import Quiz from "./components/Quiz/Quiz";
 import Lesson from "./components/Lesson/Lesson";
+import PracticalLesson from "./components/PracticalLessons/PracticalLessons";
 import { getCourses } from "./actions/courses";
 
 import "./App.scss";
@@ -31,6 +32,11 @@ const App = () => {
         <Route path="/kursy/rozdziały" exact component={Chapters} />
         <Route path="/kursy/rozdziały/lekcje" exact component={Lesson} />
         <Route path="/kursy/rozdziały/quiz" exact component={Quiz} />
+        <Route
+          path="/kursy/rozdziały/zadania"
+          exact
+          component={PracticalLesson}
+        />
       </Switch>
     </BrowserRouter>
   );

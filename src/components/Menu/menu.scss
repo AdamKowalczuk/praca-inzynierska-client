@@ -30,3 +30,28 @@ $white: #f1f1f2;
     text-align: center;
   }
 }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-radius: 28px 28px 0 0;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: rgb(228, 77, 38);
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 110%;
+  left: 50%;
+  margin-left: -50px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

@@ -8,8 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 // import ButtonBack from "../Button/ButtonBack";
-import { setActualChapter, setActualLesson } from "../../actions/courses";
+// import { setActualChapter, setActualLesson } from "../../actions/courses";
 import Menu from "../Menu/Menu";
+import LessonMenu from "../Menu/LessonMenu";
 
 const Quiz = () => {
   const dispatch = useDispatch();
@@ -84,15 +85,15 @@ const Quiz = () => {
             <h2>{Math.floor((quizForm.score * 100) / chapter.quiz.length)}%</h2>
 
             <Link
-              to="/kursy/rozdziały/lekcje"
-              onClick={() => {
-                dispatch(setActualLesson(0));
-                dispatch(setActualChapter(actualChapter));
-              }}
+              to="/kursy/rozdziały/zadania"
+              // onClick={() => {
+              //   dispatch(setActualLesson(0));
+              //   dispatch(setActualChapter(actualChapter));
+              // }}
               className="link"
             >
               <Button
-                text="Rozpocznij lekcję od nowa"
+                text="Przejdź do zadań"
                 class="btn btn_white"
                 primaryColor={course.primaryColor}
                 secondaryColor={course.secondaryColor}
@@ -135,6 +136,14 @@ const Quiz = () => {
             })}
           </>
         )}
+        <LessonMenu
+          firstIconBackground="transparent"
+          secondIconBackground={course.secondaryColor}
+          thirdIconBackground="transparent"
+          firstIconColor={course.secondaryColor}
+          secondIconColor={course.primaryColor}
+          thirdIconColor={course.secondaryColor}
+        />
       </div>
     </>
   );

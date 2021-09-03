@@ -5,13 +5,14 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-// import icons from "./icons";
+import icons from "./icons";
+
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setActualChapter, setActualLesson } from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
-
+console.log(icons);
 const Chapter = (props) => {
   const dispatch = useDispatch();
   let isQuizCompleted = props.chapter.isQuizCompleted;
@@ -47,6 +48,7 @@ const Chapter = (props) => {
                 src={props.chapter.icon}
                 style={{
                   filter: "saturate(100%)",
+                  borderColor: props.primaryColor,
                 }}
                 alt={props.chapter.name}
               />
@@ -127,11 +129,23 @@ const Chapter = (props) => {
                 className="link"
               >
                 <div className="accordion-lesson-container">
-                  <h5 style={{ color: props.primaryColor }}>Quiz</h5>
-                  <ArrowForwardIosIcon
-                    className="accordion-arrow-forward"
-                    style={{ fill: props.primaryColor }}
-                  />
+                  {props.chapter.isQuizCompleted === true ? (
+                    <>
+                      <h5 style={{ color: props.primaryColor }}>Quiz</h5>
+                      <ArrowForwardIosIcon
+                        className="accordion-arrow-forward"
+                        style={{ fill: props.primaryColor }}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <h5 style={{ color: "hsl(0, 0%, 100%, 40%)" }}>Quiz</h5>
+                      <ArrowForwardIosIcon
+                        className="accordion-arrow-forward"
+                        style={{ fill: "hsl(0, 0%, 100%, 40%)" }}
+                      />
+                    </>
+                  )}
                 </div>
               </Link>
             ) : (
