@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // import { setActualChapter, setActualLesson } from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
-const LessonMenu = (props) => {
+const LessonBottomMenu = (props) => {
   const dispatch = useDispatch();
 
   const actualCourse = useSelector((state) => state.actualCourse);
@@ -84,7 +84,11 @@ const LessonMenu = (props) => {
           </Link>
         )}
 
-        <Link to="/kursy/rozdziały/zadania" className="link link-menu">
+        <Link
+          to="/kursy/rozdziały/zadania"
+          rel="noreferrer"
+          className="link link-menu"
+        >
           <div
             style={{ backgroundColor: props.thirdIconBackground }}
             className="tooltip"
@@ -101,4 +105,4 @@ const LessonMenu = (props) => {
   );
 };
 
-export default LessonMenu;
+export default LessonBottomMenu;

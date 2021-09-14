@@ -7,6 +7,7 @@ const Button = (props) => {
   return (
     <button
       className={props.class}
+      aria-label={props.text}
       style={{ backgroundColor: props.backgroundColor, color: props.color }}
     >
       <p>{props.text}</p>

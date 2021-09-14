@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { setActualCourse } from "../../actions/courses";
 import { getUsers, setUser } from "../../actions/user";
-// import icons from "./icons";
+import icons from "./icons";
 import HomeMenu from "../Menu/HomeMenu";
 
 const SingleCourse = (props) => {
@@ -24,6 +24,7 @@ const SingleCourse = (props) => {
         sum += 1;
       });
     });
+
     return Math.round((finishedLessons / sum) * 100);
   }
   return (
@@ -31,6 +32,7 @@ const SingleCourse = (props) => {
       <Link
         onClick={() => dispatch(setActualCourse(props.number))}
         to={sumCompleted() > 0 ? "/kursy/rozdziały" : "/kursy/kurs"}
+        rel="noreferrer"
         className="link"
       >
         <div
@@ -53,7 +55,7 @@ const SingleCourse = (props) => {
             />
           </div>
           <h4>{props.userCourse.name}</h4>
-          <h5>{sumCompleted()}%</h5>
+          {isNaN(sumCompleted()) ? <h5>0%</h5> : <h5>{sumCompleted()}%</h5>}
         </div>
       </Link>
     </>

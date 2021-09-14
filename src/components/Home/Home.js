@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy } from "react";
 import { useDispatch } from "react-redux";
 import TravelingImage from "../../images/traveling.svg";
 import Dots from "./Dots";
@@ -45,7 +45,7 @@ const Home = () => {
       <Navbar />
       <div className="home-container">
         <div className="title center">WebFront</div>
-        <img src={TravelingImage} alt="Traveling" />
+        <img src={TravelingImage} alt="Traveling" width="640" height="360" />
         <Dots />
       </div>
     </>

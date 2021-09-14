@@ -7,6 +7,7 @@ const Button = (props) => {
       className={props.class}
       type={props.type}
       onClick={props.onClick}
+      aria-label={props.text}
       style={{
         backgroundColor: props.secondaryColor,
         color: props.primaryColor,

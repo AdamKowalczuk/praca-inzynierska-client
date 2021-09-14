@@ -8,7 +8,8 @@ import "./button.scss";
 import { updateLesson, setNextLesson } from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
 import { Link } from "react-router-dom";
-import LessonMenu from "../Menu/LessonMenu";
+import LessonBottomMenu from "../Menu/LessonBottomMenu";
+import LessonTopMenu from "../Menu/LessonTopMenu";
 // import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import images from "./images";
 console.log(images);
@@ -54,17 +55,19 @@ const Lesson = () => {
 
   return (
     <>
-      <Menu
+      <LessonTopMenu
         link="/kursy/rozdziały"
         text={lesson.name}
-        isColored={true}
         primaryColor={course.primaryColor}
         secondaryColor={course.secondaryColor}
+        actualLesson={actualLesson}
+        lessonNumber={chapter.length}
+        isLesson={true}
       />
       <div className="lesson-container">
         <img className="lesson-image" src={lesson.image} alt="Work Time" />
         <p>{lesson.description}</p>
-        <LessonMenu
+        <LessonBottomMenu
           firstIconBackground={course.secondaryColor}
           secondIconBackground="transparent"
           thirdIconBackground="transparent"
@@ -73,9 +76,10 @@ const Lesson = () => {
           thirdIconColor={course.secondaryColor}
         />
         {actualLesson === chapter.length - 1 ? (
-          <Link to="/kursy/rozdziały/quiz">
+          <Link to="/kursy/rozdziały/quiz" rel="noreferrer">
             <button
               className="btn-lesson"
+              aria-label="Go to quiz"
               style={{
                 backgroundColor: course.secondaryColor,
                 color: course.primaryColor,
@@ -99,6 +103,7 @@ const Lesson = () => {
         ) : (
           <button
             className="btn-lesson"
+            aria-label="Next"
             style={{
               backgroundColor: course.secondaryColor,
               color: course.primaryColor,

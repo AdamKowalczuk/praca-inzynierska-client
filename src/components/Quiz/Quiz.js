@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 // import ButtonBack from "../Button/ButtonBack";
 // import { setActualChapter, setActualLesson } from "../../actions/courses";
-import Menu from "../Menu/Menu";
-import LessonMenu from "../Menu/LessonMenu";
+import LessonTopMenu from "../Menu/LessonTopMenu";
+import LessonBottomMenu from "../Menu/LessonBottomMenu";
 
 const Quiz = () => {
   const dispatch = useDispatch();
@@ -67,12 +67,14 @@ const Quiz = () => {
 
   return (
     <>
-      <Menu
+      <LessonTopMenu
         link="/kursy/rozdziały"
         text="Quiz"
-        isColored={true}
         primaryColor={course.primaryColor}
         secondaryColor={course.secondaryColor}
+        actualQuiz={actualQuiz}
+        quizNumber={chapter.quiz.length}
+        isLesson={false}
       />
       <div className="quiz-container">
         {quizForm.isCompleted === true ? (
@@ -90,6 +92,7 @@ const Quiz = () => {
               //   dispatch(setActualLesson(0));
               //   dispatch(setActualChapter(actualChapter));
               // }}
+              rel="noreferrer"
               className="link"
             >
               <Button
@@ -101,7 +104,7 @@ const Quiz = () => {
               />
             </Link>
 
-            <Link to="/kursy/rozdziały" className="link">
+            <Link to="/kursy/rozdziały" rel="noreferrer" className="link">
               <Button
                 text="Powrót"
                 class="btn btn_white"
@@ -137,7 +140,7 @@ const Quiz = () => {
             })}
           </>
         )}
-        <LessonMenu
+        <LessonBottomMenu
           firstIconBackground="transparent"
           secondIconBackground={course.secondaryColor}
           thirdIconBackground="transparent"

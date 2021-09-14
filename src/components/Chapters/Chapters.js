@@ -12,7 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setActualChapter, setActualLesson } from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
-console.log(icons);
+
+// import Mission from "./icons/mission";
 const Chapter = (props) => {
   const dispatch = useDispatch();
   let isQuizCompleted = props.chapter.isQuizCompleted;
@@ -122,6 +123,7 @@ const Chapter = (props) => {
             {sumCompletedLessons() / props.chapter.lessons.length === 1 ? (
               <Link
                 to="/kursy/rozdziały/quiz"
+                rel="noreferrer"
                 onClick={() => {
                   dispatch(setActualChapter(props.number));
                   dispatch(setActualQuiz(0));
@@ -165,6 +167,7 @@ const Lesson = (props) => {
   return (
     <Link
       to="/kursy/rozdziały/lekcje"
+      rel="noreferrer"
       key={props.number}
       onClick={() => {
         dispatch(setActualLesson(props.number));

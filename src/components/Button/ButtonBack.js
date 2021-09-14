@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const ButtonBack = (props) => {
   return (
     <>
-      <Link to={props.link}>
+      <Link to={props.link} rel="noreferrer">
         <div className="button-back-container">
           <ArrowBackIcon />
         </div>

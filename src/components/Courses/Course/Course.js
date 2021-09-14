@@ -53,7 +53,7 @@ const Course = (props, { setCurrentId }) => {
             text="Lessons"
           />
 
-          <Link to="/kursy/rozdziały" className="link">
+          <Link to="/kursy/rozdziały" rel="noreferrer" className="link">
             <ButtonRight
               text="Dalej"
               backgroundColor="#fff"
