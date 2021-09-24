@@ -11,8 +11,9 @@ import { Link } from "react-router-dom";
 import LessonBottomMenu from "../Menu/LessonBottomMenu";
 import LessonTopMenu from "../Menu/LessonTopMenu";
 // import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import images from "./images";
-console.log(images);
+// import images from "./images";
+import Icon from "./Icon";
+// console.log(images);
 
 const Lesson = () => {
   const dispatch = useDispatch();
@@ -37,8 +38,16 @@ const Lesson = () => {
     actualCourse: actualCourse,
     actualChapter: actualChapter,
     actualLesson: actualLesson,
+    dayOfFinish: lesson.dayOfFinish,
   };
   let updateForm = () => {
+    let newDayOfFinish;
+    if (lesson.dayOfFinish === undefined) {
+      newDayOfFinish = new Date().getTime();
+    } else {
+      newDayOfFinish = lesson.dayOfFinish;
+    }
+    console.log(newDayOfFinish);
     return {
       name: lesson.name,
       description: lesson.description,
@@ -48,6 +57,7 @@ const Lesson = () => {
       actualCourse: actualCourse,
       actualChapter: actualChapter,
       actualLesson: actualLesson,
+      dayOfFinish: newDayOfFinish,
     };
   };
 
@@ -56,16 +66,18 @@ const Lesson = () => {
   return (
     <>
       <LessonTopMenu
-        link="/kursy/rozdziały"
+        link="/kursy/rozdzialy"
         text={lesson.name}
         primaryColor={course.primaryColor}
         secondaryColor={course.secondaryColor}
         actualLesson={actualLesson}
         lessonNumber={chapter.length}
         isLesson={true}
+        courseName={course.name}
       />
       <div className="lesson-container">
-        <img className="lesson-image" src={lesson.image} alt="Work Time" />
+        {/* <img className="lesson-image" src={lesson.image} alt="Work Time" /> */}
+        <Icon lessonName={lesson.name} lessonImage={lesson.image} />
         <p>{lesson.description}</p>
         <LessonBottomMenu
           firstIconBackground={course.secondaryColor}
@@ -76,7 +88,7 @@ const Lesson = () => {
           thirdIconColor={course.secondaryColor}
         />
         {actualLesson === chapter.length - 1 ? (
-          <Link to="/kursy/rozdziały/quiz" rel="noreferrer">
+          <Link to="/kursy/rozdzialy/quiz" rel="noreferrer">
             <button
               className="btn-lesson"
               aria-label="Go to quiz"

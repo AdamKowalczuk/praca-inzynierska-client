@@ -1,15 +1,25 @@
 import React, { useEffect } from "react";
 import "./courses.scss";
-// import CityLife from "../../images/undraw_city_life.svg";
 import RoadSign from "../../images/undraw_road_sign.svg";
-// import Nav from "../Nav/Nav";
-// import MenuBar from "../../images/menu-bars-white.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { setActualCourse } from "../../actions/courses";
 import { getUsers, setUser } from "../../actions/user";
-import icons from "./icons";
-import HomeMenu from "../Menu/HomeMenu";
+import Hello from "./icons/hello.svg";
+// import icons from "./icons";
+import Menu from "../Menu/Menu";
+
+function importAll(r) {
+  let icons = {};
+  r.keys().map((item, index) => {
+    icons[item.replace("./", "")] = r(item);
+  });
+  return icons;
+}
+
+const icons = importAll(
+  require.context("./icons", false, /\.(png|jpe?g|svg)$/)
+);
 
 const SingleCourse = (props) => {
   const dispatch = useDispatch();
@@ -31,7 +41,7 @@ const SingleCourse = (props) => {
     <>
       <Link
         onClick={() => dispatch(setActualCourse(props.number))}
-        to={sumCompleted() > 0 ? "/kursy/rozdziały" : "/kursy/kurs"}
+        to={sumCompleted() > 0 ? "/kursy/rozdzialy" : "/kursy/kurs"}
         rel="noreferrer"
         className="link"
       >
@@ -39,19 +49,19 @@ const SingleCourse = (props) => {
           className="courses-box"
           style={{
             border: "2px solid",
-            borderColor: props.primaryColor,
-            color: props.primaryColor,
+            borderColor: "#fff",
+            color: "#fff",
           }}
         >
           <div className="courses-icon">
             <img
               className="courses-small-image"
               style={{
-                backgroundColor: props.secondaryColor,
-                color: props.primaryColor,
+                backgroundColor: "rgb(255,255,255,20%)",
+                color: "#fff",
               }}
-              src={props.icon}
-              alt={props.icon}
+              src={icons[props.userCourse.icon].default}
+              alt={icons[props.userCourse.icon].default}
             />
           </div>
           <h4>{props.userCourse.name}</h4>
@@ -68,12 +78,43 @@ const Courses = ({ setCurrentId }) => {
   }, [dispatch]);
 
   const user = useSelector((state) => state.auth.authData.result);
+
+  let firstName = "";
+  let lastName = "";
+  function divideName() {
+    let isTextChanged = false;
+    for (let i = 0; i < user.name.length; i++) {
+      if (user.name[i] === " ") {
+        isTextChanged = true;
+        i++;
+      }
+      if (isTextChanged === false) {
+        firstName += user.name[i];
+      } else {
+        lastName += user.name[i];
+      }
+    }
+  }
+  divideName();
   dispatch(setUser(user));
   return (
     <>
-      <HomeMenu text="Kursy" link="/kursy" />
+      <Menu text="" link="/kursy" />
       <div className="courses-container">
-        <img src={RoadSign} className="courses-big-image" alt="Book Lover" />
+        {/* <img src={RoadSign} className="courses-big-image" alt="Book Lover" /> */}
+        <div className="welcome-container">
+          <div className="welcome-user">
+            <h3>
+              <b>Cześć</b>
+            </h3>
+            <h3>{firstName}!</h3>
+          </div>
+
+          <img src={Hello} alt="hello" />
+        </div>
+        <h3 className="question-text">
+          Czego chcesz się dziś <b>nauczyć?</b>
+        </h3>
         {user.courses.map((singleCourse, id) => {
           return (
             <SingleCourse

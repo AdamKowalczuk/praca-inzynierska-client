@@ -1,7 +1,6 @@
 $dark: #0c0c0d;
 $white: #f1f1f2;
 $gray: #9b9b9b;
-
 .course-container {
   background-color: $dark;
   margin: 0 auto;
@@ -12,6 +11,10 @@ $gray: #9b9b9b;
     text-align: center;
     padding: 0 10px;
   }
+  .course-description {
+    margin-top: 30px;
+  }
+
   .course-big-image {
     display: flex;
     justify-content: center;
@@ -19,6 +22,7 @@ $gray: #9b9b9b;
     height: 30%;
     margin: 0px auto !important;
     margin-bottom: 10px !important;
+    margin-top: 20px !important;
   }
   .course-icon-container {
     position: absolute;
@@ -29,10 +33,10 @@ $gray: #9b9b9b;
     align-items: center;
     justify-content: flex-end;
     margin-top: 10px;
-    width: 90%;
+    width: 100%;
     .course-icon-box {
       background-color: hsl(230, 5%, 75%, 20%);
-      padding: 10px;
+      padding: 15px;
       border-radius: 10px;
       width: 80px;
       height: 80px;
@@ -42,10 +46,11 @@ $gray: #9b9b9b;
       flex-direction: column;
       margin: 10px;
       font-family: "Bodoni Moda", serif !important;
+      border: 2px solid #fff;
 
       .course-icon {
-        width: 25px;
-        height: 25px;
+        width: 35px;
+        height: 35px;
       }
       .first-h4 {
         margin: 0;

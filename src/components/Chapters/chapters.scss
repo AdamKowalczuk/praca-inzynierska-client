@@ -54,6 +54,9 @@ $red: #ff4e40;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+      border: 1px solid #fff;
+      border-radius: 5px;
+      margin-bottom: 5px;
       .accordion-arrow-forward {
         height: 18px;
       }
@@ -78,4 +81,13 @@ $red: #ff4e40;
 
 .quiz-locked {
   opacity: 0.5;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.border-top {
+  // border: 2px solid #fff;
+  // border-radius: 5px;
 }

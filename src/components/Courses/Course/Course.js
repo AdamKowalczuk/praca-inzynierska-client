@@ -2,7 +2,9 @@ import React from "react";
 import "./course.scss";
 // import Teaching from "../../../images/teaching.svg";
 import Menu from "../../Menu/Menu";
-import Knowledge from "../../../images/knowledge.svg";
+// import Knowledge from "../../../images/knowledge.svg";
+import Book from "./images/book.svg";
+import Learn from "./images/learn.svg";
 import ButtonRight from "../../Button/ButtonRight";
 import { useSelector } from "react-redux";
 import Teacher from "./undraw_teacher.svg";
@@ -11,8 +13,9 @@ import { Link } from "react-router-dom";
 const CourseInfo = (props) => {
   return (
     <>
-      <div className="course-icon-box ">
+      <div className="course-icon-box">
         <img src={props.image} className="course-icon" alt="Open Book" />
+
         <h4 className="first-h4">{props.number}</h4>
         <h4 className="second-h4">{props.text}</h4>
       </div>
@@ -40,24 +43,28 @@ const Course = (props, { setCurrentId }) => {
         <Menu text={course.name} link="/kursy" />
         <img src={Teacher} className="course-big-image" alt="Teacher" />
 
-        <p>{course.description}</p>
+        <p className="course-description">{course.description}</p>
         <div className="course-icon-container">
           <CourseInfo
-            image={Knowledge}
+            image={Book}
             number={course.chapters.length}
-            text="Chapters"
+            text="Rozdziałów"
+            // primaryColor={course.primaryColor}
+            // secondaryColor={course.secondaryColor}
           />
           <CourseInfo
-            image={course.icon}
+            image={Learn}
             number={sumLessons()}
-            text="Lessons"
+            text="Lekcji"
+            // primaryColor={course.primaryColor}
+            // secondaryColor={course.secondaryColor}
           />
 
-          <Link to="/kursy/rozdziały" rel="noreferrer" className="link">
+          <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
             <ButtonRight
               text="Dalej"
-              backgroundColor="#fff"
-              color="#0c0c0d"
+              // backgroundColor={course.primaryColor}
+              color="#fff"
               class="btn btn_right2"
             />
           </Link>

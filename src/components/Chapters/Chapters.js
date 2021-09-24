@@ -5,15 +5,13 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import icons from "./icons";
-
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setActualChapter, setActualLesson } from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
+import Icon from "./Icon";
 
-// import Mission from "./icons/mission";
 const Chapter = (props) => {
   const dispatch = useDispatch();
   let isQuizCompleted = props.chapter.isQuizCompleted;
@@ -44,24 +42,12 @@ const Chapter = (props) => {
           id="panel1a-header"
         >
           <div className="accordion-img-background">
-            {props.chapter.isQuizCompleted ? (
-              <img
-                src={props.chapter.icon}
-                style={{
-                  filter: "saturate(100%)",
-                  borderColor: props.primaryColor,
-                }}
-                alt={props.chapter.name}
-              />
-            ) : (
-              <img
-                src={props.chapter.icon}
-                style={{
-                  filter: "saturate(0%)",
-                }}
-                alt={props.chapter.name}
-              />
-            )}
+            <Icon
+              name={props.chapter.icon}
+              isQuizCompleted={props.chapter.isQuizCompleted}
+              chapterName={props.chapter.name}
+              primaryColor={props.primaryColor}
+            />
           </div>
 
           <div className="accordion-chapter-header">
@@ -80,7 +66,7 @@ const Chapter = (props) => {
                 <h3 style={{ color: "#fff" }}>{props.chapter.name}</h3>
                 <h4 style={{ color: "hsl(0, 0%, 100%,30%)" }}>
                   {sumCompletedLessons()}/{props.chapter.lessons.length}{" "}
-                  Completed
+                  Ukończonych
                 </h4>
               </>
             )}
@@ -113,6 +99,7 @@ const Chapter = (props) => {
               </>
             );
           })}
+
           <div
             className={
               isQuizCompleted === true
@@ -122,7 +109,7 @@ const Chapter = (props) => {
           >
             {sumCompletedLessons() / props.chapter.lessons.length === 1 ? (
               <Link
-                to="/kursy/rozdziały/quiz"
+                to="/kursy/rozdzialy/quiz"
                 rel="noreferrer"
                 onClick={() => {
                   dispatch(setActualChapter(props.number));
@@ -130,29 +117,82 @@ const Chapter = (props) => {
                 }}
                 className="link"
               >
-                <div className="accordion-lesson-container">
-                  {props.chapter.isQuizCompleted === true ? (
-                    <>
+                {props.chapter.isQuizCompleted === true ? (
+                  <>
+                    <div
+                      className="accordion-lesson-container border-top"
+                      style={{ borderColor: props.primaryColor }}
+                    >
                       <h5 style={{ color: props.primaryColor }}>Quiz</h5>
                       <ArrowForwardIosIcon
                         className="accordion-arrow-forward"
                         style={{ fill: props.primaryColor }}
                       />
-                    </>
-                  ) : (
-                    <>
-                      <h5 style={{ color: "hsl(0, 0%, 100%, 40%)" }}>Quiz</h5>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="accordion-lesson-container border-top">
+                      <h5
+                        className="uppercase"
+                        style={{ color: "hsl(0, 0%, 100%, 40%)" }}
+                      >
+                        Quiz
+                      </h5>
                       <ArrowForwardIosIcon
                         className="accordion-arrow-forward"
                         style={{ fill: "hsl(0, 0%, 100%, 40%)" }}
                       />
-                    </>
-                  )}
-                </div>
+                    </div>
+                  </>
+                )}
               </Link>
             ) : (
-              <div className="accordion-lesson-container quiz-locked">
-                <h5>Quiz</h5>
+              <div className="accordion-lesson-container quiz-locked border-top">
+                <h5 className="uppercase">Quiz</h5>
+                <ArrowForwardIosIcon className="accordion-arrow-forward" />
+              </div>
+            )}
+            {sumCompletedLessons() / props.chapter.lessons.length === 1 ? (
+              <Link
+                to="/kursy/rozdzialy/zadania"
+                rel="noreferrer"
+                onClick={() => {
+                  dispatch(setActualChapter(props.number));
+                  dispatch(setActualExercise(0));
+                }}
+                className="link"
+              >
+                {props.chapter.isExerciseCompleted === true ? (
+                  <>
+                    <div className="accordion-lesson-container border-top">
+                      <h5 style={{ color: props.primaryColor }}>Zadania</h5>
+                      <ArrowForwardIosIcon
+                        className="accordion-arrow-forward"
+                        style={{ fill: props.primaryColor }}
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="accordion-lesson-container border-top">
+                      <h5
+                        className="uppercase"
+                        style={{ color: "hsl(0, 0%, 100%, 40%)" }}
+                      >
+                        Zadania
+                      </h5>
+                      <ArrowForwardIosIcon
+                        className="accordion-arrow-forward"
+                        style={{ fill: "hsl(0, 0%, 100%, 40%)" }}
+                      />
+                    </div>
+                  </>
+                )}
+              </Link>
+            ) : (
+              <div className="accordion-lesson-container quiz-locked border-top">
+                <h5 className="uppercase">Zadania</h5>
                 <ArrowForwardIosIcon className="accordion-arrow-forward" />
               </div>
             )}
@@ -166,7 +206,7 @@ const Lesson = (props) => {
   const dispatch = useDispatch();
   return (
     <Link
-      to="/kursy/rozdziały/lekcje"
+      to="/kursy/rozdzialy/lekcje"
       rel="noreferrer"
       key={props.number}
       onClick={() => {
@@ -175,7 +215,10 @@ const Lesson = (props) => {
       }}
       className="link"
     >
-      <div className="accordion-lesson-container">
+      <div
+        className="accordion-lesson-container"
+        style={{ borderColor: props.primaryColor }}
+      >
         <h5 style={{ color: props.primaryColor }}>{props.name}</h5>
         <ArrowForwardIosIcon
           className="accordion-arrow-forward"
@@ -194,7 +237,7 @@ const Chapters = () => {
   const course = useSelector((state) => state.user.courses[actualCourse]);
   return (
     <>
-      <Menu text="Rozdziały" link="/kursy" />
+      <Menu text="Rozdziały" link="/kursy" isColored={true} />
       <div className="chapters-container">
         {course.chapters.map((item, id) => {
           return (

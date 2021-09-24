@@ -9,6 +9,8 @@ import Course from "./components/Courses/Course/Course";
 import Chapters from "./components/Chapters/Chapters";
 import Quiz from "./components/Quiz/Quiz";
 import Lesson from "./components/Lesson/Lesson";
+import UserProfile from "./components/UserProfile/UserProfile";
+import Achievements from "./components/Achievements/Achievements";
 import PracticalLesson from "./components/PracticalLessons/PracticalLessons";
 import { getCourses } from "./actions/courses";
 
@@ -26,14 +28,15 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/auth" exact component={Auth} />
-
         <Route path="/kursy" exact component={Courses} />
         <Route path="/kursy/kurs" exact component={Course} />
-        <Route path="/kursy/rozdziały" exact component={Chapters} />
-        <Route path="/kursy/rozdziały/lekcje" exact component={Lesson} />
-        <Route path="/kursy/rozdziały/quiz" exact component={Quiz} />
+        <Route path="/osiagniecia" exact component={Achievements} />
+        <Route path="/moj-profil" exact component={UserProfile} />
+        <Route path="/kursy/rozdzialy" exact component={Chapters} />
+        <Route path="/kursy/rozdzialy/lekcje" exact component={Lesson} />
+        <Route path="/kursy/rozdzialy/quiz" exact component={Quiz} />
         <Route
-          path="/kursy/rozdziały/zadania"
+          path="/kursy/rozdzialy/zadania"
           exact
           component={PracticalLesson}
         />

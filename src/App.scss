@@ -14,7 +14,7 @@ $dark: #0c0c0d;
 }
 $white: #f1f1f2;
 * {
-  // font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
 
   // font-family: Futura !important;
   // font-family: Helvetica2 !important;
@@ -22,6 +22,11 @@ $white: #f1f1f2;
   // font-weight: 700;
   // font-size: 20px;
   // font-family: "Bodoni Moda", serif !important; dobry dla pokazania ilości lekcji
+}
+h3,
+h4,
+h5 {
+  font-weight: 500;
 }
 // .bodoni {
 //   font-family: "Bodoni Moda", serif !important;

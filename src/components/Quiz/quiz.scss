@@ -1,5 +1,4 @@
 $gray: #9b9b9b;
-
 $dark: #0c0c0d;
 $white: #f1f1f2;
 
@@ -10,10 +9,14 @@ $white: #f1f1f2;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  h2,
-  h3 {
+  .trophy {
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  h2 {
     color: $white;
     text-align: center;
+    margin: 5px 0;
   }
   h3 {
     padding: 20px 0;

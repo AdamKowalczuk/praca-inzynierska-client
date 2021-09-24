@@ -7,6 +7,7 @@ import { setNextQuiz, updateQuiz } from "../../actions/quiz";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
+import Trophy from "./Trophy";
 // import ButtonBack from "../Button/ButtonBack";
 // import { setActualChapter, setActualLesson } from "../../actions/courses";
 import LessonTopMenu from "../Menu/LessonTopMenu";
@@ -68,7 +69,7 @@ const Quiz = () => {
   return (
     <>
       <LessonTopMenu
-        link="/kursy/rozdziały"
+        link="/kursy/rozdzialy"
         text="Quiz"
         primaryColor={course.primaryColor}
         secondaryColor={course.secondaryColor}
@@ -79,6 +80,10 @@ const Quiz = () => {
       <div className="quiz-container">
         {quizForm.isCompleted === true ? (
           <>
+            <Trophy
+              primaryColor={course.primaryColor}
+              secondaryColor={course.secobdaryColor}
+            />
             <h2 className="quiz-result">
               {Math.floor((quizForm.score * 100) / chapter.quiz.length) >= 80
                 ? "Rozdział ukończony"
@@ -87,11 +92,7 @@ const Quiz = () => {
             <h2>{Math.floor((quizForm.score * 100) / chapter.quiz.length)}%</h2>
 
             <Link
-              to="/kursy/rozdziały/zadania"
-              // onClick={() => {
-              //   dispatch(setActualLesson(0));
-              //   dispatch(setActualChapter(actualChapter));
-              // }}
+              to="/kursy/rozdzialy/zadania"
               rel="noreferrer"
               className="link"
             >
@@ -104,7 +105,7 @@ const Quiz = () => {
               />
             </Link>
 
-            <Link to="/kursy/rozdziały" rel="noreferrer" className="link">
+            <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
               <Button
                 text="Powrót"
                 class="btn btn_white"

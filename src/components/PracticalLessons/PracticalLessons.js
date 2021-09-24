@@ -5,83 +5,63 @@ import {
   useSelector,
 } from "react-redux";
 import Menu from "../Menu/Menu";
+import "./PracticalLessons.scss";
+import Undo from "./images/Undo";
+import Transfer from "./images/transfer.svg";
 const PracticalLessons = () => {
-  // const dispatch = useDispatch();
   const actualCourse = useSelector((state) => state.actualCourse);
-  // const user = useSelector((state) => state.user);
   const course = useSelector((state) => state.user.courses[actualCourse]);
-  const initialState = {
-    answer: "Hello",
-    color: "white",
-  };
-  let answers = [
+
+  const [answers, setAnswers] = useState([]);
+  const [completed, setCompleted] = useState("");
+
+  const [options, setOptions] = useState([
     {
       name: "<h2>",
       correctNumber: 0,
-      selectName: "answer1",
     },
     {
       name: "</h2>",
       correctNumber: 3,
-      selectName: "answer2",
     },
     {
       name: "<i>World</i>",
       correctNumber: 2,
-      selectName: "answer3",
     },
     {
       name: "<b>Hello</b>",
       correctNumber: 1,
-      selectName: "answer4",
     },
-  ];
-  let correctAnswers = [];
-  let result = { isCompleted: "not completed" };
-  function clearArray() {
-    for (let i = 0; i < answers.length; i++) {
-      correctAnswers.push("");
-    }
-  }
-  clearArray();
-
-  function addAnswer(i, e) {
-    let s = document.getElementsByName(`answer${i + 1}`)[0];
-    var text = s.options[e.target.value].text;
-    correctAnswers[i] = text;
-  }
-  function checkAnswers() {
-    for (let i = 0; i < correctAnswers.length; i++) {
-      for (let j = 0; j < answers.length; j++) {
-        if (answers[j].correctNumber === i) {
-          if (answers[j].name === correctAnswers[i]) {
-          } else {
-            setForm({ ...form, isCompleted: "not correct" });
-            return;
-          }
-        }
-      }
-    }
-    setForm({ ...form, isCompleted: "correct" });
-  }
-
-  const Options = () => {
-    return (
-      <>
-        {answers.map((answer, id) => {
-          return (
-            <option key={id} value={id}>
-              {answers[id].name}
-            </option>
-          );
-        })}
-      </>
+  ]);
+  function chooseAnswer(e, id) {
+    setAnswers(
+      answers.concat({ name: e.target.innerText, correctNumber: e.target.id })
     );
-  };
+    let item = options[id];
+    setOptions(options.filter((e) => e !== item));
+  }
+  function backward(e, id) {
+    setOptions(
+      options.concat({ name: e.target.innerText, correctNumber: e.target.id })
+    );
+    let item = answers[id];
+    setAnswers(answers.filter((e) => e !== item));
+  }
+  function checkAnswer() {
+    let correctAnswers = 0;
+    answers.forEach((answer, id) => {
+      if (answer.correctNumber == id) {
+        correctAnswers++;
+      } else {
+      }
+    });
+    if (correctAnswers === answers.length + options.length) {
+      setCompleted(true);
+    } else {
+      setCompleted(false);
+    }
+  }
 
-  const [form, setForm] = useState(result);
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
   return (
     <>
       <LessonBottomMenu
@@ -92,55 +72,73 @@ const PracticalLessons = () => {
         secondIconColor={course.secondaryColor}
         thirdIconColor={course.primaryColor}
       />
+
       <Menu
-        link="/kursy/rozdziały"
-        text="Zadania"
+        link="/kursy/rozdzialy"
+        // text="Zadania"
+        text="Uzupełnij kod tak, aby wyświetlić napis Hello World"
         isColored={true}
         primaryColor={course.primaryColor}
         secondaryColor={course.secondaryColor}
+        changeAlign={true}
       />
 
       <div className="practical-lesson">
-        <h3 style={{ color: "white" }}>
+        {/* <h3 style={{ color: "white" }}>
           Uzupełnij kod tak, aby wyświetlić napis Hello World
-        </h3>
-        <img src="" alt="zadanie" />
-        <div className="answers">
-          {answers.map((answer, id) => {
-            return (
-              <>
-                <select
+        </h3> */}
+        <div className="test">Hello World</div>
+        <div className="result-container">
+          <div className="options">
+            {options.map((option, id) => {
+              return (
+                <h3
                   key={id}
-                  name={answer.selectName}
-                  onChange={(e) => addAnswer(id, e)}
-                  style={{ display: "flex", padding: "10px 20px" }}
+                  onClick={(e) => chooseAnswer(e, id)}
+                  value={option.name}
+                  id={option.correctNumber}
                 >
-                  <Options />
-                </select>
-              </>
-            );
-          })}
-          <div
-            style={{
-              marginTop: "50px",
-              padding: "20px",
-              backgroundColor: "red",
-            }}
-            onClick={() => checkAnswers()}
-          >
-            SPRAWDŹ
+                  {option.name}
+                </h3>
+              );
+            })}
           </div>
-          {form.isCompleted === "not completed" ? (
-            <h2>Nie ukończono</h2>
-          ) : (
-            [
-              form.isCompleted === "correct" ? (
-                <h2>Poprawnie</h2>
-              ) : (
-                <h2>Nie poprawnie</h2>
-              ),
-            ]
-          )}
+          <div className="transfer-icon">
+            <img src={Transfer} alt="transfer" />
+          </div>
+          <div className="answers">
+            {answers.map((answer, id) => {
+              return (
+                <h3
+                  key={id}
+                  onClick={(e) => backward(e, id)}
+                  value={answer.name}
+                  id={answer.correctNumber}
+                  style={{
+                    color: course.primaryColor,
+                    borderColor: course.primaryColor,
+                  }}
+                >
+                  {answer.name}
+                </h3>
+              );
+            })}
+          </div>
+        </div>
+        <div className="buttons-container">
+          <div className="check-answer-container">
+            <h4
+              style={{
+                backgroundColor: course.secondaryColor,
+                color: course.primaryColor,
+              }}
+              onClick={() => checkAnswer()}
+            >
+              {completed === false
+                ? "Błąd! Sprawdź jeszcze raz"
+                : [completed === "" ? "Sprawdź" : "Poprawnie! Przejdź dalej"]}
+            </h4>
+          </div>
         </div>
       </div>
     </>
