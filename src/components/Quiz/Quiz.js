@@ -10,6 +10,12 @@ import Button from "../Button/Button";
 import Trophy from "./Trophy";
 // import ButtonBack from "../Button/ButtonBack";
 // import { setActualChapter, setActualLesson } from "../../actions/courses";
+import {
+  setActualChapter,
+  setActualLesson,
+  setActualExercise,
+} from "../../actions/courses";
+import { setActualQuiz } from "../../actions/quiz";
 import LessonTopMenu from "../Menu/LessonTopMenu";
 import LessonBottomMenu from "../Menu/LessonBottomMenu";
 
@@ -26,6 +32,7 @@ const Quiz = () => {
   let question = chapter.quiz[actualQuiz].question;
   let correctAnswer = chapter.quiz[actualQuiz].correctAnswer;
   let answers = chapter.quiz[actualQuiz].answers;
+  const exercisesNumber = course.chapters[actualChapter].exercises.length;
   // let score = 0;
   let initialState = {
     name: chapter.name,
@@ -91,7 +98,42 @@ const Quiz = () => {
             </h2>
             <h2>{Math.floor((quizForm.score * 100) / chapter.quiz.length)}%</h2>
 
-            <Link
+            {exercisesNumber === 0 ? (
+              <Link
+                to="/kursy/rozdzialy/lekcje"
+                rel="noreferrer"
+                className="link"
+                onClick={() => {
+                  dispatch(setActualLesson(0));
+                  dispatch(setActualChapter(actualChapter + 1));
+                  dispatch(setActualQuiz(0));
+                  dispatch(setActualExercise(0));
+                }}
+              >
+                <Button
+                  text="Przejdź do następnego rozdziału"
+                  class="btn btn_white"
+                  primaryColor={course.primaryColor}
+                  secondaryColor={course.secondaryColor}
+                  borderColor={course.primaryColor}
+                />
+              </Link>
+            ) : (
+              <Link
+                to="/kursy/rozdzialy/zadania"
+                rel="noreferrer"
+                className="link"
+              >
+                <Button
+                  text="Przejdź do zadań"
+                  class="btn btn_white"
+                  primaryColor={course.primaryColor}
+                  secondaryColor={course.secondaryColor}
+                  borderColor={course.primaryColor}
+                />
+              </Link>
+            )}
+            {/* <Link
               to="/kursy/rozdzialy/zadania"
               rel="noreferrer"
               className="link"
@@ -103,7 +145,7 @@ const Quiz = () => {
                 secondaryColor={course.secondaryColor}
                 borderColor={course.primaryColor}
               />
-            </Link>
+            </Link> */}
 
             <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
               <Button

@@ -6,12 +6,13 @@ $white: #f1f1f2;
 .lesson-container {
   background-color: $dark;
   margin: 0 auto;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 190px);
   width: 100vw;
   overflow: scroll;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
+  margin-top: 20px;
   h2 {
     margin: -1px;
     text-align: center;
@@ -21,7 +22,7 @@ $white: #f1f1f2;
     justify-content: center;
     align-items: center;
     // height: 30vh;
-    width: 95vw;
+    width: 90vw;
     margin: 0px auto !important;
     margin-bottom: 10px !important;
   }

@@ -20,6 +20,37 @@ const initialState = {
   password: "",
   confirmPassword: "",
   courses: "",
+  achievements: [
+    { name: "Nowy uczeń", description: "Zarejestruj sie", isFinished: true },
+    {
+      name: "Wytrwały zawodnik",
+      description: "Bądź z nami przez tydzień",
+      isFinished: false,
+    },
+    {
+      name: "Stały bywalec",
+      description: "Bądź z nami przez miesiąc",
+      isFinished: false,
+    },
+    {
+      name: "Mistrz HTML-a",
+      description: "Ukończ kurs HTML",
+      isFinished: false,
+    },
+    { name: "Grafik", description: "Ukończy kurs CSS", isFinished: false },
+    { name: "Koder", description: "Ukończ kurs JavaScript", isFinished: false },
+    {
+      name: "Cudowne dziecko",
+      description: "Oblej quiz 10 razy",
+      isFinished: false,
+    },
+    { name: "Prymus", description: "Ukończ 10 zadań", isFinished: false },
+    {
+      name: "Czempion",
+      description: "Ukończ wszystkie kursy",
+      isFinished: false,
+    },
+  ],
 };
 
 const SignUp = () => {

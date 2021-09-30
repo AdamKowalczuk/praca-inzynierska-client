@@ -17,16 +17,18 @@ const UserProfile = () => {
   const courses = useSelector((state) => state.user.courses);
 
   let color = "#fff";
-  console.log(color);
-  if (course.name === "JavaScript") {
-    color = "#000";
+  if (course === undefined) {
+    course = {
+      primaryColor: "rgb(255, 255, 255,40%)",
+      secondaryColor: "rgb(255, 255, 255,20%)",
+      thirdColor: "rgb(255, 255, 255)",
+    };
+  } else {
+    if (course.name === "JavaScript") {
+      color = "#000";
+    }
   }
 
-  if (actualCourse === "") {
-    course.primaryColor = "rgb(255, 255, 255)";
-    course.primaryColor = "rgb(255, 255, 255,20%)";
-    course.primaryColor = "rgb(255, 255, 255)";
-  }
   let finishedArray = [];
 
   // function achievementsFinishedNumber(){
@@ -99,7 +101,6 @@ const UserProfile = () => {
             <Rocket primaryColor={course.primaryColor} />
             <div className="text">
               <h4>Data dołączenia</h4>
-              {/* <h4>07.09.2021</h4> */}
               <h4>{user.createdAt.slice(0, 10)}</h4>
             </div>
           </div>
@@ -116,7 +117,7 @@ const UserProfile = () => {
           </div>
         </div>
 
-        <h4 className="acomplished-h4">Lista ukończonych</h4>
+        <h3 className="acomplished-h4">Lista ukończonych</h3>
         <div
           className="big-box"
           style={{ backgroundColor: course.secondaryColor }}

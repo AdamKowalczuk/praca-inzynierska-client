@@ -15,6 +15,7 @@ import Icon from "./Icon";
 const Chapter = (props) => {
   const dispatch = useDispatch();
   let isQuizCompleted = props.chapter.isQuizCompleted;
+  let exercisesNumber = props.chapter.exercises.length;
   function sumCompletedLessons() {
     let sum = 0;
     props.chapter.lessons.forEach((lesson) => {
@@ -153,7 +154,9 @@ const Chapter = (props) => {
                 <ArrowForwardIosIcon className="accordion-arrow-forward" />
               </div>
             )}
-            {sumCompletedLessons() / props.chapter.lessons.length === 1 ? (
+            {exercisesNumber === 0 ? null : sumCompletedLessons() /
+                props.chapter.lessons.length ===
+              1 ? (
               <Link
                 to="/kursy/rozdzialy/zadania"
                 rel="noreferrer"

@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import "./lesson.scss";
 import Menu from "../Menu/Menu";
-// import WorkTime from "../../images/work-time.svg";
 import { useDispatch, useSelector } from "react-redux";
-// import ButtonBack from "../Button/ButtonBack";
 import "./button.scss";
 import { updateLesson, setNextLesson } from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
 import { Link } from "react-router-dom";
 import LessonBottomMenu from "../Menu/LessonBottomMenu";
 import LessonTopMenu from "../Menu/LessonTopMenu";
-// import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-// import images from "./images";
-import Icon from "./Icon";
-// console.log(images);
-
+function importAll(r) {
+  let icons = {};
+  r.keys().map((item, index) => {
+    icons[item.replace("./", "")] = r(item);
+  });
+  return icons;
+}
+let icons = "";
 const Lesson = () => {
   const dispatch = useDispatch();
 
@@ -40,6 +41,28 @@ const Lesson = () => {
     actualLesson: actualLesson,
     dayOfFinish: lesson.dayOfFinish,
   };
+
+  switch (actualCourse) {
+    case 0:
+      icons = importAll(
+        require.context("./images/html", false, /\.(png|jpe?g|bmp|svg)$/)
+      );
+
+      break;
+    case 1:
+      icons = importAll(
+        require.context("./images/css", false, /\.(png|jpe?g|bmp|svg)$/)
+      );
+      break;
+    case 2:
+      icons = importAll(
+        require.context("./images/javascript", false, /\.(png|jpe?g|bmp|svg)$/)
+      );
+      break;
+    default:
+      icons = "";
+  }
+
   let updateForm = () => {
     let newDayOfFinish;
     if (lesson.dayOfFinish === undefined) {
@@ -47,7 +70,6 @@ const Lesson = () => {
     } else {
       newDayOfFinish = lesson.dayOfFinish;
     }
-    console.log(newDayOfFinish);
     return {
       name: lesson.name,
       description: lesson.description,
@@ -76,8 +98,8 @@ const Lesson = () => {
         courseName={course.name}
       />
       <div className="lesson-container">
-        {/* <img className="lesson-image" src={lesson.image} alt="Work Time" /> */}
         <Icon lessonName={lesson.name} lessonImage={lesson.image} />
+
         <p>{lesson.description}</p>
         <LessonBottomMenu
           firstIconBackground={course.secondaryColor}
@@ -140,5 +162,15 @@ const Lesson = () => {
     </>
   );
 };
-
+const Icon = (props) => {
+  return (
+    <>
+      <img
+        className="lesson-image"
+        src={icons[props.lessonImage].default}
+        alt={props.lessonName}
+      />
+    </>
+  );
+};
 export default Lesson;

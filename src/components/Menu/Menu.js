@@ -5,7 +5,6 @@ import Wireframe from "./icons/Wireframe";
 import BackIcon from "./icons/BackIcon";
 import { Link } from "react-router-dom";
 import Modal from "@material-ui/core/Modal";
-// import CloseIcon from "@material-ui/icons/Close";
 import { useDispatch, useSelector } from "react-redux";
 import HomePage from "./icons/HomePage";
 import Graduate from "./icons/Graduate";
@@ -21,7 +20,7 @@ const Menu = (props) => {
   let course = useSelector((state) => state.user.courses[actualCourse]);
   if (course === undefined) {
     course = {
-      primaryColor: "rgb(255, 255, 255,20%)",
+      primaryColor: "rgb(255, 255, 255,100%)",
       secondaryColor: "rgb(255, 255, 255,20%)",
       thirdColor: "rgb(255, 255, 255)",
     };
@@ -32,19 +31,15 @@ const Menu = (props) => {
   }
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
-    console.log("Open");
     setOpen(true);
   };
 
   const handleClose = () => {
-    console.log("Close");
     setOpen(false);
   };
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
-
     history.push("/auth");
-
     // setUser(null);
   };
   return (
@@ -77,15 +72,9 @@ const Menu = (props) => {
         ) : (
           <>
             <div style={{ height: "50px", width: "50px" }}></div>
-
             <h3>{props.text}</h3>
             <div className="menu-icon" onClick={() => handleOpen()}>
-              <Wireframe
-                // primaryColor="#fff"
-                primaryColor="rgb(255, 255, 255,20%)"
-                color={color}
-                // secondaryColor="rgb(255, 255, 255,20%)"
-              />
+              <Wireframe primaryColor="rgb(255, 255, 255,20%)" color={color} />
             </div>
           </>
         )}
@@ -132,7 +121,6 @@ const Menu = (props) => {
                   className="menu-option"
                   style={{ borderColor: course.primaryColor }}
                 >
-                  {/* <img src={Graduate} alt="graduate" /> */}
                   <Graduate
                     primaryColor={course.primaryColor}
                     secondaryColor={course.secondaryColor}
@@ -151,7 +139,6 @@ const Menu = (props) => {
                   className="menu-option"
                   style={{ borderColor: course.primaryColor }}
                 >
-                  {/* <img src={Star} alt="star" /> */}
                   <Star
                     primaryColor={course.primaryColor}
                     secondaryColor={course.secondaryColor}
@@ -166,7 +153,6 @@ const Menu = (props) => {
                 style={{ borderColor: course.primaryColor }}
                 onClick={logout}
               >
-                {/* <img src={Logout} alt="logout" /> */}
                 <Logout
                   primaryColor={course.primaryColor}
                   secondaryColor={course.secondaryColor}

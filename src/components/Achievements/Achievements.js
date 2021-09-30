@@ -28,7 +28,7 @@ const Achievement = (props) => {
           className="achievement-icon"
           style={{ backgroundColor: props.secondaryColor }}
         >
-          <props.image primaryColor={props.primaryColor} color="#fff" />
+          <props.image primaryColor={props.primaryColor} color={props.color} />
         </div>
 
         <div
@@ -48,16 +48,18 @@ const Achievements = () => {
   const actualCourse = useSelector((state) => state.actualCourse);
   let course = useSelector((state) => state.user.courses[actualCourse]);
   let color = "#fff";
-  if (course.name === "JavaScript") {
-    color = "#000";
-  }
-  if (actualCourse === "") {
+  if (course === undefined) {
     course = {
       primaryColor: "rgb(255, 255, 255,40%)",
       secondaryColor: "rgb(255, 255, 255,20%)",
       thirdColor: "rgb(255, 255, 255)",
     };
+  } else {
+    if (course.name === "JavaScript") {
+      color = "#000";
+    }
   }
+
   function chooseImage() {
     switch (course.name) {
       case "HTML":

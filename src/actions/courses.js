@@ -42,6 +42,18 @@ export const setActualLesson = (lesson) => {
     payload: lesson,
   };
 };
+export const setActualExercise = (exercise) => {
+  return {
+    type: "SET_ACTUAL_EXERCISE",
+    payload: exercise,
+  };
+};
+export const setNextExercise = (actualExercise) => {
+  return {
+    type: "SET_NEXT_EXERCISE",
+    payload: actualExercise + 1,
+  };
+};
 
 export const setNextLesson = (actualLesson) => {
   return {

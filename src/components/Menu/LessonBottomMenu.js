@@ -12,6 +12,7 @@ const LessonBottomMenu = (props) => {
   const actualCourse = useSelector((state) => state.actualCourse);
   const actualChapter = useSelector((state) => state.actualChapter);
   const course = useSelector((state) => state.user.courses[actualCourse]);
+  const exercisesNumber = course.chapters[actualChapter].exercises.length;
   const chapter = useSelector(
     (state) => state.user.courses[actualCourse].chapters[actualChapter]
   );
@@ -34,57 +35,104 @@ const LessonBottomMenu = (props) => {
           borderColor: course.secondaryColor,
         }}
       >
-        <Link to="/kursy/rozdziały/lekcje" className="link link-menu">
+        <Link
+          to="/kursy/rozdzialy/lekcje"
+          className="link link-menu"
+          style={{ width: "50vw" }}
+        >
           <div
             style={{ backgroundColor: props.firstIconBackground }}
             className="tooltip"
           >
-            <Book
-              primaryColor={props.firstIconColor}
-              secondaryColor={course.secondaryColor}
-            />
+            {exercisesNumber === 0 ? (
+              <Book
+                primaryColor={props.firstIconColor}
+                secondaryColor={course.secondaryColor}
+                width="50vw"
+              />
+            ) : (
+              <Book
+                primaryColor={props.firstIconColor}
+                secondaryColor={course.secondaryColor}
+              />
+            )}
+
             <span className="tooltiptext">Lekcje</span>
           </div>
         </Link>
 
         {sumCompletedLessons() / chapter.lessons.length === 1 ? (
           <Link
-            to="/kursy/rozdziały/quiz"
+            to="/kursy/rozdzialy/quiz"
             className="link link-menu"
             onClick={() => {
               dispatch(setActualQuiz(0));
             }}
+            style={{ width: "50vw" }}
           >
             <div
               style={{ backgroundColor: props.secondIconBackground }}
               className="tooltip"
             >
-              <Communication
-                primaryColor={props.secondIconColor}
-                secondaryColor={course.secondaryColor}
-              />
+              {exercisesNumber === 0 ? (
+                <Communication
+                  primaryColor={props.secondIconColor}
+                  secondaryColor={course.secondaryColor}
+                  width="50vw"
+                />
+              ) : (
+                <Communication
+                  primaryColor={props.secondIconColor}
+                  secondaryColor={course.secondaryColor}
+                />
+              )}
 
               <span className="tooltiptext">Quiz</span>
             </div>
           </Link>
         ) : (
-          <Link className="link link-menu">
+          <Link className="link link-menu" style={{ width: "50vw" }}>
             <div
               style={{ backgroundColor: props.secondIconBackground }}
               className="tooltip"
             >
-              <Communication
-                primaryColor={props.secondIconColor}
-                secondaryColor={course.secondaryColor}
-              />
+              {exercisesNumber === 0 ? (
+                <Communication
+                  primaryColor={props.secondIconColor}
+                  secondaryColor={course.secondaryColor}
+                  width="50vw"
+                />
+              ) : (
+                <Communication
+                  primaryColor={props.secondIconColor}
+                  secondaryColor={course.secondaryColor}
+                />
+              )}
               <span className="tooltiptext">
                 Ukończ wszystkie lekcje, aby odblokować
               </span>
             </div>
           </Link>
         )}
-
-        <Link
+        {exercisesNumber === 0 ? null : (
+          <Link
+            to="/kursy/rozdzialy/zadania"
+            rel="noreferrer"
+            className="link link-menu"
+          >
+            <div
+              style={{ backgroundColor: props.thirdIconBackground }}
+              className="tooltip"
+            >
+              <Writing
+                primaryColor={props.thirdIconColor}
+                secondaryColor={course.secondaryColor}
+              />
+              <span className="tooltiptext">Zadania</span>
+            </div>
+          </Link>
+        )}
+        {/* <Link
           to="/kursy/rozdziały/zadania"
           rel="noreferrer"
           className="link link-menu"
@@ -99,7 +147,7 @@ const LessonBottomMenu = (props) => {
             />
             <span className="tooltiptext">Zadania</span>
           </div>
-        </Link>
+        </Link> */}
       </div>
     </>
   );

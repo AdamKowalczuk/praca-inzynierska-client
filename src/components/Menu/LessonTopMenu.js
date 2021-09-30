@@ -9,6 +9,7 @@ const LessonTopMenu = (props) => {
   if (props.courseName === "JavaScript") {
     color = "#000";
   }
+
   return (
     <>
       <div className="menu-container">
@@ -34,7 +35,7 @@ const LessonTopMenu = (props) => {
             <h3
               style={{
                 // color: props.primaryColor,
-                color: "#fff",
+                color: color,
               }}
             >
               {props.isLesson === true
