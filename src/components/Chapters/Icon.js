@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 function importAll(r) {
-  console.log(r);
   let icons = {};
   r.keys().map((item, index) => {
     icons[item.replace("./", "")] = r(item);
