@@ -21,19 +21,28 @@ import Settings from "./images/Settings";
 import Virus from "./images/Virus";
 
 const Achievement = (props) => {
+  let primaryColor;
+  let secondaryColor;
+  if (props.achievement.isFinished === true) {
+    primaryColor = props.primaryColor;
+    secondaryColor = props.secondaryColor;
+  } else {
+    primaryColor = "rgb(255,255,255,20%)";
+    secondaryColor = "rgb(255,255,255,20%)";
+  }
   return (
     <>
       <div className="achievement">
         <div
           className="achievement-icon"
-          style={{ backgroundColor: props.secondaryColor }}
+          style={{ backgroundColor: secondaryColor }}
         >
-          <props.image primaryColor={props.primaryColor} color={props.color} />
+          <props.image primaryColor={primaryColor} color={props.color} />
         </div>
 
         <div
           className="achievement-text"
-          style={{ backgroundColor: props.secondaryColor }}
+          style={{ backgroundColor: secondaryColor }}
         >
           <h4>{props.text1}</h4>
           <h5>{props.text2}</h5>
@@ -47,6 +56,7 @@ const Achievements = () => {
   const dispatch = useDispatch();
   const actualCourse = useSelector((state) => state.actualCourse);
   let course = useSelector((state) => state.user.courses[actualCourse]);
+  let achievements = useSelector((state) => state.user.achievements);
   let color = "#fff";
   if (course === undefined) {
     course = {
@@ -91,6 +101,7 @@ const Achievements = () => {
           secondaryColor={course.secondaryColor}
           thirdColor={course.thirdColor}
           color={color}
+          achievement={achievements[0]}
         />
         <Achievement
           text1="Wytrwały zawodnik"
@@ -100,6 +111,7 @@ const Achievements = () => {
           secondaryColor={course.secondaryColor}
           thirdColor={course.thirdColor}
           color={color}
+          achievement={achievements[1]}
         />
         <Achievement
           text1="Stały bywalec"
@@ -109,6 +121,7 @@ const Achievements = () => {
           secondaryColor={course.secondaryColor}
           thirdColor={course.thirdColor}
           color={color}
+          achievement={achievements[2]}
         />
 
         <Achievement
@@ -119,6 +132,7 @@ const Achievements = () => {
           secondaryColor={course.secondaryColor}
           thirdColor={course.thirdColor}
           color={color}
+          achievement={achievements[3]}
         />
         <Achievement
           text1="Grafik"
@@ -128,6 +142,7 @@ const Achievements = () => {
           secondaryColor={course.secondaryColor}
           thirdColor={course.thirdColor}
           color={color}
+          achievement={achievements[4]}
         />
         <Achievement
           text1="Koder"
@@ -137,6 +152,7 @@ const Achievements = () => {
           secondaryColor={course.secondaryColor}
           thirdColor={course.thirdColor}
           color={color}
+          achievement={achievements[5]}
         />
         <Achievement
           text1="Cudowne dziecko"
@@ -146,6 +162,7 @@ const Achievements = () => {
           secondaryColor={course.secondaryColor}
           thirdColor={course.thirdColor}
           color={color}
+          achievement={achievements[6]}
         />
         <Achievement
           text1="Prymus"
@@ -155,6 +172,7 @@ const Achievements = () => {
           secondaryColor={course.secondaryColor}
           thirdColor={course.thirdColor}
           color={color}
+          achievement={achievements[7]}
         />
 
         <Achievement
@@ -165,6 +183,7 @@ const Achievements = () => {
           secondaryColor={course.secondaryColor}
           thirdColor={course.thirdColor}
           color={color}
+          achievement={achievements[8]}
         />
       </div>
     </>

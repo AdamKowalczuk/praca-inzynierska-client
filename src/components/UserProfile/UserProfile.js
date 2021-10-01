@@ -31,15 +31,15 @@ const UserProfile = () => {
 
   let finishedArray = [];
 
-  // function achievementsFinishedNumber(){
-  //   let achievementsFinished=0;
-  //   courses.forEach(course => {
-  //     if(course.achievements.isFinished===true){
-  //       achievementsFinished++
-  //     }
-  //   });
-  //   return achievementsFinished
-  // }
+  function achievementsFinishedNumber() {
+    let achievementsFinished = 0;
+    user.achievements.forEach((achievement) => {
+      if (achievement.isFinished === true) {
+        achievementsFinished++;
+      }
+    });
+    return achievementsFinished;
+  }
   let firstName = "";
   let lastName = "";
   function divideName() {
@@ -111,8 +111,9 @@ const UserProfile = () => {
             <Badge primaryColor={course.primaryColor} />
             <div className="text">
               <h4>Zdobyte osiągnięcia</h4>
-              <h3 style={{ color: course.primaryColor }}>5</h3>
-              {/* <h3 style={{ color: course.primaryColor }}>{achievementsFinishedNumber()}</h3> */}
+              <h3 style={{ color: course.primaryColor }}>
+                {achievementsFinishedNumber()}
+              </h3>
             </div>
           </div>
         </div>
