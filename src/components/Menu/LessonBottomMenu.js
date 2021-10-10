@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // import { setActualChapter, setActualLesson } from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
+import { setActualExercise } from "../../actions/exercise";
 const LessonBottomMenu = (props) => {
   const dispatch = useDispatch();
 
@@ -119,6 +120,9 @@ const LessonBottomMenu = (props) => {
             to="/kursy/rozdzialy/zadania"
             rel="noreferrer"
             className="link link-menu"
+            onClick={() => {
+              dispatch(setActualExercise(0));
+            }}
           >
             <div
               style={{ backgroundColor: props.thirdIconBackground }}

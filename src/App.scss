@@ -12,6 +12,10 @@ $dark: #0c0c0d;
   font-family: Helvetica2;
   src: url("./helvetica/Helvetica.ttf");
 }
+@font-face {
+  font-family: Hack;
+  src: url("./hack/Hack-Regular.ttf");
+}
 $white: #f1f1f2;
 * {
   font-family: "Roboto", sans-serif;
@@ -37,8 +41,9 @@ body {
   // background-color: $dark;
   margin: 0 auto;
   font-family: "EB Garamond", serif;
-  // background: url("./images/stars.png");
+  background: url("./images/stars.png");
   // background: white url("./images/specks2.png");
+  background-size: contain;
   background-color: $dark;
 }
 .center {

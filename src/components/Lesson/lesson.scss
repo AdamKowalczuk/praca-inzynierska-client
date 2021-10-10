@@ -5,6 +5,8 @@ $white: #f1f1f2;
 
 .lesson-container {
   background-color: $dark;
+  background: url("../../images/stars.png");
+  background-size: contain;
   margin: 0 auto;
   height: calc(100vh - 190px);
   width: 100vw;

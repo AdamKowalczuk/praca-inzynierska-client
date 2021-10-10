@@ -3,12 +3,24 @@
   .test {
     width: 90vw;
     height: 150px;
-    background-color: orangered;
+    background-color: #282c34;
     margin: 0 5%;
     text-align: center;
     border-radius: 10px;
     margin-top: 60px;
     margin-bottom: 20px;
+    font-family: Hack;
+    text,
+    tspan {
+      font-family: Hack;
+    }
+    .html-tag {
+      fill: #e0696b;
+    }
+    .special {
+      fill: #ffed00;
+      font-weight: bolder;
+    }
   }
   .result-container {
     display: flex;
@@ -21,29 +33,30 @@
       border: 2px solid #fff;
       border-radius: 10px;
     }
+
     .options {
-      width: 45vw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .transfer-icon {
-      width: 10vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      img {
-        width: 40px;
-        height: 40px;
-        color: #fff;
-        fill: #fff;
+      width: 90%;
+      margin: 20px 5%;
+
+      h3 {
+        display: inline-flex;
+        position: relative;
+        padding: 10px;
+        margin: 7px;
+        h4 {
+          position: absolute;
+          bottom: 4px;
+          left: -12px;
+          background-color: #fff;
+          padding: 1px;
+          width: 25px;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 10px;
+          color: black;
+        }
       }
-    }
-    .answers {
-      width: 45vw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
   }
 

@@ -1,22 +1,11 @@
 $gray: #9b9b9b;
-
 $dark: #0c0c0d;
 $white: #f1f1f2;
-
 .menu-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  // .back-icon {
-  //   width: 26px;
-  //   height: 26px;
-  //   padding: 8px;
-  //   color: $white;
-  //   background-color: hsl(240, 4%, 95%, 20%);
-  //   border-radius: 10px;
-  //   margin: 4px;
-  // }
   .wireframe,
   .back-icon {
     width: 42px;
@@ -27,7 +16,8 @@ $white: #f1f1f2;
     margin: 4px;
   }
   background-color: $dark;
-  // margin-bottom: 20px;
+  background: url("../../images/stars.png");
+  background-size: contain;
   h3 {
     color: $white;
     margin: 0 auto;
@@ -84,7 +74,9 @@ $white: #f1f1f2;
 .modal {
   width: 100vw;
   height: 100vh;
-  background-color: #0c0c0d;
+  // background-color: #0c0c0d;
+  background: url("../../images/stars.png");
+  background-size: contain;
   .menu-option-container {
     display: flex;
     flex-direction: column;

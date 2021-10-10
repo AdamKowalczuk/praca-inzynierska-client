@@ -3,6 +3,8 @@ $white: #f1f1f2;
 $gray: #9b9b9b;
 .course-container {
   background-color: $dark;
+  background: url("../../../images/stars.png");
+  background-size: contain;
   margin: 0 auto;
   height: 100vh;
   width: 100vw;

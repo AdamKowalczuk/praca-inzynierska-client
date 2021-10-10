@@ -4,6 +4,7 @@ import "./quiz.scss";
 // import MenuBar from "../../images/menu-bars-black.svg";
 import "../Button/Button";
 import { setNextQuiz, updateQuiz } from "../../actions/quiz";
+import { setActualExercise } from "../../actions/exercise";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
@@ -13,7 +14,7 @@ import Trophy from "./Trophy";
 import {
   setActualChapter,
   setActualLesson,
-  setActualExercise,
+  // setActualExercise,
 } from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
 import LessonTopMenu from "../Menu/LessonTopMenu";
@@ -33,7 +34,6 @@ const Quiz = () => {
   let correctAnswer = chapter.quiz[actualQuiz].correctAnswer;
   let answers = chapter.quiz[actualQuiz].answers;
   const exercisesNumber = course.chapters[actualChapter].exercises.length;
-  // let score = 0;
   let initialState = {
     name: chapter.name,
     description: chapter.description,
@@ -41,6 +41,7 @@ const Quiz = () => {
     icon: chapter.icon,
     _id: chapter._id,
     quiz: chapter.quiz,
+    exercises: chapter.exercises,
     isQuizCompleted: false,
     actualCourse: actualCourse,
     actualChapter: actualChapter,
@@ -97,27 +98,39 @@ const Quiz = () => {
                 : "Rozdział nieukończony"}
             </h2>
             <h2>{Math.floor((quizForm.score * 100) / chapter.quiz.length)}%</h2>
-
             {exercisesNumber === 0 ? (
-              <Link
-                to="/kursy/rozdzialy/lekcje"
-                rel="noreferrer"
-                className="link"
-                onClick={() => {
-                  dispatch(setActualLesson(0));
-                  dispatch(setActualChapter(actualChapter + 1));
-                  dispatch(setActualQuiz(0));
-                  dispatch(setActualExercise(0));
-                }}
-              >
-                <Button
-                  text="Przejdź do następnego rozdziału"
-                  class="btn btn_white"
-                  primaryColor={course.primaryColor}
-                  secondaryColor={course.secondaryColor}
-                  borderColor={course.primaryColor}
-                />
-              </Link>
+              [
+                actualChapter ===
+                course.chapters.length -
+                  1 ? //     text="Ukończono kurs! Powrót" //   <Button // <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
+                //     class="btn btn_white"
+                //     primaryColor={course.primaryColor}
+                //     secondaryColor={course.secondaryColor}
+                //     borderColor={course.primaryColor}
+                //   />
+                // </Link>
+                null : (
+                  <Link
+                    to="/kursy/rozdzialy/lekcje"
+                    rel="noreferrer"
+                    className="link"
+                    onClick={() => {
+                      dispatch(setActualLesson(0));
+                      dispatch(setActualChapter(actualChapter + 1));
+                      dispatch(setActualQuiz(0));
+                      dispatch(setActualExercise(0));
+                    }}
+                  >
+                    <Button
+                      text="Przejdź do następnego rozdziału"
+                      class="btn btn_white"
+                      primaryColor={course.primaryColor}
+                      secondaryColor={course.secondaryColor}
+                      borderColor={course.primaryColor}
+                    />
+                  </Link>
+                ),
+              ]
             ) : (
               <Link
                 to="/kursy/rozdzialy/zadania"
@@ -146,7 +159,6 @@ const Quiz = () => {
                 borderColor={course.primaryColor}
               />
             </Link> */}
-
             <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
               <Button
                 text="Powrót"
