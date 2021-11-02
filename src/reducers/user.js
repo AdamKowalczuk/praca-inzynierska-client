@@ -1,4 +1,9 @@
-import { SET_USER, UPDATE_LESSON, UPDATE_QUIZ } from "../constants/actionTypes";
+import {
+  SET_USER,
+  UPDATE_LESSON,
+  UPDATE_QUIZ,
+  UPDATE_EXERCISE,
+} from "../constants/actionTypes";
 
 const user = (user = [], action) => {
   switch (action.type) {
@@ -24,6 +29,17 @@ const user = (user = [], action) => {
         return course;
       });
       return updatedQuiz;
+
+    case UPDATE_EXERCISE:
+      let updatedExercise = user;
+      updatedExercise.courses.map((course) => {
+        if (course._id === action.courseId) {
+          console.log(course._id, action.courseId);
+          course.chapters[action.actualChapter].exercises = action.form;
+        }
+        return course;
+      });
+      return updatedExercise;
     default:
       return user;
   }

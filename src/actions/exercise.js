@@ -1,4 +1,4 @@
-// import { UPDATE_EXERCISE } from "../constants/actionTypes";
+import { UPDATE_EXERCISE } from "../constants/actionTypes";
 
 import * as api from "../api/index.js";
 
@@ -15,19 +15,23 @@ export const setNextExercise = (actualExercise) => {
     payload: actualExercise + 1,
   };
 };
-// export const updateQuiz =
-//   (form, userId, courseId, chapterId, actualChapter, isQuizCompleted) =>
-//   async (dispatch) => {
-//     try {
-//       // const { data } = await api.updateQuiz(form, userId, courseId, chapterId);
-//       await api.updateQuiz(form, userId, courseId, chapterId);
-//       dispatch({
-//         type: UPDATE_QUIZ,
-//         courseId: courseId,
-//         actualChapter: actualChapter,
-//         isQuizCompleted: isQuizCompleted,
-//       });
-//     } catch (error) {
-//       console.log(error.message);
-//     }
-//   };
+
+export const updateExercise =
+  (form, userId, courseId, chapterId, actualChapter, actualExercise) =>
+  async (dispatch) => {
+    try {
+      console.log("FORM IN ", form);
+
+      // const { data } = await api.updateQuiz(form, userId, courseId, chapterId);
+      await api.updateExercise(form, userId, courseId, chapterId);
+      dispatch({
+        type: UPDATE_EXERCISE,
+        form: form,
+        courseId: courseId,
+        actualChapter: actualChapter,
+        // actualExercise: actualExercise,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };

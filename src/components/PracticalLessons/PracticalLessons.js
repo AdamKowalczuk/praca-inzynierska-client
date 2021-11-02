@@ -1,54 +1,28 @@
 import React, { useState } from "react";
 import LessonBottomMenu from "../Menu/LessonBottomMenu";
-import {
-  // useDispatch,
-  useSelector,
-} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Menu from "../Menu/Menu";
+
 import { setNextExercise, updateExercise } from "../../actions/exercise";
 import "./PracticalLessons.scss";
 import Undo from "./images/Undo";
+import { Link } from "react-router-dom";
 import Transfer from "./images/transfer.svg";
 const PracticalLessons = () => {
+  const dispatch = useDispatch();
   const actualCourse = useSelector((state) => state.actualCourse);
   const actualChapter = useSelector((state) => state.actualChapter);
+  const userId = useSelector((state) => state.user._id);
+
+  let actualExercise = useSelector((state) => state.actualExercise);
   const course = useSelector((state) => state.user.courses[actualCourse]);
+  const courseId = useSelector((state) => state.user.courses[actualCourse]._id);
+  const chapterId = course._id;
   const [completed, setCompleted] = useState("");
-  let [options, setOptions] = useState(
-    // course.chapters[actualChapter].exercises
-    [
-      {
-        name: "</h1>",
-        correctNumber: 1,
-        isUsed: false,
-        selectedNumber: "",
-      },
-      {
-        name: "</h2>",
-        correctNumber: 3,
-        isUsed: false,
-        selectedNumber: "",
-      },
-      {
-        name: "</br>",
-        correctNumber: 2,
-        isUsed: false,
-        selectedNumber: "",
-      },
-      {
-        name: "<br>",
-        correctNumber: "",
-        isUsed: false,
-        selectedNumber: "",
-      },
-      {
-        name: "<h1>",
-        correctNumber: "",
-        isUsed: false,
-        selectedNumber: "",
-      },
-    ]
-  );
+  const [form, setForm] = useState(course.chapters[actualChapter].exercises);
+  console.log(form);
+  let exercises = course.chapters[actualChapter].exercises;
+  let [options, setOptions] = useState(exercises[actualExercise].options);
   let [answers, setAnswers] = useState(() => declareAnswers());
   const limit = options.length - 1;
   let isUsedNumber = 0;
@@ -122,7 +96,6 @@ const PracticalLessons = () => {
       }
     }
     changeAnswersArray();
-    console.log("OPTIONS", options);
   }
 
   function backward(e, id) {
@@ -142,12 +115,11 @@ const PracticalLessons = () => {
         }
       }
     }
-    console.log("ANSWERS", answers);
   }
   function checkAnswer() {
     let result = true;
     for (let i = 0; i < options.length; i++) {
-      if (options[i].correctNumber === options[i].selectedNumber) {
+      if (options[i].correctNumber == options[i].selectedNumber) {
       } else {
         result = false;
         break;
@@ -156,9 +128,14 @@ const PracticalLessons = () => {
     if (result === true) {
       setCompleted(true);
     } else {
+      let element = document.getElementById("practical-lesson-wrong-answer");
+      if (element !== null) {
+        element.style.animation = "none";
+        element.offsetHeight; /* trigger reflow */
+        element.style.animation = null;
+      }
       setCompleted(false);
     }
-    console.log(result);
     return result;
   }
   return (
@@ -243,17 +220,108 @@ const PracticalLessons = () => {
         </div>
         <div className="buttons-container">
           <div className="check-answer-container">
-            <h4
-              style={{
-                backgroundColor: course.secondaryColor,
-                color: course.primaryColor,
-              }}
-              onClick={() => checkAnswer()}
-            >
-              {completed === false
-                ? "Błąd! Sprawdź jeszcze raz"
-                : [completed === "" ? "Sprawdź" : "Poprawnie! Przejdź dalej"]}
-            </h4>
+            {completed === false ? (
+              <h4
+                style={{
+                  backgroundColor: course.secondaryColor,
+                  color: course.primaryColor,
+                }}
+                id="practical-lesson-wrong-answer"
+                className="shake"
+                onClick={() => checkAnswer()}
+              >
+                Błąd! Sprawdź jeszcze raz
+              </h4>
+            ) : (
+              [
+                completed === "" ? (
+                  <h4
+                    style={{
+                      backgroundColor: course.secondaryColor,
+                      color: course.primaryColor,
+                    }}
+                    onClick={() => checkAnswer()}
+                  >
+                    Sprawdź
+                  </h4>
+                ) : (
+                  <>
+                    <div className="practical-lesson-button-container">
+                      <Link
+                        to="/kursy/rozdzialy/"
+                        rel="noreferrer"
+                        className="link"
+                      >
+                        <h4
+                          style={{
+                            backgroundColor: course.secondaryColor,
+                            color: course.primaryColor,
+                          }}
+                          onClick={
+                            course.chapters[actualChapter].exercises.length -
+                              1 >
+                            actualExercise
+                              ? () => {
+                                  setForm(
+                                    [...form],
+                                    (form[actualExercise].isFinished = true)
+                                  );
+                                  setOptions(
+                                    exercises[actualExercise + 1].options
+                                  );
+                                  dispatch(setNextExercise(actualExercise));
+                                  // setOptions(
+                                  //   [...options],
+                                  //   (options.isFinished = true)
+                                  // );
+
+                                  setCompleted("");
+                                  console.log("FORM2", form);
+                                  console.log("bląd w updateExercise");
+                                  dispatch(
+                                    updateExercise(
+                                      form,
+                                      userId,
+                                      courseId,
+                                      chapterId,
+                                      // form._id
+                                      actualChapter,
+                                      actualExercise
+                                    )
+                                  );
+                                }
+                              : null
+                          }
+
+                          // onClick={() => checkAnswer()}
+                        >
+                          Poprawna odpowiedź!
+                          <br /> Zakończ
+                        </h4>
+                      </Link>
+                      {/* <Link
+                        to="/kursy/rozdzialy"
+                        rel="noreferrer"
+                        className="link"
+                        style={{ color: "#fff" }}
+                      >
+                        <h4
+                          style={{
+                            backgroundColor: course.secondaryColor,
+                            // color: course.primaryColor,
+                            marginTop: "10px",
+                            width: "auto",
+                          }}
+                          // onClick={() => checkAnswer()}
+                        >
+                          Powrót
+                        </h4>
+                      </Link> */}
+                    </div>
+                  </>
+                ),
+              ]
+            )}
           </div>
         </div>
       </div>
