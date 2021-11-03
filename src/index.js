@@ -7,6 +7,7 @@ import thunk from "redux-thunk";
 import { reducers } from "./reducers";
 import App from "./App";
 import "./App.scss";
+// import * as serviceWorker from "../public/serviceWorker";
 const composeEnhancers =
   (typeof window !== "undefined" &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
@@ -20,11 +21,12 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// navigator.serviceWorker.getRegistrations().then(function (registrations) {
-//   for (let registration of registrations) {
-//     registration.unregister();
-//   }
-// });
-
-// serviceWorker.unregister();
-// serviceWorker.register();
+if ("serviceWorker" in navigator) {
+  console.log("Service Worker Supported");
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/serviceWorker.js")
+      .then((reg) => console.log("Service worker registered"))
+      .catch((err) => console.log(`Service worker error:${err}`));
+  });
+}

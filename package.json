@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "chart.js": "^3.5.1",
+    "chokidar": "^3.5.2",
     "eslint-plugin-react-hooks": "^4.2.1-alpha-bfa50f827-20210712",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",
@@ -23,7 +24,9 @@
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
-    "sass": "^1.35.1"
+    "sass": "^1.35.1",
+    "workbox-build": "^6.3.0",
+    "workbox-sw": "^6.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -62,5 +65,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sw-precache-webpack-plugin": "^1.0.0"
   }
 }
