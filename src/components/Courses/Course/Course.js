@@ -64,6 +64,7 @@ const Course = (props, { setCurrentId }) => {
             <ButtonRight
               text="Dalej"
               // backgroundColor={course.primaryColor}
+
               color="#fff"
               class="btn btn_right2"
             />

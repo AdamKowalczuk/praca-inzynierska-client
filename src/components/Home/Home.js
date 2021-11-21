@@ -1,6 +1,7 @@
 import React, { useState, useEffect, lazy } from "react";
 import { useDispatch } from "react-redux";
 import TravelingImage from "../../images/traveling.svg";
+import Webfront from "../../images/Webfront-svg.svg";
 import Dots from "./Dots";
 import Navbar from "../Navbar/Navbar";
 
@@ -44,8 +45,9 @@ const Home = () => {
     <>
       <Navbar />
       <div className="home-container">
-        <div className="title center">WebFront</div>
+        <div className="title center ">WebFront</div>
         <img src={TravelingImage} alt="Traveling" width="640" height="360" />
+        {/* <img src={Webfront} alt="Traveling" width="640" height="360" /> */}
         <Dots />
       </div>
     </>

@@ -10,6 +10,7 @@ import useStyles from "./styles";
 import Input from "./Input";
 import GoogleIcon from "../../images/google.svg";
 import SecureLogin from "../../images/secure_login.svg";
+import Webfront from "../../images/Webfront-svg.svg";
 import "./auth.scss";
 import "./input.scss";
 
@@ -114,7 +115,7 @@ const SignUp = () => {
       <div className="auth-container">
         <form onSubmit={handleSubmit}>
           <div className="form-container">
-            {isSignup ? null : <img src={SecureLogin} alt="Secure Login" />}
+            {isSignup ? null : <img src={Webfront} alt="WebFront logo" />}
             {isSignup && (
               <>
                 <div className="input-container">

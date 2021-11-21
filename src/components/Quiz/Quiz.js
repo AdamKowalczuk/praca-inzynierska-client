@@ -33,7 +33,14 @@ const Quiz = () => {
   let question = chapter.quiz[actualQuiz].question;
   let correctAnswer = chapter.quiz[actualQuiz].correctAnswer;
   let answers = chapter.quiz[actualQuiz].answers;
-  const exercisesNumber = course.chapters[actualChapter].exercises.length;
+
+  // const exercisesNumber = course.chapters[actualChapter].exercises.length;
+  let exercisesNumber;
+  if (course.chapters[actualChapter].exercises === undefined) {
+    exercisesNumber = 0;
+  } else {
+    exercisesNumber = course.chapters[actualChapter].exercises.length;
+  }
   let initialState = {
     name: chapter.name,
     description: chapter.description,
@@ -102,9 +109,7 @@ const Quiz = () => {
               [
                 actualChapter ===
                 course.chapters.length -
-                  1 ? //     text="Ukończono kurs! Powrót" //   <Button // <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
-                //     class="btn btn_white"
-                //     primaryColor={course.primaryColor}
+                  1 ? //     primaryColor={course.primaryColor} //     class="btn btn_white" //     text="Ukończono kurs! Powrót" //   <Button // <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
                 //     secondaryColor={course.secondaryColor}
                 //     borderColor={course.primaryColor}
                 //   />

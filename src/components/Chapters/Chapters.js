@@ -15,7 +15,13 @@ import Icon from "./Icon";
 const Chapter = (props) => {
   const dispatch = useDispatch();
   let isQuizCompleted = props.chapter.isQuizCompleted;
-  let exercisesNumber = props.chapter.exercises.length;
+  let exercisesNumber;
+  if (props.chapter.exercises === undefined) {
+    exercisesNumber = 0;
+  } else {
+    exercisesNumber = props.chapter.exercises.length;
+  }
+
   function sumCompletedLessons() {
     let sum = 0;
     props.chapter.lessons.forEach((lesson) => {
@@ -59,7 +65,7 @@ const Chapter = (props) => {
                 </h3>
                 <h4 style={{ color: props.primaryColor, opacity: 0.5 }}>
                   {sumCompletedLessons()}/{props.chapter.lessons.length}{" "}
-                  Completed
+                  Ukończonych
                 </h4>
               </>
             ) : (

@@ -24,7 +24,9 @@ const LessonTopMenu = (props) => {
           />
           {/* </Link> */}
 
-          <h3>{props.text}</h3>
+          <h3 className="bungee" style={{ lineHeight: "1", marginTop: "4px" }}>
+            {props.text}
+          </h3>
           <div
             className="lesson-number"
             style={{

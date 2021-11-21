@@ -39,6 +39,9 @@ $white: #f1f1f2;
   width: 45%;
   justify-content: space-between;
   font-size: 18px;
+  h3 {
+    margin: 0;
+  }
   .arrow-icon {
     margin-right: 10px;
   }
@@ -52,6 +55,10 @@ $white: #f1f1f2;
   display: flex;
   .arrow-icon {
     margin-right: 10px;
+  }
+  h3 {
+    margin: 0;
+    font-size: 18px;
   }
   background-color: $dark;
   color: $white;

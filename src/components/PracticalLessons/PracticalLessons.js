@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import LessonBottomMenu from "../Menu/LessonBottomMenu";
 import { useDispatch, useSelector } from "react-redux";
 import Menu from "../Menu/Menu";
-
-import { setNextExercise, updateExercise } from "../../actions/exercise";
+import {
+  setNextExercise,
+  updateExercise,
+  setActualExercise,
+} from "../../actions/exercise";
 import "./PracticalLessons.scss";
 import Undo from "./images/Undo";
 import { Link } from "react-router-dom";
@@ -151,7 +154,7 @@ const PracticalLessons = () => {
 
       <Menu
         link="/kursy/rozdzialy"
-        text="Uzupełnij kod tak, aby wyświetlić napis Hello World"
+        text="Uzupełnij kod tak, aby pomiędzy nagłówkami znajdowała się pozioma linia"
         isColored={true}
         primaryColor={course.primaryColor}
         secondaryColor={course.secondaryColor}
@@ -257,41 +260,44 @@ const PracticalLessons = () => {
                             backgroundColor: course.secondaryColor,
                             color: course.primaryColor,
                           }}
-                          onClick={
-                            course.chapters[actualChapter].exercises.length -
-                              1 >
-                            actualExercise
-                              ? () => {
-                                  setForm(
-                                    [...form],
-                                    (form[actualExercise].isFinished = true)
-                                  );
-                                  setOptions(
-                                    exercises[actualExercise + 1].options
-                                  );
-                                  dispatch(setNextExercise(actualExercise));
-                                  // setOptions(
-                                  //   [...options],
-                                  //   (options.isFinished = true)
-                                  // );
+                          onClick={() => {
+                            dispatch(setActualExercise(""));
+                          }}
+                          // onClick={
+                          //   course.chapters[actualChapter].exercises.length -
+                          //     1 >
+                          //   actualExercise
+                          //     ? () => {
+                          //         setForm(
+                          //           [...form],
+                          //           (form[actualExercise].isFinished = true)
+                          //         );
+                          //         setOptions(
+                          //           exercises[actualExercise + 1].options
+                          //         );
+                          //         dispatch(setNextExercise(actualExercise));
+                          //         // setOptions(
+                          //         //   [...options],
+                          //         //   (options.isFinished = true)
+                          //         // );
 
-                                  setCompleted("");
-                                  console.log("FORM2", form);
-                                  console.log("bląd w updateExercise");
-                                  dispatch(
-                                    updateExercise(
-                                      form,
-                                      userId,
-                                      courseId,
-                                      chapterId,
-                                      // form._id
-                                      actualChapter,
-                                      actualExercise
-                                    )
-                                  );
-                                }
-                              : null
-                          }
+                          //         // setCompleted("");
+                          //         // console.log("FORM2", form);
+                          //         // console.log("bląd w updateExercise");
+                          //         // dispatch(
+                          //         //   updateExercise(
+                          //         //     form,
+                          //         //     userId,
+                          //         //     courseId,
+                          //         //     chapterId,
+                          //         //     // form._id
+                          //         //     actualChapter,
+                          //         //     actualExercise
+                          //         //   )
+                          //         // );
+                          //       }
+                          //     : null
+                          // }
 
                           // onClick={() => checkAnswer()}
                         >

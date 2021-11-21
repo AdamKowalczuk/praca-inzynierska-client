@@ -10,7 +10,7 @@ const Button = (props) => {
       aria-label={props.text}
       style={{ backgroundColor: props.backgroundColor, color: props.color }}
     >
-      <p>{props.text}</p>
+      <h3 className="bungee">{props.text}</h3>
       <ArrowForwardIosIcon className="arrow-icon" />
     </button>
   );

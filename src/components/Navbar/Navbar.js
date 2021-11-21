@@ -50,7 +50,7 @@ const Navbar = () => {
         </div>
       ) : (
         <Link to="/auth" rel="noreferrer">
-          <ButtonRight text="Next" class="btn btn_right" />
+          <ButtonRight text="Dalej" class="btn btn_right" />
         </Link>
       )}
     </>

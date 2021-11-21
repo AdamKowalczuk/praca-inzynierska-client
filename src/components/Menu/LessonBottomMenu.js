@@ -13,7 +13,13 @@ const LessonBottomMenu = (props) => {
   const actualCourse = useSelector((state) => state.actualCourse);
   const actualChapter = useSelector((state) => state.actualChapter);
   const course = useSelector((state) => state.user.courses[actualCourse]);
-  const exercisesNumber = course.chapters[actualChapter].exercises.length;
+  // const exercisesNumber = course.chapters[actualChapter].exercises.length;
+  let exercisesNumber;
+  if (course.chapters[actualChapter].exercises === undefined) {
+    exercisesNumber = 0;
+  } else {
+    exercisesNumber = course.chapters[actualChapter].exercises.length;
+  }
   const chapter = useSelector(
     (state) => state.user.courses[actualCourse].chapters[actualChapter]
   );

@@ -57,7 +57,12 @@ const Menu = (props) => {
               />
             </div>
 
-            <h3 className={props.changeAlign === true ? "changeAlign" : null}>
+            <h3
+              className={
+                props.changeAlign === true ? "changeAlign bungee" : "bungee"
+              }
+              style={{ lineHeight: "1.1", marginTop: "4px" }}
+            >
               {props.text}
             </h3>
             <div className="menu-icon" onClick={() => handleOpen()}>
@@ -72,7 +77,7 @@ const Menu = (props) => {
         ) : (
           <>
             <div style={{ height: "50px", width: "50px" }}></div>
-            <h3>{props.text}</h3>
+            <h3 className="bungee">{props.text}</h3>
             <div className="menu-icon" onClick={() => handleOpen()}>
               <Wireframe primaryColor="rgb(255, 255, 255,20%)" color={color} />
             </div>
