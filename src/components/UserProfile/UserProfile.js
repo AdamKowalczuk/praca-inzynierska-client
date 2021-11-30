@@ -7,15 +7,18 @@ import Badge from "./images/Badge";
 import Rocket from "./images/Rocket";
 import Space from "./images/Space";
 import { useDispatch, useSelector } from "react-redux";
+import { deleteUser } from "../../actions/user";
 import moment from "moment";
+import { useHistory } from "react-router-dom";
+import * as actionType from "../../constants/actionTypes";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  let user = useSelector((state) => state.user);
   const actualCourse = useSelector((state) => state.actualCourse);
-  const course = useSelector((state) => state.user.courses[actualCourse]);
+  let course = useSelector((state) => state.user.courses[actualCourse]);
   const courses = useSelector((state) => state.user.courses);
-
+  const history = useHistory();
   let color = "#fff";
   if (course === undefined) {
     course = {
@@ -79,6 +82,14 @@ const UserProfile = () => {
     finishedArray = [finishedCourses, finishedChapters, finishedLessons];
   }
   finishedList();
+  function confirmation() {
+    var result = confirm("Czy na pewno chcesz usunąć konto?");
+    if (result) {
+      dispatch(deleteUser(user._id));
+      dispatch({ type: actionType.LOGOUT });
+      history.push("/auth");
+    }
+  }
   return (
     <>
       <Menu text="Mój profil" link="/kursy" isColored={true} />
@@ -159,6 +170,16 @@ const UserProfile = () => {
               </h2>
             </div>
           </div>
+        </div>
+        <div className="delete-account center">
+          <button
+            className="btn_dark"
+            onClick={() => {
+              confirmation();
+            }}
+          >
+            Usuń konto
+          </button>
         </div>
       </div>
     </>

@@ -77,20 +77,22 @@ const SignUp = () => {
     form.courses = courses;
     if (isSignup) {
       dispatch(signup(form, history));
+      console.log(form);
     } else {
       dispatch(signin(form, history));
+      console.log(form);
     }
   };
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
-    // console.log(result);
-    // console.log(token);
-    // form.email = result.email;
-    // form.name = result.name;
-    // form._id = result.id;
-    // console.log(form);
+    console.log(result);
+    console.log(token);
+    form.email = result.email;
+    form.name = result.name;
+    form._id = result.id;
+    console.log(form);
     // if (isSignup) {
     //   dispatch(signup(form, history));
     // } else {
@@ -174,7 +176,7 @@ const SignUp = () => {
             ></Button2>
           )}
 
-          <GoogleLogin
+          {/* <GoogleLogin
             clientId="1059000716878-tdrbkt42bqtungoq080mht743uu0vf04.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button
@@ -198,7 +200,7 @@ const SignUp = () => {
             onSuccess={googleSuccess}
             onFailure={googleError}
             cookiePolicy="single_host_origin"
-          />
+          /> */}
           <Grid container justify="flex-end">
             <Grid item>
               <Button

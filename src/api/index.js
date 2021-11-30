@@ -37,3 +37,5 @@ export const updateExercise = (form, userId, courseId, chapterId) =>
     `${url_user}/${userId}/courses/${courseId}/chapters/${chapterId}`,
     form
   );
+
+export const deleteUser = (id) => axios.delete(`${url_user}/${id}`);

@@ -1,4 +1,4 @@
-import { FETCH_ALL_USERS } from "../constants/actionTypes";
+import { FETCH_ALL_USERS, DELETE_USER } from "../constants/actionTypes";
 
 import * as api from "../api/index.js";
 
@@ -16,4 +16,13 @@ export const setUser = (user) => {
     type: "SET_USER",
     payload: user,
   };
+};
+export const deleteUser = (id) => async (dispatch) => {
+  try {
+    await api.deleteUser(id);
+
+    // dispatch({ type: DELETE_USER, payload: id });
+  } catch (error) {
+    console.log(error.message);
+  }
 };
