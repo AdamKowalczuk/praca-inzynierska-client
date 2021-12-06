@@ -20,14 +20,19 @@ const Menu = (props) => {
   let course = useSelector((state) => state.user.courses[actualCourse]);
   if (course === undefined) {
     course = {
-      primaryColor: "rgb(255, 255, 255,20%)",
+      primaryColor: "rgb(255, 255, 255,100%)",
       secondaryColor: "rgb(255, 255, 255,20%)",
       thirdColor: "rgb(255, 255, 255)",
     };
   }
   let color = "#fff";
+
   if (course.name === "JavaScript") {
-    color = "#000";
+    if (props.secondColor !== undefined) {
+      color = "#fff";
+    } else {
+      color = "#000";
+    }
   }
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {

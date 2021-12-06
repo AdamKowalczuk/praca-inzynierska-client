@@ -40,7 +40,7 @@ const Course = (props, { setCurrentId }) => {
         // style={{ color: course.primaryColor }}
         style={{ color: "#fff" }}
       >
-        <Menu text={course.name} link="/kursy" />
+        <Menu text={course.name} link="/kursy" secondColor="#fff" />
         <img src={Teacher} className="course-big-image" alt="Teacher" />
 
         <p className="course-description">{course.description}</p>

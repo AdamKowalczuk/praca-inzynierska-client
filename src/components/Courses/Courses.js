@@ -99,7 +99,7 @@ const Courses = ({ setCurrentId }) => {
   dispatch(setUser(user));
   return (
     <>
-      <Menu text="" link="/kursy" />
+      <Menu text="" link="/kursy" secondColor="#fff" />
       <div className="courses-container">
         {/* <img src={RoadSign} className="courses-big-image" alt="Book Lover" /> */}
         <div className="welcome-container">

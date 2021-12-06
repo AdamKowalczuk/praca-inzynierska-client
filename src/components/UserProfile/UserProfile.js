@@ -20,7 +20,9 @@ const UserProfile = () => {
   const courses = useSelector((state) => state.user.courses);
   const history = useHistory();
   let color = "#fff";
+  let isColored = true;
   if (course === undefined) {
+    isColored = false;
     course = {
       primaryColor: "rgb(255, 255, 255,40%)",
       secondaryColor: "rgb(255, 255, 255,20%)",
@@ -92,7 +94,7 @@ const UserProfile = () => {
   }
   return (
     <>
-      <Menu text="Mój profil" link="/kursy" isColored={true} />
+      <Menu text="Mój profil" link="/kursy" isColored={isColored} />
       <div className="profile-container">
         <div className="basic-info">
           <Space

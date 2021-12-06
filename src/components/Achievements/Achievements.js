@@ -146,7 +146,9 @@ const Achievements = () => {
   let course = useSelector((state) => state.user.courses[actualCourse]);
   let achievements = useSelector((state) => state.user.achievements);
   let color = "#fff";
+  let isColored = true;
   if (course === undefined) {
+    isColored = false;
     course = {
       primaryColor: "rgb(255, 255, 255,40%)",
       secondaryColor: "rgb(255, 255, 255,20%)",
@@ -172,7 +174,7 @@ const Achievements = () => {
   }
   return (
     <>
-      <Menu text="Osiągnięcia" link="/kursy" isColored={true} />
+      <Menu text="Osiągnięcia" link="/kursy" isColored={isColored} />
       <div className="achievements-container">
         {/* <Winners
           primaryColor={course.primaryColor}
