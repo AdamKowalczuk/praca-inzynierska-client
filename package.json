@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "chart.js": "^3.5.1",
     "chokidar": "^3.5.2",
+    "date-diff": "^1.0.2",
     "eslint-plugin-react-hooks": "^4.2.1-alpha-bfa50f827-20210712",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import BackIcon from "../Menu/icons/BackIcon";
 import Menu from "../Menu/Menu";
 import { useDispatch, useSelector } from "react-redux";
+import { finishAchievement } from "../../actions/user";
 import Mission from "./images/Mission";
 import HTML from "./images/winners-orange.svg";
 import CSS from "./images/winners-blue.svg";
@@ -20,7 +21,14 @@ import Ringing from "./images/Ringing";
 import Settings from "./images/Settings";
 import Virus from "./images/Virus";
 
+import moment from "moment";
+import DateDiff from "date-diff";
+
 const Achievement = (props) => {
+  const dispatch = useDispatch();
+  let user = useSelector((state) => state.user);
+  let courses = useSelector((state) => state.user.courses);
+  let userId = user._id;
   let primaryColor;
   let secondaryColor;
   if (props.achievement.isFinished === true) {
@@ -29,6 +37,85 @@ const Achievement = (props) => {
   } else {
     primaryColor = "rgb(255,255,255,20%)";
     secondaryColor = "rgb(255,255,255,20%)";
+  }
+
+  let startDateYear = moment().format("YYYY");
+  let startDateMonth = moment().format("MM");
+  let startDateDay = moment().format("DD");
+  var startDate = new Date(startDateYear, startDateMonth, startDateDay);
+
+  let year = moment(user.createdAt).format("YYYY");
+  let month = moment(user.createdAt).format("MM");
+  let day = moment(user.createdAt).format("DD");
+  var date2 = new Date(year, month, day);
+  var diff = new DateDiff(startDate, date2);
+  function IsRegisteredByWeek() {
+    if (diff.days() >= 7) {
+      dispatch(finishAchievement(userId, 1));
+    }
+  }
+
+  function IsRegisteredByMonth() {
+    if (diff.days() >= 30) {
+      dispatch(finishAchievement(userId, 2));
+    }
+  }
+
+  function IsCoursesFinished() {
+    if (courses[0].isFinished === true) {
+      dispatch(finishAchievement(userId, 3));
+    }
+    if (courses[1].isFinished === true) {
+      dispatch(finishAchievement(userId, 4));
+    }
+    if (courses[2].isFinished === true) {
+      dispatch(finishAchievement(userId, 5));
+    }
+    if (
+      courses[0].isFinished === true &&
+      courses[1].isFinished === true &&
+      courses[2].isFinished === true
+    ) {
+      dispatch(finishAchievement(userId, 8));
+    }
+    function sumExercises() {
+      let sum = 0;
+      courses.map((course) => {
+        course.chapters.map((chapter) => {
+          chapter.exercises.map((exercise) => {
+            if (exercise.isFinished) {
+              sum++;
+            }
+          });
+        });
+      });
+      if (sum >= 10) {
+        dispatch(finishAchievement(userId, 7));
+      }
+    }
+    function sumQuizes() {
+      let sum = 0;
+      courses.map((course) => {
+        course.chapters.map((chapter) => {
+          chapter.quiz.map((singlequiz) => {
+            if (singlequiz.isFinished) {
+              sum++;
+            }
+          });
+        });
+      });
+      if (sum >= 10) {
+        dispatch(finishAchievement(userId, 6));
+      }
+    }
+    function checkAchievements() {
+      IsRegisteredByWeek();
+      IsRegisteredByMonth();
+      IsCoursesFinished();
+      sumQuizes();
+      // sumExercises()
+    }
+    checkAchievements();
   }
   return (
     <>
@@ -55,6 +142,7 @@ const Achievement = (props) => {
 const Achievements = () => {
   const dispatch = useDispatch();
   const actualCourse = useSelector((state) => state.actualCourse);
+
   let course = useSelector((state) => state.user.courses[actualCourse]);
   let achievements = useSelector((state) => state.user.achievements);
   let color = "#fff";
@@ -156,7 +244,7 @@ const Achievements = () => {
         />
         <Achievement
           text1="Cudowne dziecko"
-          text2="Oblej quiz 10 razy"
+          text2="Ukończ quiz 10 razy"
           image={Carving}
           primaryColor={course.primaryColor}
           secondaryColor={course.secondaryColor}

@@ -3,6 +3,7 @@ import {
   UPDATE_LESSON,
   UPDATE_QUIZ,
   UPDATE_EXERCISE,
+  FINISH_ACHIEVEMENT,
 } from "../constants/actionTypes";
 
 const user = (user = [], action) => {
@@ -34,12 +35,13 @@ const user = (user = [], action) => {
       let updatedExercise = user;
       updatedExercise.courses.map((course) => {
         if (course._id === action.courseId) {
-          console.log(course._id, action.courseId);
           course.chapters[action.actualChapter].exercises = action.form;
         }
         return course;
       });
       return updatedExercise;
+    case FINISH_ACHIEVEMENT:
+      user.achievements[action.achievementId].isFinished = true;
     default:
       return user;
   }

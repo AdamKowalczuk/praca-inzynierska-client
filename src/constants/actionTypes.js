@@ -19,6 +19,7 @@ export const ADD_USER_COURSES = "ADD_USER_COURSES";
 export const FETCH_ALL_USER_COURSES = "FETCH_ALL_USER_COURSES";
 export const UPDATE_QUIZ = "UPDATE_QUIZ";
 export const UPDATE_EXERCISE = "UPDATE_EXERCISE";
+export const FINISH_ACHIEVEMENT = "FINISH_ACHIEVEMENT";
 
 export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";

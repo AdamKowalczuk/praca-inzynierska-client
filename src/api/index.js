@@ -39,3 +39,6 @@ export const updateExercise = (form, userId, courseId, chapterId) =>
   );
 
 export const deleteUser = (id) => axios.delete(`${url_user}/${id}`);
+
+export const finishAchievement = (userId, achievementId) =>
+  axios.patch(`${url_user}/${userId}/achievements`, achievementId);

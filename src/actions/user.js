@@ -1,4 +1,8 @@
-import { FETCH_ALL_USERS, DELETE_USER } from "../constants/actionTypes";
+import {
+  FETCH_ALL_USERS,
+  DELETE_USER,
+  FINISH_ACHIEVEMENT,
+} from "../constants/actionTypes";
 
 import * as api from "../api/index.js";
 
@@ -26,3 +30,13 @@ export const deleteUser = (id) => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const finishAchievement =
+  (userId, achievementId) => async (dispatch) => {
+    try {
+      await api.finishAchievement(userId, { achievementId: achievementId });
+      dispatch({ type: FINISH_ACHIEVEMENT, achievementId: achievementId });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };

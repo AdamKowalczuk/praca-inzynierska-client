@@ -42,7 +42,7 @@ const initialState = {
     { name: "Koder", description: "Ukończ kurs JavaScript", isFinished: false },
     {
       name: "Cudowne dziecko",
-      description: "Oblej quiz 10 razy",
+      description: "Ukończ quiz 10 razy",
       isFinished: false,
     },
     { name: "Prymus", description: "Ukończ 10 zadań", isFinished: false },
