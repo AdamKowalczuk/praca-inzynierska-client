@@ -1,9 +1,9 @@
 .practical-lesson {
   color: #fff;
   margin-top: 30px;
-  .test {
+  .practical {
     width: 90vw;
-    height: 150px;
+    // height: 150px;
     background-color: #282c34;
     margin: 0 5%;
     text-align: center;
@@ -11,12 +11,22 @@
     margin-top: 60px;
     margin-bottom: 20px;
     font-family: Hack;
+
     text,
     tspan {
       font-family: Hack;
     }
     .html-tag {
       fill: #e0696b;
+    }
+    .css-tag {
+      fill: rgb(86, 182, 194);
+    }
+    .variable {
+      fill: #c678dd;
+    }
+    .javascript-name {
+      fill: #e5c07b;
     }
     .special {
       fill: #ffed00;

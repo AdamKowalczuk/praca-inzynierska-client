@@ -11,6 +11,34 @@ import "./PracticalLessons.scss";
 import Undo from "./images/Undo";
 import { Link } from "react-router-dom";
 import Transfer from "./images/transfer.svg";
+import HtmlChapter2_1 from "./PracticalLesson/HTML/HtmlChapter2_1";
+import HtmlChapter2_2 from "./PracticalLesson/HTML/HtmlChapter2_2";
+import HtmlChapter3_1 from "./PracticalLesson/HTML/HtmlChapter3_1";
+import HtmlChapter3_2 from "./PracticalLesson/HTML/HtmlChapter3_2";
+import HtmlChapter4_1 from "./PracticalLesson/HTML/HtmlChapter4_1";
+import HtmlChapter4_2 from "./PracticalLesson/HTML/HtmlChapter4_2";
+import HtmlChapter4_3 from "./PracticalLesson/HTML/HtmlChapter4_3";
+import HtmlChapter5_1 from "./PracticalLesson/HTML/HtmlChapter5_1";
+import HtmlChapter5_2 from "./PracticalLesson/HTML/HtmlChapter5_2";
+import HtmlChapter7_1 from "./PracticalLesson/HTML/HtmlChapter7_1";
+import HtmlChapter7_2 from "./PracticalLesson/HTML/HtmlChapter7_2";
+import HtmlChapter8_1 from "./PracticalLesson/HTML/HtmlChapter8_1";
+import HtmlChapter9_1 from "./PracticalLesson/HTML/HtmlChapter9_1";
+import HtmlChapter10_1 from "./PracticalLesson/HTML/HtmlChapter10_1";
+import HtmlChapter10_2 from "./PracticalLesson/HTML/HtmlChapter10_2";
+import HtmlChapter10_3 from "./PracticalLesson/HTML/HtmlChapter10_3";
+
+import CssChapter10_1 from "./PracticalLesson/CSS/CssChapter10_1";
+import CssChapter10_2 from "./PracticalLesson/CSS/CssChapter10_2";
+
+import JavaScriptChapter2_1 from "./PracticalLesson/JavaScript/JavaScriptChapter2_1";
+import JavaScriptChapter2_2 from "./PracticalLesson/JavaScript/JavaScriptChapter2_2";
+import JavaScriptChapter3_1 from "./PracticalLesson/JavaScript/JavaScriptChapter3_1";
+import JavaScriptChapter3_2 from "./PracticalLesson/JavaScript/JavaScriptChapter3_2";
+import JavaScriptChapter4_1 from "./PracticalLesson/JavaScript/JavaScriptChapter4_1";
+import JavaScriptChapter4_2 from "./PracticalLesson/JavaScript/JavaScriptChapter4_2";
+import JavaScriptChapter5_1 from "./PracticalLesson/JavaScript/JavaScriptChapter5_1";
+import JavaScriptChapter6_1 from "./PracticalLesson/JavaScript/JavaScriptChapter6_1";
 const PracticalLessons = () => {
   const dispatch = useDispatch();
   const actualCourse = useSelector((state) => state.actualCourse);
@@ -23,7 +51,7 @@ const PracticalLessons = () => {
   const chapterId = course._id;
   const [completed, setCompleted] = useState("");
   const [form, setForm] = useState(course.chapters[actualChapter].exercises);
-  console.log(form);
+
   let exercises = course.chapters[actualChapter].exercises;
   let [options, setOptions] = useState(exercises[actualExercise].options);
   let [answers, setAnswers] = useState(() => declareAnswers());
@@ -134,7 +162,7 @@ const PracticalLessons = () => {
       let element = document.getElementById("practical-lesson-wrong-answer");
       if (element !== null) {
         element.style.animation = "none";
-        element.offsetHeight; /* trigger reflow */
+        element.offsetHeight;
         element.style.animation = null;
       }
       setCompleted(false);
@@ -162,27 +190,7 @@ const PracticalLessons = () => {
       />
 
       <div className="practical-lesson">
-        <svg className="test">
-          <text x="10" y="30" style={{ fill: "#ABB2BF" }}>
-            {/* Several lines: */}1{" "}
-            <tspan className="html-tag">&lt;h1&gt;</tspan>Pierwszy nagłówek
-            <tspan className="special">
-              {answers[0].name === "" ? "(1)" : answers[0].name}
-            </tspan>
-            <tspan x="10" y="55">
-              2{" "}
-              <tspan className="special">
-                {answers[1].name === "" ? "(2)" : answers[1].name}
-              </tspan>
-            </tspan>
-            <tspan x="10" y="80">
-              3 <tspan className="html-tag">&lt;h2&gt;</tspan>Drugi nagłówek
-              <tspan className="special">
-                {answers[2].name === "" ? "(3)" : answers[2].name}
-              </tspan>
-            </tspan>
-          </text>
-        </svg>
+        <HtmlChapter10_3 answers={answers} />
         <div className="result-container">
           <div className="options">
             {options.map((option, id) => {
