@@ -4,6 +4,7 @@ import {
   UPDATE_QUIZ,
   UPDATE_EXERCISE,
   FINISH_ACHIEVEMENT,
+  FINISH_EXERCISES,
 } from "../constants/actionTypes";
 
 const user = (user = [], action) => {
@@ -40,6 +41,15 @@ const user = (user = [], action) => {
         return course;
       });
       return updatedExercise;
+    case FINISH_EXERCISES:
+      let updatedExercises = user;
+      updatedExercises.courses.map((course) => {
+        if (course._id === action.courseId) {
+          course.chapters[action.actualChapter].isExerciseCompleted = true;
+        }
+        return course;
+      });
+      return updatedExercises;
     case FINISH_ACHIEVEMENT:
       user.achievements[action.achievementId].isFinished = true;
     default:

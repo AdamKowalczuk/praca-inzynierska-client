@@ -1,4 +1,4 @@
-import { UPDATE_EXERCISE } from "../constants/actionTypes";
+import { UPDATE_EXERCISE, FINISH_EXERCISES } from "../constants/actionTypes";
 
 import * as api from "../api/index.js";
 
@@ -20,16 +20,32 @@ export const updateExercise =
   (form, userId, courseId, chapterId, actualChapter, actualExercise) =>
   async (dispatch) => {
     try {
-      console.log("FORM IN ", form);
-
-      // const { data } = await api.updateQuiz(form, userId, courseId, chapterId);
-      await api.updateExercise(form, userId, courseId, chapterId);
+      await api.updateExercise(
+        { form: form },
+        { actualExercise: actualExercise },
+        userId,
+        courseId,
+        chapterId
+      );
       dispatch({
         type: UPDATE_EXERCISE,
         form: form,
         courseId: courseId,
         actualChapter: actualChapter,
-        // actualExercise: actualExercise,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+export const finishExercises =
+  (form, userId, courseId, chapterId) => async (dispatch) => {
+    try {
+      // await api.finishExercises({ form: form }, userId, courseId, chapterId);
+      dispatch({
+        type: FINISH_EXERCISES,
+        courseId: courseId,
+        actualChapter: form[0].actualChapter,
       });
     } catch (error) {
       console.log(error.message);

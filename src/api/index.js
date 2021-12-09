@@ -32,13 +32,22 @@ export const updateQuiz = (form, userId, courseId, chapterId) =>
     `${url_user}/${userId}/courses/${courseId}/chapters/${chapterId}`,
     form
   );
-export const updateExercise = (form, userId, courseId, chapterId) =>
+export const updateExercise = (
+  form,
+  actualExercise,
+  userId,
+  courseId,
+  chapterId
+) =>
   axios.patch(
-    `${url_user}/${userId}/courses/${courseId}/chapters/${chapterId}`,
-    form
+    `${url_user}/${userId}/courses/${courseId}/chapters/${chapterId}/exercises`,
+    { form, actualExercise }
   );
 
 export const deleteUser = (id) => axios.delete(`${url_user}/${id}`);
 
 export const finishAchievement = (userId, achievementId) =>
   axios.patch(`${url_user}/${userId}/achievements`, achievementId);
+
+// export const finishExercises = (userId, courseId, chapterId) =>
+//   axios.patch(`${url_user}/${userId}/courses/${courseId}/chapters/`, form);

@@ -15,6 +15,7 @@ import Icon from "./Icon";
 const Chapter = (props) => {
   const dispatch = useDispatch();
   let isQuizCompleted = props.chapter.isQuizCompleted;
+
   let exercisesNumber;
   if (props.chapter.exercises === undefined) {
     exercisesNumber = 0;

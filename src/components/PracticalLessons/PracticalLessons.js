@@ -6,6 +6,7 @@ import {
   setNextExercise,
   updateExercise,
   setActualExercise,
+  finishExercises,
 } from "../../actions/exercise";
 import "./PracticalLessons.scss";
 import Undo from "./images/Undo";
@@ -51,13 +52,101 @@ const PracticalLessons = () => {
   const chapterId = course._id;
   const [completed, setCompleted] = useState("");
   const [form, setForm] = useState(course.chapters[actualChapter].exercises);
-
+  console.log(form);
   let exercises = course.chapters[actualChapter].exercises;
   let [options, setOptions] = useState(exercises[actualExercise].options);
   let [answers, setAnswers] = useState(() => declareAnswers());
   const limit = options.length - 1;
   let isUsedNumber = 0;
   let correctNumber = 0;
+  let expression =
+    actualCourse + 1 + "" + (actualChapter + 1) + "" + (actualExercise + 1);
+
+  function showExercise() {
+    switch (expression) {
+      case "121":
+        return <HtmlChapter2_1 answers={answers} />;
+        break;
+      case "122":
+        return <HtmlChapter2_2 answers={answers} />;
+        break;
+      case "131":
+        return <HtmlChapter3_1 answers={answers} />;
+        break;
+      case "132":
+        return <HtmlChapter3_2 answers={answers} />;
+        break;
+      case "141":
+        return <HtmlChapter4_1 answers={answers} />;
+        break;
+      case "142":
+        return <HtmlChapter4_2 answers={answers} />;
+        break;
+      case "143":
+        return <HtmlChapter4_3 answers={answers} />;
+        break;
+      case "151":
+        return <HtmlChapter5_1 answers={answers} />;
+        break;
+      case "152":
+        return <HtmlChapter5_2 answers={answers} />;
+        break;
+      case "171":
+        return <HtmlChapter7_1 answers={answers} />;
+        break;
+      case "172":
+        return <HtmlChapter7_2 answers={answers} />;
+        break;
+      case "181":
+        return <HtmlChapter8_1 answers={answers} />;
+        break;
+      case "191":
+        return <HtmlChapter9_1 answers={answers} />;
+        break;
+      case "1101":
+        return <HtmlChapter10_1 answers={answers} />;
+        break;
+      case "1102":
+        return <HtmlChapter10_2 answers={answers} />;
+        break;
+      case "1103":
+        return <HtmlChapter10_3 answers={answers} />;
+        break;
+      case "2103":
+        return <CssChapter10_1 answers={answers} />;
+        break;
+      case "2103":
+        return <CssChapter10_2 answers={answers} />;
+        break;
+      case "321":
+        return <JavaScriptChapter2_1 answers={answers} />;
+        break;
+      case "322":
+        return <JavaScriptChapter2_2 answers={answers} />;
+        break;
+      case "331":
+        return <JavaScriptChapter3_1 answers={answers} />;
+        break;
+      case "332":
+        return <JavaScriptChapter3_2 answers={answers} />;
+        break;
+      case "341":
+        return <JavaScriptChapter4_1 answers={answers} />;
+        break;
+      case "342":
+        return <JavaScriptChapter4_2 answers={answers} />;
+        break;
+      case "351":
+        return <JavaScriptChapter5_1 answers={answers} />;
+        break;
+      case "361":
+        return <JavaScriptChapter6_1 answers={answers} />;
+        break;
+      default:
+        return null;
+    }
+  }
+
   function declareAnswers() {
     let answers = [];
     for (let i = 0; i < options.length; i++) {
@@ -190,7 +279,7 @@ const PracticalLessons = () => {
       />
 
       <div className="practical-lesson">
-        <HtmlChapter10_3 answers={answers} />
+        {showExercise()}
         <div className="result-container">
           <div className="options">
             {options.map((option, id) => {
@@ -256,83 +345,111 @@ const PracticalLessons = () => {
                     Sprawdź
                   </h4>
                 ) : (
-                  <>
-                    <div className="practical-lesson-button-container">
-                      <Link
-                        to="/kursy/rozdzialy/"
-                        rel="noreferrer"
-                        className="link"
-                      >
-                        <h4
-                          style={{
-                            backgroundColor: course.secondaryColor,
-                            color: course.primaryColor,
-                          }}
-                          onClick={() => {
-                            dispatch(setActualExercise(""));
-                          }}
-                          // onClick={
-                          //   course.chapters[actualChapter].exercises.length -
-                          //     1 >
-                          //   actualExercise
-                          //     ? () => {
-                          //         setForm(
-                          //           [...form],
-                          //           (form[actualExercise].isFinished = true)
-                          //         );
-                          //         setOptions(
-                          //           exercises[actualExercise + 1].options
-                          //         );
-                          //         dispatch(setNextExercise(actualExercise));
-                          //         // setOptions(
-                          //         //   [...options],
-                          //         //   (options.isFinished = true)
-                          //         // );
+                  [
+                    course.chapters[actualChapter].exercises.length - 1 >
+                    actualExercise ? (
+                      <>
+                        <div className="practical-lesson-button-container">
+                          <h4
+                            style={{
+                              backgroundColor: course.secondaryColor,
+                              color: course.primaryColor,
+                            }}
+                            onClick={
+                              course.chapters[actualChapter].exercises.length -
+                                1 >
+                              actualExercise
+                                ? () => {
+                                    setForm(
+                                      [...form],
+                                      (form[actualExercise].isFinished = true)
+                                    );
+                                    setOptions(
+                                      exercises[actualExercise + 1].options
+                                    );
 
-                          //         // setCompleted("");
-                          //         // console.log("FORM2", form);
-                          //         // console.log("bląd w updateExercise");
-                          //         // dispatch(
-                          //         //   updateExercise(
-                          //         //     form,
-                          //         //     userId,
-                          //         //     courseId,
-                          //         //     chapterId,
-                          //         //     // form._id
-                          //         //     actualChapter,
-                          //         //     actualExercise
-                          //         //   )
-                          //         // );
-                          //       }
-                          //     : null
-                          // }
+                                    setOptions(
+                                      [...options],
+                                      (options.isFinished = true)
+                                    );
 
-                          // onClick={() => checkAnswer()}
+                                    setCompleted("");
+                                    dispatch(
+                                      updateExercise(
+                                        form,
+                                        userId,
+                                        courseId,
+                                        chapterId,
+                                        actualChapter,
+                                        actualExercise
+                                      )
+                                    );
+
+                                    dispatch(
+                                      setActualExercise(actualExercise + 1)
+                                    );
+                                  }
+                                : null
+                            }
+                          >
+                            Poprawna odpowiedź!
+                            <br /> Kolejne zadanie
+                          </h4>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="practical-lesson-button-container">
+                        <Link
+                          to="/kursy/rozdzialy/"
+                          rel="noreferrer"
+                          className="link"
                         >
-                          Poprawna odpowiedź!
-                          <br /> Zakończ
-                        </h4>
-                      </Link>
-                      {/* <Link
-                        to="/kursy/rozdzialy"
-                        rel="noreferrer"
-                        className="link"
-                        style={{ color: "#fff" }}
-                      >
-                        <h4
-                          style={{
-                            backgroundColor: course.secondaryColor,
-                            // color: course.primaryColor,
-                            marginTop: "10px",
-                            width: "auto",
-                          }}
-                          // onClick={() => checkAnswer()}
-                        >
-                          Powrót
-                        </h4>
-                      </Link> */}
-                    </div>
-                  </>
+                          <h4
+                            style={{
+                              backgroundColor: course.secondaryColor,
+                              color: course.primaryColor,
+                            }}
+                            onClick={() => {
+                              dispatch(setActualExercise(0));
+
+                              setForm(
+                                [...form],
+                                (form[actualExercise].isFinished = true)
+                              );
+                              // setOptions(exercises[actualExercise + 1].options);
+                              setOptions(
+                                [...options],
+                                (options.isFinished = true)
+                              );
+
+                              setCompleted("");
+                              dispatch(
+                                updateExercise(
+                                  form,
+                                  userId,
+                                  courseId,
+                                  chapterId,
+                                  actualChapter,
+                                  actualExercise
+                                )
+                              );
+                              dispatch(
+                                finishExercises(
+                                  form,
+                                  userId,
+                                  courseId,
+                                  chapterId
+                                )
+                              );
+                            }}
+                          >
+                            Poprawna odpowiedź!
+                            <br /> Zakończ
+                          </h4>
+                        </Link>
+                      </div>
+                    ),
+                  ]
                 ),
               ]
             )}
