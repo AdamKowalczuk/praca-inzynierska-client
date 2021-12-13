@@ -36,7 +36,7 @@
   .result-container {
     display: flex;
     flex-direction: row;
-    height: 250px;
+    height: 180px;
     overflow: scroll;
     h3 {
       margin: 5px;
@@ -46,14 +46,14 @@
     }
 
     .options {
-      width: 90%;
-      margin: 20px 5%;
+      width: 95%;
+      margin: 20px 2.5%;
 
       h3 {
         display: inline-flex;
         position: relative;
         padding: 10px;
-        margin: 7px;
+        margin: 5px;
         h4 {
           position: absolute;
           bottom: 4px;

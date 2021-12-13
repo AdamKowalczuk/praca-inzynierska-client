@@ -271,7 +271,7 @@ const PracticalLessons = () => {
 
       <Menu
         link="/kursy/rozdzialy"
-        text="Uzupełnij kod tak, aby pomiędzy nagłówkami znajdowała się pozioma linia"
+        text={exercises[actualExercise].description}
         isColored={true}
         primaryColor={course.primaryColor}
         secondaryColor={course.secondaryColor}
@@ -388,6 +388,11 @@ const PracticalLessons = () => {
                                     dispatch(
                                       setActualExercise(actualExercise + 1)
                                     );
+                                    declareAnswers();
+                                    setOptions(
+                                      exercises[actualExercise + 1].options
+                                    );
+                                    console.log(options);
                                   }
                                 : null
                             }

@@ -109,8 +109,7 @@ const Quiz = () => {
               [
                 actualChapter ===
                 course.chapters.length -
-                  1 ? //     primaryColor={course.primaryColor} //     class="btn btn_white" //     text="Ukończono kurs! Powrót" //   <Button // <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
-                //     secondaryColor={course.secondaryColor}
+                  1 ? //     secondaryColor={course.secondaryColor} //     primaryColor={course.primaryColor} //     class="btn btn_white" //     text="Ukończono kurs! Powrót" //   <Button // <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
                 //     borderColor={course.primaryColor}
                 //   />
                 // </Link>
@@ -141,6 +140,11 @@ const Quiz = () => {
                 to="/kursy/rozdzialy/zadania"
                 rel="noreferrer"
                 className="link"
+                onClick={() => {
+                  dispatch(setActualLesson(0));
+                  dispatch(setActualQuiz(0));
+                  dispatch(setActualExercise(0));
+                }}
               >
                 <Button
                   text="Przejdź do zadań"

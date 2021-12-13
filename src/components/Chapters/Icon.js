@@ -33,7 +33,7 @@ const Icon = (props) => {
 
   return (
     <>
-      {props.isQuizCompleted ? (
+      {props.isQuizCompleted && props.isExerciseCompleted ? (
         <img
           src={icons[props.name].default}
           height={150}

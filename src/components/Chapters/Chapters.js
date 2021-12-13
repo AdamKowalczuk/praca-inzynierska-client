@@ -8,7 +8,11 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setActualChapter, setActualLesson } from "../../actions/courses";
+import {
+  setActualChapter,
+  setActualLesson,
+  setActualExercise,
+} from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
 import Icon from "./Icon";
 
@@ -22,7 +26,10 @@ const Chapter = (props) => {
   } else {
     exercisesNumber = props.chapter.exercises.length;
   }
-
+  let isExerciseCompleted = props.chapter.isExerciseCompleted;
+  if (exercisesNumber === 0) {
+    isExerciseCompleted = true;
+  }
   function sumCompletedLessons() {
     let sum = 0;
     props.chapter.lessons.forEach((lesson) => {
@@ -40,9 +47,10 @@ const Chapter = (props) => {
           expandIcon={
             <ExpandMoreIcon
               style={{
-                fill: props.chapter.isQuizCompleted
-                  ? props.primaryColor
-                  : "#fff",
+                fill:
+                  isQuizCompleted && isExerciseCompleted
+                    ? props.primaryColor
+                    : "#fff",
               }}
             />
           }
@@ -52,14 +60,15 @@ const Chapter = (props) => {
           <div className="accordion-img-background">
             <Icon
               name={props.chapter.icon}
-              isQuizCompleted={props.chapter.isQuizCompleted}
+              isQuizCompleted={isQuizCompleted}
+              isExerciseCompleted={isExerciseCompleted}
               chapterName={props.chapter.name}
               primaryColor={props.primaryColor}
             />
           </div>
 
           <div className="accordion-chapter-header">
-            {props.chapter.isQuizCompleted ? (
+            {isQuizCompleted && isExerciseCompleted ? (
               <>
                 <h3 style={{ color: props.primaryColor }}>
                   {props.chapter.name}
@@ -125,7 +134,7 @@ const Chapter = (props) => {
                 }}
                 className="link"
               >
-                {props.chapter.isQuizCompleted === true ? (
+                {isQuizCompleted === true ? (
                   <>
                     <div
                       className="accordion-lesson-container border-top"
@@ -143,13 +152,13 @@ const Chapter = (props) => {
                     <div className="accordion-lesson-container border-top">
                       <h5
                         className="uppercase"
-                        style={{ color: "hsl(0, 0%, 100%, 40%)" }}
+                        style={{ color: "hsl(0, 0%, 100%, 100%)" }}
                       >
                         Quiz
                       </h5>
                       <ArrowForwardIosIcon
                         className="accordion-arrow-forward"
-                        style={{ fill: "hsl(0, 0%, 100%, 40%)" }}
+                        style={{ fill: "hsl(0, 0%, 100%, 100%)" }}
                       />
                     </div>
                   </>
@@ -158,10 +167,68 @@ const Chapter = (props) => {
             ) : (
               <div className="accordion-lesson-container quiz-locked border-top">
                 <h5 className="uppercase">Quiz</h5>
-                <ArrowForwardIosIcon className="accordion-arrow-forward" />
+                <ArrowForwardIosIcon
+                  className="accordion-arrow-forward"
+                  style={{ fill: "hsl(0, 0%, 100%, 40%)" }}
+                />
               </div>
             )}
-            {exercisesNumber === 0 ? null : sumCompletedLessons() /
+
+            {/* {props.chapter.lessons.map((item, id) => {
+            return (
+              <>
+                {item.isFinished === true ? (
+                  <div key={item._id}>
+                    <Lesson
+                      name={item.name}
+                      number={id}
+                      chapterNumber={props.number}
+                      primaryColor={props.primaryColor}
+                      secondaryColor={props.secondaryColor}
+                    />
+                  </div>
+                ) : (
+                  <div key={item._id}>
+                    <Lesson
+                      name={item.name}
+                      number={id}
+                      chapterNumber={props.number}
+                      primaryColor="#fff"
+                    />
+                  </div>
+                )}
+              </>
+            );
+          })} */}
+
+            {props.chapter.exercises.map((item, id) => {
+              return (
+                <>
+                  {item.isFinished === true ? (
+                    <div key={item._id}>
+                      <Exercise
+                        // name={item.name}
+                        number={id}
+                        chapterNumber={props.number}
+                        primaryColor={props.primaryColor}
+                        secondaryColor={props.secondaryColor}
+                      />
+                    </div>
+                  ) : (
+                    <div key={item._id}>
+                      <Exercise
+                        // name={item.name}
+                        number={id}
+                        chapterNumber={props.number}
+                        primaryColor="#fff"
+                      />
+                    </div>
+                  )}
+                </>
+              );
+            })}
+
+            {/* {exercisesNumber === 0 ? null : sumCompletedLessons() /
                 props.chapter.lessons.length ===
               1 ? (
               <Link
@@ -205,7 +272,7 @@ const Chapter = (props) => {
                 <h5 className="uppercase">Zadania</h5>
                 <ArrowForwardIosIcon className="accordion-arrow-forward" />
               </div>
-            )}
+            )} */}
           </div>
         </AccordionDetails>
       </Accordion>
@@ -230,6 +297,37 @@ const Lesson = (props) => {
         style={{ borderColor: props.primaryColor }}
       >
         <h5 style={{ color: props.primaryColor }}>{props.name}</h5>
+        <ArrowForwardIosIcon
+          className="accordion-arrow-forward"
+          style={{
+            fill: props.primaryColor,
+          }}
+        />
+      </div>
+    </Link>
+  );
+};
+
+const Exercise = (props) => {
+  const dispatch = useDispatch();
+  return (
+    <Link
+      to="/kursy/rozdzialy/zadania"
+      rel="noreferrer"
+      key={props.number}
+      onClick={() => {
+        dispatch(setActualExercise(props.number));
+        dispatch(setActualChapter(props.chapterNumber));
+      }}
+      className="link"
+    >
+      <div
+        className="accordion-lesson-container"
+        style={{ borderColor: props.primaryColor }}
+      >
+        <h5 style={{ color: props.primaryColor }}>
+          Zadanie {props.number + 1}
+        </h5>
         <ArrowForwardIosIcon
           className="accordion-arrow-forward"
           style={{
