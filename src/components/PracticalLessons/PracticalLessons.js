@@ -52,7 +52,6 @@ const PracticalLessons = () => {
   const chapterId = course._id;
   const [completed, setCompleted] = useState("");
   const [form, setForm] = useState(course.chapters[actualChapter].exercises);
-  console.log(form);
   let exercises = course.chapters[actualChapter].exercises;
   let [options, setOptions] = useState(exercises[actualExercise].options);
   let [answers, setAnswers] = useState(() => declareAnswers());
@@ -238,11 +237,20 @@ const PracticalLessons = () => {
   }
   function checkAnswer() {
     let result = true;
+
     for (let i = 0; i < options.length; i++) {
-      if (options[i].correctNumber == options[i].selectedNumber) {
+      if (options[i].correctNumber == "0") {
+        if (options[i].selectedNumber == "") {
+          result = false;
+          break;
+        } else {
+        }
       } else {
-        result = false;
-        break;
+        if (options[i].correctNumber == options[i].selectedNumber) {
+        } else {
+          result = false;
+          break;
+        }
       }
     }
     if (result === true) {
@@ -388,11 +396,11 @@ const PracticalLessons = () => {
                                     dispatch(
                                       setActualExercise(actualExercise + 1)
                                     );
-                                    declareAnswers();
+
                                     setOptions(
                                       exercises[actualExercise + 1].options
                                     );
-                                    console.log(options);
+                                    declareAnswers();
                                   }
                                 : null
                             }
