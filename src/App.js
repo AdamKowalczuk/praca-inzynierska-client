@@ -44,9 +44,9 @@ const App = () => {
     </BrowserRouter>
   );
 };
-// if ("serviceWorker" in navigator) {
-//   window.addEventListener("load", () => {
-//     navigator.serviceWorker.register("service-worker.js");
-//   });
-// }
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("serviceWorker.js");
+  });
+}
 export default App;
