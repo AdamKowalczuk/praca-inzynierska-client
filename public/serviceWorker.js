@@ -49,8 +49,26 @@ self.addEventListener("activate", (e) => {
 });
 
 //fetch event
+// self.addEventListener("fetch", (e) => {
+//   //   console.log("Service worker fetch event", e);
+//   e.respondWith(
+//     caches.match(e.request).then((cacheRes) => {
+//       return (
+//         cacheRes ||
+//         fetch(e.request).then((fetchRes) => {
+//           return caches.open(dynamicCacheName).then((cache) => {
+//             cache.put(e.request.url, fetchRes.clone());
+//             // limitCacheSize(dynamicCacheName, 100);
+//             return fetchRes;
+//           });
+//         })
+//       );
+//     })
+//     // .catch(() => caches.match("/fallback.html"))
+//   );
+// });
 self.addEventListener("fetch", (e) => {
-  //   console.log("Service worker fetch event", e);
+  //console.log('fetch event', evt);
   e.respondWith(
     caches.match(e.request).then((cacheRes) => {
       return (
@@ -58,12 +76,12 @@ self.addEventListener("fetch", (e) => {
         fetch(e.request).then((fetchRes) => {
           return caches.open(dynamicCacheName).then((cache) => {
             cache.put(e.request.url, fetchRes.clone());
-            // limitCacheSize(dynamicCacheName, 100);
+            // check cached items size
+            // limitCacheSize(dynamicCacheName, 15);
             return fetchRes;
           });
         })
       );
     })
-    // .catch(() => caches.match("/fallback.html"))
   );
 });
