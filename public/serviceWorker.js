@@ -4,7 +4,7 @@ const assets = [
   "/index.html",
   "/static/media/stars.8605eb71.png",
   "/static/media/traveling.3e2dbeac.svg",
-  // "/fallback.html",
+  "/offline.html",
   //fonts
   "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap",
   "https://fonts.googleapis.com/css2?family=Bungee&display=swap",
@@ -70,18 +70,26 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   //console.log('fetch event', evt);
   e.respondWith(
-    caches.match(e.request).then((cacheRes) => {
-      return (
-        cacheRes ||
-        fetch(e.request).then((fetchRes) => {
-          return caches.open(dynamicCacheName).then((cache) => {
-            cache.put(e.request.url, fetchRes.clone());
-            // check cached items size
-            // limitCacheSize(dynamicCacheName, 15);
-            return fetchRes;
-          });
-        })
-      );
-    })
+    caches
+      .match(e.request)
+      .then((cacheRes) => {
+        return (
+          cacheRes ||
+          fetch(e.request).then((fetchRes) => {
+            return caches.open(dynamicCacheName).then((cache) => {
+              cache.put(e.request.url, fetchRes.clone());
+              // check cached items size
+              // limitCacheSize(dynamicCacheName, 15);
+              return fetchRes;
+            });
+          })
+        );
+      })
+      .catch(() => {
+        console.log(
+          "No internet connection found. App is running in offline mode."
+        );
+        caches.match("/offline.html");
+      })
   );
 });

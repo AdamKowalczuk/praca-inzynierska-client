@@ -12,6 +12,7 @@ import Lesson from "./components/Lesson/Lesson";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Achievements from "./components/Achievements/Achievements";
 import PracticalLesson from "./components/PracticalLessons/PracticalLessons";
+import Offline from "./components/Offline/Offline";
 import { getCourses } from "./actions/courses";
 
 import "./App.scss";
@@ -40,6 +41,7 @@ const App = () => {
           exact
           component={PracticalLesson}
         />
+        <Route path="/offline" exact component={Offline} />
       </Switch>
     </BrowserRouter>
   );
