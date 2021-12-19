@@ -2,6 +2,14 @@
 
 Aplikacja służy do nauki HTML, CSS i JavaScript. Jest zbudowana za pomocą technologii MERN - MongoDB, Express.js, React.js, Node.js. System logowania jest stworzony za pomocą JSON Web Token.
 
+## Uruchomienie aplikacji
+W katalogu projektu należy uruchomić komendę:
+
+### `npm start`
+
+### Tą samą czynność należy wykonać w części z serwerem aplikacji. Część serwerowa jest dostępna pod linkiem:
+### https://github.com/AdamKowalczuk/praca-inzynierska-server
+
 ## Zrzuty ekranu z aplikacji
 
 ### Ekran początkowy
