@@ -1,71 +1,41 @@
-# Getting Started with Create React App
+# Aplikacja edukacyjna do nauki programowania
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplikacja służy do nauki HTML, CSS i JavaScript. Jest zbudowana za pomocą technologii MERN - MongoDB, Express.js, React.js, Node.js. System logowania jest stworzony za pomocą JSON Web Token.
 
-## Available Scripts
-
-In the project directory, you can run:
+## Uruchomienie aplikacji
+W katalogu projektu należy uruchomić komendę:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Tą samą czynność należy wykonać w części z serwerem aplikacji. Część serwerowa jest dostępna pod linkiem:
+### https://github.com/AdamKowalczuk/praca-inzynierska-server
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Zrzuty ekranu z aplikacji
 
-### `npm test`
+### Ekran początkowy
+![ekran startowy](https://user-images.githubusercontent.com/57939211/146684354-0113ea82-0408-4afb-ac03-2a99a8ccbcce.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Panel logowania
+![ekran logowania](https://user-images.githubusercontent.com/57939211/146684029-506d0f61-63cd-4b35-ace2-b7f8458ff5f9.png)
+   ![ekran rejestracji](https://user-images.githubusercontent.com/57939211/146683972-4310cd2d-752d-4961-902e-667d1c3241a8.png)
 
-### `npm run build`
+### Wybór kursu
+![kursy](https://user-images.githubusercontent.com/57939211/146684037-8ad3a544-91e2-49af-a7e8-0d143c943e14.png)
+![kurs-informacje](https://user-images.githubusercontent.com/57939211/146684039-f49d810c-a810-423c-bee5-23c00f6116a1.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Ekran rozdziałów
+![rozdzialy1](https://user-images.githubusercontent.com/57939211/146684045-bac79bd9-effd-48d4-bd6a-1f8234351677.png)
+![rozdzialy2](https://user-images.githubusercontent.com/57939211/146684067-f2638cc5-9b78-4156-937d-31ae4c653812.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Ekran lekcji i zadań praktycznych
+![lekcje](https://user-images.githubusercontent.com/57939211/146684148-fc3a2f68-cffe-460d-ba39-71401af8556b.png)
+![zadania](https://user-images.githubusercontent.com/57939211/146684157-94181a8e-1757-48e8-9061-94ed819302c1.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Ekran quizu
+![quiz](https://user-images.githubusercontent.com/57939211/146684153-0e72303d-cbdb-454b-81f0-8b5e4d022dba.png)
+![quiz-ukonczony](https://user-images.githubusercontent.com/57939211/146684155-386e9b75-700e-4506-9e11-4f309372a049.png)
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# praca-inzynierska-client
+### Menu
+![menu](https://user-images.githubusercontent.com/57939211/146684161-9670feda-2bb8-4bd4-af52-81ba82709b71.png)
+![moj profil](https://user-images.githubusercontent.com/57939211/146684166-c69f8afc-0df4-4bb2-933e-52ad200924c8.png)
+![osiągnięcia](https://user-images.githubusercontent.com/57939211/146684169-630db62d-5e7c-4bb0-89a9-ef4e18205435.png)
