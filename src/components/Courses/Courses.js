@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { setActualCourse } from "../../actions/courses";
 import { getUsers, setUser } from "../../actions/user";
 import Hello from "./icons/hello.svg";
-// import icons from "./icons";
 import Menu from "../Menu/Menu";
 
 function importAll(r) {
@@ -101,7 +100,6 @@ const Courses = ({ setCurrentId }) => {
     <>
       <Menu text="" link="/kursy" secondColor="#fff" />
       <div className="courses-container">
-        {/* <img src={RoadSign} className="courses-big-image" alt="Book Lover" /> */}
         <div className="welcome-container">
           <div className="welcome-user">
             <h3>

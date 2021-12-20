@@ -1,10 +1,4 @@
 $dark: #0c0c0d;
-// $dark: #030303;
-// #222222
-// @font-face {
-//   font-family: Futura;
-//   src: url("./futura/futur.ttf");
-// }
 @font-face {
   font-family: Helvetica2;
   src: url("./helvetica/Helvetica.ttf");
@@ -33,30 +27,18 @@ $dark: #0c0c0d;
 $white: #f1f1f2;
 * {
   font-family: "Roboto", sans-serif;
-
-  // font-family: Futura !important;
-  // font-family: Helvetica2 !important;
-  // font-family: Arial, Helvetica, sans-serif;
-  // font-weight: 700;
-  // font-size: 20px;
-  // font-family: "Bodoni Moda", serif !important; dobry dla pokazania ilości lekcji
 }
 h3,
 h4,
 h5 {
   font-weight: 500;
 }
-// .bodoni {
-//   font-family: "Bodoni Moda", serif !important;
-// }
 body {
   box-sizing: border-box;
   font-size: 18px;
-  // background-color: $dark;
   margin: 0 auto;
   font-family: "EB Garamond", serif;
   background: url("./images/stars.png");
-  // background: white url("./images/specks2.png");
   background-size: contain;
   background-color: $dark;
 }
@@ -65,9 +47,6 @@ body {
 }
 .futura {
   font-family: Futura;
-  // font-family: Circular;
-  // font-family: Circular;
-  // font-size: 22px;
 }
 .circular {
   font-family: Circular;

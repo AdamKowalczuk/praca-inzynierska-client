@@ -14,7 +14,6 @@ const LessonTopMenu = (props) => {
     <>
       <div className="menu-container">
         <>
-          {/* <Link to={props.link} rel="noreferrer" className="link"> */}
           <BackIcon
             primaryColor={props.primaryColor}
             secondaryColor={props.secondaryColor}
@@ -22,7 +21,6 @@ const LessonTopMenu = (props) => {
             link={props.link}
             color={color}
           />
-          {/* </Link> */}
 
           <h3 className="bungee" style={{ lineHeight: "1", marginTop: "4px" }}>
             {props.text}
@@ -30,13 +28,11 @@ const LessonTopMenu = (props) => {
           <div
             className="lesson-number"
             style={{
-              // backgroundColor: props.secondaryColor,
               backgroundColor: props.primaryColor,
             }}
           >
             <h3
               style={{
-                // color: props.primaryColor,
                 color: color,
               }}
             >

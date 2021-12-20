@@ -1,8 +1,4 @@
-import {
-  FETCH_ALL_COURSES,
-  UPDATE_LESSON,
-  // FETCH_ALL_USER_COURSES,
-} from "../constants/actionTypes";
+import { FETCH_ALL_COURSES, UPDATE_LESSON } from "../constants/actionTypes";
 
 import * as api from "../api/index.js";
 
@@ -14,15 +10,6 @@ export const getCourses = () => async (dispatch) => {
     console.log(error.message);
   }
 };
-// export const getUserCourses = (userId) => async (dispatch) => {
-//   try {
-//     const data = await api.fetchUserCourses(userId);
-//     console.log("actionsEND");
-//     dispatch({ type: FETCH_ALL_USER_COURSES, payload: data });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
 
 export const setActualCourse = (course) => {
   return {

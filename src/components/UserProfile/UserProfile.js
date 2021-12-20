@@ -139,9 +139,6 @@ const UserProfile = () => {
           <div className="completed-box">
             <h3>Kursów</h3>
             <div className="number">
-              {/* <h2 style={{ color: "rgb(255, 255, 255,40%)" }}>
-                {finishedArray[0]}
-              </h2> */}
               <h2
                 style={{
                   backgroundColor: course.primaryColor,

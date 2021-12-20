@@ -174,40 +174,12 @@ const Chapter = (props) => {
               </div>
             )}
 
-            {/* {props.chapter.lessons.map((item, id) => {
-            return (
-              <>
-                {item.isFinished === true ? (
-                  <div key={item._id}>
-                    <Lesson
-                      name={item.name}
-                      number={id}
-                      chapterNumber={props.number}
-                      primaryColor={props.primaryColor}
-                      secondaryColor={props.secondaryColor}
-                    />
-                  </div>
-                ) : (
-                  <div key={item._id}>
-                    <Lesson
-                      name={item.name}
-                      number={id}
-                      chapterNumber={props.number}
-                      primaryColor="#fff"
-                    />
-                  </div>
-                )}
-              </>
-            );
-          })} */}
-
             {props.chapter.exercises.map((item, id) => {
               return (
                 <>
                   {item.isFinished === true ? (
                     <div key={item._id}>
                       <Exercise
-                        // name={item.name}
                         number={id}
                         chapterNumber={props.number}
                         primaryColor={props.primaryColor}
@@ -217,7 +189,6 @@ const Chapter = (props) => {
                   ) : (
                     <div key={item._id}>
                       <Exercise
-                        // name={item.name}
                         number={id}
                         chapterNumber={props.number}
                         primaryColor="#fff"
@@ -227,52 +198,6 @@ const Chapter = (props) => {
                 </>
               );
             })}
-
-            {/* {exercisesNumber === 0 ? null : sumCompletedLessons() /
-                props.chapter.lessons.length ===
-              1 ? (
-              <Link
-                to="/kursy/rozdzialy/zadania"
-                rel="noreferrer"
-                onClick={() => {
-                  dispatch(setActualChapter(props.number));
-                  dispatch(setActualExercise(0));
-                }}
-                className="link"
-              >
-                {props.chapter.isExerciseCompleted === true ? (
-                  <>
-                    <div className="accordion-lesson-container border-top">
-                      <h5 style={{ color: props.primaryColor }}>Zadania</h5>
-                      <ArrowForwardIosIcon
-                        className="accordion-arrow-forward"
-                        style={{ fill: props.primaryColor }}
-                      />
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="accordion-lesson-container border-top">
-                      <h5
-                        className="uppercase"
-                        style={{ color: "hsl(0, 0%, 100%, 40%)" }}
-                      >
-                        Zadania
-                      </h5>
-                      <ArrowForwardIosIcon
-                        className="accordion-arrow-forward"
-                        style={{ fill: "hsl(0, 0%, 100%, 40%)" }}
-                      />
-                    </div>
-                  </>
-                )}
-              </Link>
-            ) : (
-              <div className="accordion-lesson-container quiz-locked border-top">
-                <h5 className="uppercase">Zadania</h5>
-                <ArrowForwardIosIcon className="accordion-arrow-forward" />
-              </div>
-            )} */}
           </div>
         </AccordionDetails>
       </Accordion>

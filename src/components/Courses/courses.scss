@@ -12,7 +12,6 @@ $gray: #9b9b9b;
   display: flex;
   color: #fff;
   flex-direction: column;
-  // justify-content: center;
   .welcome-container {
     display: flex;
     justify-content: center;
@@ -72,11 +71,9 @@ $gray: #9b9b9b;
     h4 {
       width: 60%;
       margin: 20px 0;
-      // font-family: "Bodoni Moda", serif !important;
     }
     h5 {
       width: 15%;
-      // color: $gray;
       font-size: 0.9em;
       font-family: "Bodoni Moda", serif !important;
       margin: 20px 0;

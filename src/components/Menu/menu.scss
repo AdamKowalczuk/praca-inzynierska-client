@@ -74,7 +74,6 @@ $white: #f1f1f2;
 .modal {
   width: 100vw;
   height: 100vh;
-  // background-color: #0c0c0d;
   background: url("../../images/stars.png");
   background-size: contain;
   .menu-option-container {
@@ -93,17 +92,10 @@ $white: #f1f1f2;
       border-radius: 10px;
       margin-bottom: 10px;
 
-      // .menu-option-image{
-      //   height: 50px;
-      //   width: 50px;
-      //   padding: 10px;
-      // }
       svg {
         height: 50px;
         width: 50px;
         padding: 10px;
-      }
-      h3 {
       }
     }
   }

@@ -77,37 +77,10 @@ const SignUp = () => {
     form.courses = courses;
     if (isSignup) {
       dispatch(signup(form, history));
-      console.log(form);
     } else {
       dispatch(signin(form, history));
-      console.log(form);
     }
   };
-
-  const googleSuccess = async (res) => {
-    const result = res?.profileObj;
-    const token = res?.tokenId;
-    console.log(result);
-    console.log(token);
-    form.email = result.email;
-    form.name = result.name;
-    form._id = result.id;
-    console.log(form);
-    // if (isSignup) {
-    //   dispatch(signup(form, history));
-    // } else {
-    //   dispatch(signin(form, history));
-    // }
-    try {
-      dispatch({ type: AUTH, data: { result, token } });
-      history.push("/kursy");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const googleError = () =>
-    alert("Google Sign In was unsuccessful. Try again later");
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -176,31 +149,6 @@ const SignUp = () => {
             ></Button2>
           )}
 
-          {/* <GoogleLogin
-            clientId="1059000716878-tdrbkt42bqtungoq080mht743uu0vf04.apps.googleusercontent.com"
-            render={(renderProps) => (
-              <Button
-                className={classes.googleButton}
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-                variant="contained"
-                startIcon={
-                  <>
-                    <img
-                      src={GoogleIcon}
-                      className="google-icon"
-                      alt="Google Icon"
-                    />
-                  </>
-                }
-              >
-                Użyj konta Google
-              </Button>
-            )}
-            onSuccess={googleSuccess}
-            onFailure={googleError}
-            cookiePolicy="single_host_origin"
-          /> */}
           <Grid container justify="flex-end">
             <Grid item>
               <Button

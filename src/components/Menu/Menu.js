@@ -45,7 +45,6 @@ const Menu = (props) => {
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
     history.push("/auth");
-    // setUser(null);
   };
   return (
     <>

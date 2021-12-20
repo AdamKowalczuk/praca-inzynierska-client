@@ -4,7 +4,6 @@ import Communication from "./icons/communication";
 import Writing from "./icons/writing";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-// import { setActualChapter, setActualLesson } from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
 import { setActualExercise } from "../../actions/exercise";
 const LessonBottomMenu = (props) => {
@@ -13,7 +12,6 @@ const LessonBottomMenu = (props) => {
   const actualCourse = useSelector((state) => state.actualCourse);
   const actualChapter = useSelector((state) => state.actualChapter);
   const course = useSelector((state) => state.user.courses[actualCourse]);
-  // const exercisesNumber = course.chapters[actualChapter].exercises.length;
   let exercisesNumber;
   if (course.chapters[actualChapter].exercises === undefined) {
     exercisesNumber = 0;
@@ -38,7 +36,6 @@ const LessonBottomMenu = (props) => {
       <div
         className="button-container"
         style={{
-          // backgroundColor: "#0c0c0d",
           borderColor: course.secondaryColor,
         }}
       >
@@ -142,22 +139,6 @@ const LessonBottomMenu = (props) => {
             </div>
           </Link>
         )}
-        {/* <Link
-          to="/kursy/rozdziały/zadania"
-          rel="noreferrer"
-          className="link link-menu"
-        >
-          <div
-            style={{ backgroundColor: props.thirdIconBackground }}
-            className="tooltip"
-          >
-            <Writing
-              primaryColor={props.thirdIconColor}
-              secondaryColor={course.secondaryColor}
-            />
-            <span className="tooltiptext">Zadania</span>
-          </div>
-        </Link> */}
       </div>
     </>
   );

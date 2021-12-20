@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./quiz.scss";
-// import Nav from "../Nav/Nav.js";
-// import MenuBar from "../../images/menu-bars-black.svg";
 import "../Button/Button";
 import { setNextQuiz, updateQuiz } from "../../actions/quiz";
 import { setActualExercise } from "../../actions/exercise";
@@ -9,13 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import Trophy from "./Trophy";
-// import ButtonBack from "../Button/ButtonBack";
-// import { setActualChapter, setActualLesson } from "../../actions/courses";
-import {
-  setActualChapter,
-  setActualLesson,
-  // setActualExercise,
-} from "../../actions/courses";
+import { setActualChapter, setActualLesson } from "../../actions/courses";
 import { setActualQuiz } from "../../actions/quiz";
 import LessonTopMenu from "../Menu/LessonTopMenu";
 import LessonBottomMenu from "../Menu/LessonBottomMenu";
@@ -33,8 +25,6 @@ const Quiz = () => {
   let question = chapter.quiz[actualQuiz].question;
   let correctAnswer = chapter.quiz[actualQuiz].correctAnswer;
   let answers = chapter.quiz[actualQuiz].answers;
-
-  // const exercisesNumber = course.chapters[actualChapter].exercises.length;
   let exercisesNumber;
   if (course.chapters[actualChapter].exercises === undefined) {
     exercisesNumber = 0;
@@ -107,13 +97,7 @@ const Quiz = () => {
             <h2>{Math.floor((quizForm.score * 100) / chapter.quiz.length)}%</h2>
             {exercisesNumber === 0 ? (
               [
-                actualChapter ===
-                course.chapters.length -
-                  1 ? //     secondaryColor={course.secondaryColor} //     primaryColor={course.primaryColor} //     class="btn btn_white" //     text="Ukończono kurs! Powrót" //   <Button // <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
-                //     borderColor={course.primaryColor}
-                //   />
-                // </Link>
-                null : (
+                actualChapter === course.chapters.length - 1 ? null : (
                   <Link
                     to="/kursy/rozdzialy/lekcje"
                     rel="noreferrer"
@@ -155,19 +139,7 @@ const Quiz = () => {
                 />
               </Link>
             )}
-            {/* <Link
-              to="/kursy/rozdzialy/zadania"
-              rel="noreferrer"
-              className="link"
-            >
-              <Button
-                text="Przejdź do zadań"
-                class="btn btn_white"
-                primaryColor={course.primaryColor}
-                secondaryColor={course.secondaryColor}
-                borderColor={course.primaryColor}
-              />
-            </Link> */}
+
             <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
               <Button
                 text="Powrót"

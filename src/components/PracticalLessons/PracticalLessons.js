@@ -429,7 +429,6 @@ const PracticalLessons = () => {
                                 [...form],
                                 (form[actualExercise].isFinished = true)
                               );
-                              // setOptions(exercises[actualExercise + 1].options);
                               setOptions(
                                 [...options],
                                 (options.isFinished = true)

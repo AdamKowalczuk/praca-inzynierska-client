@@ -14,8 +14,6 @@ import decode from "jwt-decode";
 import * as actionType from "../../constants/actionTypes";
 
 const Home = () => {
-  // const [currentId] = useState(0);
-
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const location = useLocation();
@@ -47,7 +45,6 @@ const Home = () => {
       <div className="home-container">
         <div className="title center ">WebFront</div>
         <img src={TravelingImage} alt="Traveling" width="640" height="360" />
-        {/* <img src={Webfront} alt="Traveling" width="640" height="360" /> */}
         <Dots />
       </div>
     </>

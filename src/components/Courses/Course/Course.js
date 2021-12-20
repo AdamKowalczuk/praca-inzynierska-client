@@ -1,8 +1,6 @@
 import React from "react";
 import "./course.scss";
-// import Teaching from "../../../images/teaching.svg";
 import Menu from "../../Menu/Menu";
-// import Knowledge from "../../../images/knowledge.svg";
 import Book from "./images/book.svg";
 import Learn from "./images/learn.svg";
 import ButtonRight from "../../Button/ButtonRight";
@@ -35,11 +33,7 @@ const Course = (props, { setCurrentId }) => {
 
   return (
     <>
-      <div
-        className="course-container"
-        // style={{ color: course.primaryColor }}
-        style={{ color: "#fff" }}
-      >
+      <div className="course-container" style={{ color: "#fff" }}>
         <Menu text={course.name} link="/kursy" secondColor="#fff" />
         <img src={Teacher} className="course-big-image" alt="Teacher" />
 
@@ -49,25 +43,11 @@ const Course = (props, { setCurrentId }) => {
             image={Book}
             number={course.chapters.length}
             text="Rozdziałów"
-            // primaryColor={course.primaryColor}
-            // secondaryColor={course.secondaryColor}
           />
-          <CourseInfo
-            image={Learn}
-            number={sumLessons()}
-            text="Lekcji"
-            // primaryColor={course.primaryColor}
-            // secondaryColor={course.secondaryColor}
-          />
+          <CourseInfo image={Learn} number={sumLessons()} text="Lekcji" />
 
           <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
-            <ButtonRight
-              text="Dalej"
-              // backgroundColor={course.primaryColor}
-
-              color="#fff"
-              class="btn btn_right2"
-            />
+            <ButtonRight text="Dalej" color="#fff" class="btn btn_right2" />
           </Link>
         </div>
       </div>

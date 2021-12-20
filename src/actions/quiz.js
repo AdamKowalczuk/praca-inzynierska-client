@@ -19,7 +19,6 @@ export const updateQuiz =
   (form, userId, courseId, chapterId, actualChapter, isQuizCompleted) =>
   async (dispatch) => {
     try {
-      // const { data } = await api.updateQuiz(form, userId, courseId, chapterId);
       await api.updateQuiz(form, userId, courseId, chapterId);
       dispatch({
         type: UPDATE_QUIZ,

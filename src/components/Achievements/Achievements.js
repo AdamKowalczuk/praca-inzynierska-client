@@ -113,7 +113,7 @@ const Achievement = (props) => {
       IsRegisteredByMonth();
       IsCoursesFinished();
       sumQuizes();
-      // sumExercises()
+      sumExercises();
     }
     checkAchievements();
   }
@@ -176,12 +176,6 @@ const Achievements = () => {
     <>
       <Menu text="Osiągnięcia" link="/kursy" isColored={isColored} />
       <div className="achievements-container">
-        {/* <Winners
-          primaryColor={course.primaryColor}
-          secondaryColor={course.secondaryColor}
-          thirdColor={course.thirdColor}
-        /> */}
-
         <img src={chooseImage()} alt="Winners" />
         <Achievement
           text1="Nowy uczeń"

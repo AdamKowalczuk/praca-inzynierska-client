@@ -18,13 +18,5 @@ const Icon = (props) => {
     </>
   );
 };
-// <img
-//   src={props.chapter.icon}
-//   style={{
-//     filter: "saturate(100%)",
-//     borderColor: props.primaryColor,
-//   }}
-//   alt={props.chapter.name}
-// />
 
 export default Icon;
