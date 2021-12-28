@@ -26,6 +26,7 @@ const Chapter = (props) => {
   } else {
     exercisesNumber = props.chapter.exercises.length;
   }
+  console.log(exercisesNumber);
   let isExerciseCompleted = props.chapter.isExerciseCompleted;
   if (exercisesNumber === 0) {
     isExerciseCompleted = true;
@@ -39,7 +40,7 @@ const Chapter = (props) => {
     });
     return sum;
   }
-
+  console.log(isQuizCompleted, isExerciseCompleted);
   return (
     <>
       <Accordion key={props.key}>
@@ -165,39 +166,52 @@ const Chapter = (props) => {
                 )}
               </Link>
             ) : (
-              <div className="accordion-lesson-container quiz-locked border-top">
-                <h5 className="uppercase">Quiz</h5>
-                <ArrowForwardIosIcon
-                  className="accordion-arrow-forward"
-                  style={{ fill: "hsl(0, 0%, 100%, 40%)" }}
-                />
-              </div>
+              <Link
+                to="/kursy/rozdzialy/quiz"
+                rel="noreferrer"
+                onClick={() => {
+                  dispatch(setActualChapter(props.number));
+                  dispatch(setActualQuiz(0));
+                }}
+                className="link"
+              >
+                <div className="accordion-lesson-container quiz-locked border-top">
+                  <h5 className="uppercase">Quiz</h5>
+                  <ArrowForwardIosIcon
+                    className="accordion-arrow-forward"
+                    style={{ fill: "hsl(0, 0%, 100%, 40%)" }}
+                  />
+                </div>
+              </Link>
             )}
-
-            {props.chapter.exercises.map((item, id) => {
-              return (
-                <>
-                  {item.isFinished === true ? (
-                    <div key={item._id}>
-                      <Exercise
-                        number={id}
-                        chapterNumber={props.number}
-                        primaryColor={props.primaryColor}
-                        secondaryColor={props.secondaryColor}
-                      />
-                    </div>
-                  ) : (
-                    <div key={item._id}>
-                      <Exercise
-                        number={id}
-                        chapterNumber={props.number}
-                        primaryColor="#fff"
-                      />
-                    </div>
-                  )}
-                </>
-              );
-            })}
+            {props.chapter.exercises !== undefined ? (
+              <>
+                {props.chapter.exercises.map((item, id) => {
+                  return (
+                    <>
+                      {item.isFinished === true ? (
+                        <div key={item._id}>
+                          <Exercise
+                            number={id}
+                            chapterNumber={props.number}
+                            primaryColor={props.primaryColor}
+                            secondaryColor={props.secondaryColor}
+                          />
+                        </div>
+                      ) : (
+                        <div key={item._id}>
+                          <Exercise
+                            number={id}
+                            chapterNumber={props.number}
+                            primaryColor="#fff"
+                          />
+                        </div>
+                      )}
+                    </>
+                  );
+                })}
+              </>
+            ) : null}
           </div>
         </AccordionDetails>
       </Accordion>

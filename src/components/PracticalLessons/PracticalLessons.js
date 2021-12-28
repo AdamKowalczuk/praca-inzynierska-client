@@ -61,7 +61,7 @@ const PracticalLessons = () => {
   let expression =
     actualCourse + 1 + "" + (actualChapter + 1) + "" + (actualExercise + 1);
 
-  function showExercise() {
+  function showExercise(answers) {
     switch (expression) {
       case "121":
         return <HtmlChapter2_1 answers={answers} />;
@@ -287,7 +287,7 @@ const PracticalLessons = () => {
       />
 
       <div className="practical-lesson">
-        {showExercise()}
+        {showExercise(answers)}
         <div className="result-container">
           <div className="options">
             {options.map((option, id) => {
@@ -400,7 +400,11 @@ const PracticalLessons = () => {
                                     setOptions(
                                       exercises[actualExercise + 1].options
                                     );
-                                    declareAnswers();
+                                    for (let i = 0; i < answers.length; i++) {
+                                      answers[i].name = "";
+                                    }
+
+                                    setAnswers(answers);
                                   }
                                 : null
                             }
