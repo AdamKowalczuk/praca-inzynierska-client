@@ -81,7 +81,7 @@ const Quiz = () => {
         actualQuiz={actualQuiz}
         quizNumber={chapter.quiz.length}
         isLesson={false}
-        courseName="JavaScript"
+        courseName={course.name}
       />
 
       <div className="quiz-container">
