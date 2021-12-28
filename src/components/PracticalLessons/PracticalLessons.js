@@ -111,10 +111,10 @@ const PracticalLessons = () => {
       case "1103":
         return <HtmlChapter10_3 answers={answers} />;
         break;
-      case "2103":
+      case "2101":
         return <CssChapter10_1 answers={answers} />;
         break;
-      case "2103":
+      case "2102":
         return <CssChapter10_2 answers={answers} />;
         break;
       case "321":

@@ -81,7 +81,9 @@ const Quiz = () => {
         actualQuiz={actualQuiz}
         quizNumber={chapter.quiz.length}
         isLesson={false}
+        courseName="JavaScript"
       />
+
       <div className="quiz-container">
         {quizForm.isCompleted === true ? (
           <>
@@ -140,7 +142,16 @@ const Quiz = () => {
               </Link>
             )}
 
-            <Link to="/kursy/rozdzialy" rel="noreferrer" className="link">
+            <Link
+              to="/kursy/rozdzialy"
+              onClick={() => {
+                dispatch(setActualLesson(0));
+                dispatch(setActualQuiz(0));
+                dispatch(setActualExercise(0));
+              }}
+              rel="noreferrer"
+              className="link"
+            >
               <Button
                 text="Powrót"
                 class="btn btn_white"

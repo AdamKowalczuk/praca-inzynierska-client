@@ -26,10 +26,21 @@ const Chapter = (props) => {
   } else {
     exercisesNumber = props.chapter.exercises.length;
   }
-  console.log(exercisesNumber);
-  let isExerciseCompleted = props.chapter.isExerciseCompleted;
+  let isExerciseCompleted;
+
   if (exercisesNumber === 0) {
     isExerciseCompleted = true;
+  } else {
+    isExerciseCompleted = IsExerciseCompleted();
+  }
+  function IsExerciseCompleted() {
+    for (let i = 0; i < props.chapter.exercises.length; i++) {
+      if (props.chapter.exercises[i].isFinished === true) {
+      } else {
+        return false;
+      }
+    }
+    return true;
   }
   function sumCompletedLessons() {
     let sum = 0;
@@ -40,7 +51,6 @@ const Chapter = (props) => {
     });
     return sum;
   }
-  console.log(isQuizCompleted, isExerciseCompleted);
   return (
     <>
       <Accordion key={props.key}>
