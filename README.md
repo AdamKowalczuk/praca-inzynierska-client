@@ -2,9 +2,7 @@
 
 Aplikacja służy do nauki HTML, CSS i JavaScript. Jest zbudowana za pomocą technologii MERN - MongoDB, Express.js, React.js, Node.js. System logowania jest stworzony za pomocą JSON Web Token.
 
-## Aplikacja jest przeznaczona na urządzenia mobilne i jest dostępna pod adresem:
-
-### https://webfront-praca-inzynierska.netlify.app/
+## Aplikacja jest przeznaczona na urządzenia mobilne
 
 ## Uruchomienie aplikacji
 W katalogu projektu należy uruchomić komendę:
